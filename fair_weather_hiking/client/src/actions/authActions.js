@@ -9,6 +9,7 @@ import {
 
 // Register User
 export const registerUser = (userData, history) => dispatch => {
+  console.log('userData register: ' + userData);
   axios
     .post("/api/users/register", userData)
     .then(res => history.push("/login")) // re-direct to login on successful register
@@ -22,6 +23,7 @@ export const registerUser = (userData, history) => dispatch => {
 
 // Login - get user token
 export const loginUser = userData => dispatch => {
+  console.log('userData: ' + userData);
   axios
     .post("/api/users/login", userData)
     .then(res => {
@@ -59,12 +61,12 @@ export const setCurrentUser = decoded => {
   };
 };
 
-// // User loading
-// export const setUserLoading = () => {
-//   return {
-//     type: USER_LOADING
-//   };
-// };
+// User loading
+export const setUserLoading = () => {
+  return {
+    type: USER_LOADING
+  };
+};
 
 // // Log user out
 // export const logoutUser = () => dispatch => {

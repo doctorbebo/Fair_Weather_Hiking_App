@@ -21,7 +21,6 @@ onSubmit = e => {
       password: this.state.password
     };
   console.log(userData);
-  debugger;
   loginUser(userData);
   };
 
