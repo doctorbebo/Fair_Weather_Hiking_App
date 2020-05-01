@@ -6,12 +6,12 @@ import Landing from './components/landing';
 import Register from './components/register';
 import Login from './components/login';
 
-// import { Provider } from "react-redux";
-// import store from "./store";
+import { Provider } from "react-redux";
+import store from './store';
 
 function App() {
   return (
-    // <Provider store={store}>
+    <Provider store={store}>
       <Router>
         <div className="App">
           <Route exact path='/register' component={Register} />
@@ -19,7 +19,7 @@ function App() {
           <Route exact path='/' component={Landing} />
         </div>
       </Router>
-    // </Provider>
+    </Provider>
     
   );
 }
