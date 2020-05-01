@@ -49,7 +49,7 @@ function App() {
         <div className="App">
           <Route exact path='/register' component={Register} />
           <Route exact path='/login' component={Login} />
-          <Route exact path='/' component={Landing} />
+          <Route exact path='/' component={Register} />
           <Route exact path='/dashboard' component={Dashboard} />
           <Route exact path='/search' component={Search} />
         </div>

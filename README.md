@@ -1,1 +1,0 @@
-Fair Weather Hiking App
