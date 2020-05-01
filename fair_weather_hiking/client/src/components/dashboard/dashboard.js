@@ -34,18 +34,17 @@ class Dashboard extends Component {
             >
               Logout
             </button>
-            <button
+            <a href="/search"><button
               style={{
                 width: "175px",
                 borderRadius: "3px",
                 letterSpacing: "1.5px",
                 marginTop: "1rem"
               }}
-              //onClick={this.onLogoutClick}
               className="btn btn-large waves-effect waves-light hoverable green accent-3"
             >
             Find A Hike
-            </button>
+            </button></a>
           </div>
         </div>
       </div>

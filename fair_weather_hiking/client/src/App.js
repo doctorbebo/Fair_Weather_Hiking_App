@@ -7,6 +7,7 @@ import Register from './components/register';
 import Login from './components/login';
 import PrivateRoute from "./components/routes/privateRoute";
 import Dashboard from "./components/dashboard/dashboard";
+import Search from './components/search';
 
 import jwt_decode from "jwt-decode";
 import setAuthToken from "./utils/setAuthToken";
@@ -50,6 +51,7 @@ function App() {
           <Route exact path='/login' component={Login} />
           <Route exact path='/' component={Landing} />
           <Route exact path='/dashboard' component={Dashboard} />
+          <Route exact path='/search' component={Search} />
         </div>
       </Router>
     </Provider>
