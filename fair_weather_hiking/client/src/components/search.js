@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Button from './button';
 
 class Search extends Component {
 
@@ -14,19 +15,8 @@ class Search extends Component {
                 <h4>Welcome to the search form page</h4>
                 <form onSubmit={this.onSubmit}>
                 
-                    <button
-                    style={{
-                        width: "150px",
-                        borderRadius: "3px",
-                        letterSpacing: "1.5px",
-                        marginTop: "1rem"
-                    }}
-                    type="submit"
-                    className="btn btn-large waves-effect waves-light hoverable blue accent-3"
-                    >
-                    Search
-                    </button>
-                    
+                    <Button name='Search' />
+
                 </form>
             </div>
     
