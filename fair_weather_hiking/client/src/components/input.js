@@ -1,16 +1,19 @@
 import React from 'react';
 
 function Input(props) {
+    let title = props.name;
     return(
         <input
             onChange={props.onChange}
-            value={this.state.password}
-            error={errors.password}
-            id="password"
-            type="password"
+            value={props.value}
+            error={errors.title}
+            id={title}
+            type={title}
             className={classnames("", {
-            invalid: errors.password
+            invalid: errors.title
             })}
         />
     )
 }
+
+export default Input;
