@@ -2,11 +2,11 @@
   text-align: center;
 }
 
-.search-form {
-  width: 60%;
+.search {
+  margin-top: 200px; 
 }
 
-/* 
+/*
 .container {
   background-image: url("./trees.jpeg");
   padding-bottom: 30px;
