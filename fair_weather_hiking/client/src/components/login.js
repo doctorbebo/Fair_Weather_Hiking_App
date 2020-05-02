@@ -1,6 +1,11 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { loginUser } from '../actions/authActions';
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import classnames from "classnames";
+import Button from './button';
+import Label from './label';
 
 class Login extends Component {
   constructor() {
@@ -8,20 +13,41 @@ class Login extends Component {
     this.state = {
       email: "",
       password: "",
-      errors: {}
+      errors: ""
     };
   }
+
+  componentDidMount() {
+    // If logged in and user navigates to Login page, should redirect them to dashboard
+    if (this.props.auth.isAuthenticated) {
+      this.props.history.push("/dashboard");
+    }
+  }
+
+componentWillReceiveProps(nextProps) {
+  if (nextProps.auth.isAuthenticated) {
+      this.props.history.push("/dashboard"); // display dashboard upon successful login
+    }
+  if (nextProps.errors) {
+      this.setState({
+        errors: nextProps.errors
+      });
+    }
+  }
+
 onChange = e => {
     this.setState({ [e.target.id]: e.target.value });
   };
+  
 onSubmit = e => {
   e.preventDefault();
+  
   const userData = {
       email: this.state.email,
       password: this.state.password
     };
-  console.log(userData);
-  loginUser(userData);
+  
+    this.props.loginUser(userData);
   };
 
 render() {
@@ -31,10 +57,10 @@ render() {
       <div className="container">
         <div style={{ marginTop: "4rem" }} className="row">
           <div className="col s8 offset-s2">
-            <Link to="/" className="btn-flat waves-effect">
+            {/* <Link to="/" className="btn-flat waves-effect">
               <i className="material-icons left">keyboard_backspace</i> Back to
               home
-            </Link>
+            </Link> */}
             <div className="col s12" style={{ paddingLeft: "11.250px" }}>
               <h4>
                 <b>Login</b> below
@@ -51,8 +77,15 @@ render() {
                   error={errors.email}
                   id="email"
                   type="email"
+                  className={classnames("", {
+                    invalid: errors.email || errors.emailnotfound
+                  })}
                 />
-                <label htmlFor="email">Email</label>
+                <Label name='email' />
+                <span className="red-text">
+                  {errors.email}
+                  {errors.emailnotfound}
+                </span>
               </div>
               <div className="input-field col s12">
                 <input
@@ -61,22 +94,18 @@ render() {
                   error={errors.password}
                   id="password"
                   type="password"
+                  className={classnames("", {
+                    invalid: errors.password || errors.passwordincorrect
+                  })}
                 />
-                <label htmlFor="password">Password</label>
+                <Label name='password' />
+                <span className="red-text">
+                  {errors.password}
+                  {errors.passwordincorrect}
+                </span>
               </div>
               <div className="col s12" style={{ paddingLeft: "11.250px" }}>
-                <button
-                  style={{
-                    width: "150px",
-                    borderRadius: "3px",
-                    letterSpacing: "1.5px",
-                    marginTop: "1rem"
-                  }}
-                  type="submit"
-                  className="btn btn-large waves-effect waves-light hoverable blue accent-3"
-                >
-                  Login
-                </button>
+                <Button name='Login' type='submit' />
               </div>
             </form>
           </div>
@@ -84,5 +113,20 @@ render() {
       </div>
     );
   }
-}
-export default Login;
+};
+
+Login.propTypes = {
+  loginUser: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired,
+  errors: PropTypes.string.isRequired
+};
+
+const mapStateToProps = state => ({
+  auth: state.auth,
+  errors: state.errors
+});
+
+export default connect(
+  mapStateToProps,
+  { loginUser }
+)(Login);

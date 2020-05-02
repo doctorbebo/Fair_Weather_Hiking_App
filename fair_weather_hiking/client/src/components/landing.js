@@ -5,12 +5,12 @@ class Landing extends Component {
   render() {
     return (
       <div style={{ height: "75vh" }} className="container valign-wrapper">
+
         <div className="row">
+          <h2>Fair Weather Hiking</h2>
           <div className="col s12 center-align">
-            
             <div className="col s6">                    
-              <a
-                href="/register"
+              <a href='/register'><button
                 style={{
                   width: "140px",
                   borderRadius: "3px",
@@ -19,7 +19,7 @@ class Landing extends Component {
                 className="btn btn-large waves-effect waves-light hoverable blue accent-3"
               >
                 Register
-              </a>
+              </button></a>
             </div>
             <div className="col s6">
               <a href="/login"
