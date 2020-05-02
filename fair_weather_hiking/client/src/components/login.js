@@ -16,7 +16,7 @@ class Login extends Component {
       errors: ""
     };
   }
-  
+
   componentDidMount() {
     // If logged in and user navigates to Login page, should redirect them to dashboard
     if (this.props.auth.isAuthenticated) {
@@ -104,7 +104,7 @@ render() {
                 </span>
               </div>
               <div className="col s12" style={{ paddingLeft: "11.250px" }}>
-                <Button name='Login' />
+                <Button name='Login' type='submit' />
               </div>
             </form>
           </div>

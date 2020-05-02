@@ -5,6 +5,8 @@ class Search extends Component {
 
     onSubmit(event) {
         event.preventDefault();
+        //const query = 
+        //this.props.searchHikes(query)
         //api call to get hikes with criteria
         console.log('searched for a hike')
     }

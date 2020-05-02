@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
+import Button from '../button';
 
 class Dashboard extends Component {
   onLogoutClick = e => {
@@ -15,6 +17,9 @@ class Dashboard extends Component {
     return (
       <div style={{ height: "75vh" }} className="container valign-wrapper">
         <div className="row">
+          <div className='row'>
+            {/* <Button name='logout' onClick={this.onLogoutClick} width='150px' /> */}
+          </div>
           <div className="col s12 center-align">
             <h4>
               <b>Hey,</b> {user.name.split(" ")[0]}
@@ -22,7 +27,7 @@ class Dashboard extends Component {
                 Welcome to Fair Weather Hiking
               </p>
             </h4>
-            <button
+            {/* <button
               style={{
                 width: "150px",
                 borderRadius: "3px",
@@ -33,18 +38,14 @@ class Dashboard extends Component {
               className="btn btn-large waves-effect waves-light hoverable blue accent-3"
             >
               Logout
-            </button>
-            <a href="/search"><button
-              style={{
-                width: "175px",
-                borderRadius: "3px",
-                letterSpacing: "1.5px",
-                marginTop: "1rem"
-              }}
-              className="btn btn-large waves-effect waves-light hoverable green accent-3"
-            >
-            Find A Hike
-            </button></a>
+            </button> */}
+            <div className='row'>
+              <a href="/search"><Button name='Find A Hike' width='300px'/></a><br />
+              <Button name='View Completed Hikes' width='300px'/><br />
+              <Button name='View Favorite Hikes' width='300px'/><br /><br />
+              <Link to='/login' onClick={this.onLogoutClick}>Log out</Link>
+            </div>
+
           </div>
         </div>
       </div>
