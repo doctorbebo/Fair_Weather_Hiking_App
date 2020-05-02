@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Button from './button';
 import Label from './label';
+import axios from 'axios';
 
 import M from 'materialize-css';
 
@@ -10,19 +11,32 @@ import M from 'materialize-css';
 //   });
 
 class Search extends Component {
-
     //initialize Materialize
     componentDidMount() {
         M.AutoInit();
+       
     }
 
     constructor() {
         super();
-        this.state = {
-          maxDistance: "",
-          maxElevation: "",
-          maxTravel: ""
-        };
+            this.state = {
+            maxDistance: "",
+            maxElevation: "",
+            maxTravel: "",
+            latitude: "",
+            longitude: ""
+            };
+            this.onSubmit=this.onSubmit.bind(this);
+            this.getuserlocation();
+            
+      }
+    getuserlocation = () => {
+        navigator.geolocation.getCurrentPosition(function(position) {
+            console.log("Latitude is :", position.coords.latitude);
+            console.log("Longitude is :", position.coords.longitude);
+            this.setState({latitude: position.coords.latitude})
+            this.setState({longitude: position.coords.longitude})
+          });
       }
 
     onChange = event => {
@@ -30,19 +44,23 @@ class Search extends Component {
         this.setState({ [event.target.id]: event.target.value })
     }
 
-    onSubmit(event) {
+     async onSubmit(event) {
         event.preventDefault();
-        console.log(this);
-
-        // const data = {
-        //     maxDistance: this.state.maxDistance,
-        //     maxElevation: this.state.maxElevation
-        // }
-
-        //const query = 
-        //this.props.searchHikes(query)
-        //api call to get hikes with criteria
-        console.log('searched for a hike')
+        
+        let minLength = "&minLength="+this.state.maxDistance;
+        let maxDistance = "&maxDistance="+this.state.maxTravel;
+        let maxElevation = this.state.maxElevation
+        let apiKey = "&key=200742179-23d7c8d71039f659f6a08818dd8bf810"
+        let hikerequest = "https://cors-anywhere.herokuapp.com/https://www.hikingproject.com/data/get-trails?"
+        console.log(hikerequest+this.state.latitude+this.state.longitude+minLength+maxDistance+apiKey)
+        await axios.get(hikerequest+this.state.latitude+this.state.longitude+minLength+maxDistance+apiKey)
+        .then(res => {
+          const hikesData = res.data;
+          console.log(hikesData)
+        })
+        .catch(function (error) {
+            console.log(error)
+        })
     }
 
     render() {
@@ -74,16 +92,19 @@ class Search extends Component {
                                 <input
                                     onChange={this.onChange}
                                     value={this.state.maxDistance}
-                                    id=""
+                                    id="maxDistance"
                                 />
                                 <Label name='Max Distance Travelled' />
                             </div>
                             <div className="input-field col s12">
-                                <select>
+                                <select
+                                onChange={this.onChange}
+                                value={this.state.maxTravel}
+                                id="maxTravel">
                                     <option value="" disabled selected>Select Max Length</option>
-                                    <option value="1">1 mile</option>
-                                    <option value="2">2 mile</option>
-                                    <option value="3">3 mile</option>
+                                    <option value= "5" >5 miles</option>
+                                    <option value="10">10 miles</option>
+                                    <option value="15">15 miles</option>
                                 </select>
                             </div>
                             <div className="input-field col s12">
