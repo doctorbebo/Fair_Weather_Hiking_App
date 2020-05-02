@@ -44,14 +44,15 @@ class Search extends Component {
 
      async onSubmit(event) {
         event.preventDefault();
-        
+        let latitude = "lat=47.6849444";
+        let longitude = "&lon=-122.29822240000001"
         let minLength = "&minLength="+this.state.maxDistance;
         let maxDistance = "&maxDistance="+this.state.maxTravel;
         let maxElevation = this.state.maxElevation
         let apiKey = "&key=200742179-23d7c8d71039f659f6a08818dd8bf810"
         let hikerequest = "https://cors-anywhere.herokuapp.com/https://www.hikingproject.com/data/get-trails?"
         console.log(hikerequest+this.state.latitude+this.state.longitude+minLength+maxDistance+apiKey)
-        await axios.get(hikerequest+this.state.latitude+this.state.longitude+minLength+maxDistance+apiKey)
+        await axios.get(hikerequest+latitude+longitude+minLength+maxDistance+apiKey)
         .then(res => {
           const hikesData = res.data;
           console.log(hikesData)
