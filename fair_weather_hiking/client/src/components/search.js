@@ -34,8 +34,6 @@ class Search extends Component {
         navigator.geolocation.getCurrentPosition(function(position) {
             console.log("Latitude is :", position.coords.latitude);
             console.log("Longitude is :", position.coords.longitude);
-            this.setState({latitude: position.coords.latitude})
-            this.setState({longitude: position.coords.longitude})
           });
       }
 
