@@ -12,6 +12,11 @@ const TrailSchema = new Schema({
     },
     reports: {
       type: String,
+    },
+    updated: {
+      type: Date,
+      default: Date.now()
+
     }
   });
 
