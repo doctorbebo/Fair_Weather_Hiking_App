@@ -18,7 +18,6 @@ class Dashboard extends Component {
       <div style={{ height: "75vh" }} className="container valign-wrapper">
         <div className="row">
           <div className='row'>
-            {/* <Button name='logout' onClick={this.onLogoutClick} width='150px' /> */}
           </div>
           <div className="col s12 center-align">
             <h4>

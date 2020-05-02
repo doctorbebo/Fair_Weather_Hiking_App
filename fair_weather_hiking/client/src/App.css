@@ -1,6 +1,11 @@
 .App {
   text-align: center;
 }
+
+.search-form {
+  width: 60%;
+}
+
 /* 
 .container {
   background-image: url("./trees.jpeg");
