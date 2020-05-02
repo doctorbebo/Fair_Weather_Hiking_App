@@ -20,13 +20,14 @@ class Search extends Component {
         super();
         this.state = {
           maxDistance: "",
-          maxElevation: ""
+          maxElevation: "",
+          maxTravel: ""
         };
       }
 
     onChange = event => {
-        //console.log(event.target.value);
-        //this.setState({ [event.target.id]: event.target.value })
+        console.log(event.target.value);
+        this.setState({ [event.target.id]: event.target.value })
     }
 
     onSubmit(event) {
@@ -69,9 +70,17 @@ class Search extends Component {
                             <Button name='Search' />
                         </form> */}
                         <form noValidate onSubmit={this.onSubmit}>
+                            <div className='input-field col s12'>
+                                <input
+                                    onChange={this.onChange}
+                                    value={this.state.maxDistance}
+                                    id=""
+                                />
+                                <Label name='Max Distance Travelled' />
+                            </div>
                             <div className="input-field col s12">
                                 <select>
-                                    <option value="" disabled selected>Select Max Distance</option>
+                                    <option value="" disabled selected>Select Max Length</option>
                                     <option value="1">1 mile</option>
                                     <option value="2">2 mile</option>
                                     <option value="3">3 mile</option>
