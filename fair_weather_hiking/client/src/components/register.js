@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import classnames from "classnames";
 import Button from './button';
+import Label from './label';
 
 class Register extends Component {
   constructor() {
@@ -72,7 +73,7 @@ class Register extends Component {
                     invalid: errors.name
                   })}
                 />
-                <label htmlFor="name">Name</label>
+                <Label name='name' />
                 <span className="red-text">{errors.name}</span>
               </div>
               <div className="input-field col s12">
@@ -86,7 +87,7 @@ class Register extends Component {
                     invalid: errors.email
                   })}
                 />
-                <label htmlFor="email">Email</label>
+                <Label name='email' />
                 <span className="red-text">{errors.email}</span>
               </div>
               <div className="input-field col s12">
@@ -100,7 +101,7 @@ class Register extends Component {
                     invalid: errors.password
                   })}
                 />
-                <label htmlFor="password">Password</label>
+                <Label name='password' />
                 <span className="red-text">{errors.password}</span>
               </div>
               <div className="input-field col s12">
@@ -114,7 +115,7 @@ class Register extends Component {
                     invalid: errors.password2
                   })}
                 />
-                <label htmlFor="password2">Confirm Password</label>
+                <Label name='password2' />
                 <span className="red-text">{errors.password2}</span>
               </div>
               <div className="col s12" style={{ paddingLeft: "11.250px" }}>

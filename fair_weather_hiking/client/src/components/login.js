@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import classnames from "classnames";
 import Button from './button';
+import Label from './label';
 
 class Login extends Component {
   constructor() {
@@ -72,7 +73,7 @@ render() {
                     invalid: errors.email || errors.emailnotfound
                   })}
                 />
-                <label htmlFor="email">Email</label>
+                <Label name='email' />
                 <span className="red-text">
                   {errors.email}
                   {errors.emailnotfound}
@@ -89,7 +90,7 @@ render() {
                     invalid: errors.password || errors.passwordincorrect
                   })}
                 />
-                <label htmlFor="password">Password</label>
+                <Label name='password' />
                 <span className="red-text">
                   {errors.password}
                   {errors.passwordincorrect}
