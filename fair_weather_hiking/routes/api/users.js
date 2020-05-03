@@ -95,8 +95,8 @@ router.post('/login', function(req,res) {
 })
 
 router.post('/favorite', function(req,res) {
-  let id = ObjectId(req.body.userID);
-    User.findOne({ _id: id })
+  console.log(req.body)
+    User.findOne({ _id: req.body.userID })
     .then(user => {
       if(!user) {
         console.log('user not found')

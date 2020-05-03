@@ -1,5 +1,5 @@
 import React from 'react';
-import HikeCard from './results/hike_card';
+import HikeCard from '../hike_card/index';
 
 function Results() {
 

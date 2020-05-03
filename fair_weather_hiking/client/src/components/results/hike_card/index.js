@@ -9,8 +9,7 @@ import addFavorite from '../../favorites/addFavorite';
 //     hikeInfo: 'hike info'
 // }
 
-class hikeCard extends Component {
-
+class HikeCard extends Component {
     
 render () {
     const { user } = this.props.auth;
@@ -23,21 +22,21 @@ render () {
         <div className="col s12 m7">
             <div className="card">
                 <div className="weather-icon-div">
-                    {/* <img className="weather-icon bg" src={process.env.PUBLIC_URL + `./assets/images/icons/weather/${props.hikeData.weather}.png`} alt = "hike" /> */}
+                    <img className="weather-icon bg" src={process.env.PUBLIC_URL + `./assets/images/icons/weather/${this.props.hikeData.weather}.png`} alt = "hike" />
                 </div>
                 <div className="card-image">
-                    {/* <img src={props.hikeData.imageURL} alt = "hike"/> */}
-                    {/* <span className="card-title bg">{props.hikeData.name}</span> */}
+                    <img src={this.props.hikeData.imageURL} alt = "hike"/>
+                    <span className="card-title bg">{this.props.hikeData.name}</span>
                 </div>
                 <div className="card-content">
                     <div className = "info-text">
-                        {/* <div className="three-cols">Difficulty: {props.hikeData.difficulty}</div>
-                        <div className="three-cols">Distance: {props.hikeData.distance} ml.  </div> 
-                        <div className="three-cols">Elevation: {props.hikeData.elevation} ft. </div> */}
+                        <div className="three-cols">Difficulty: {this.props.hikeData.difficulty}</div>
+                        <div className="three-cols">Distance: {this.props.hikeData.distance} ml.  </div> 
+                        <div className="three-cols">Elevation: {this.props.hikeData.elevation} ft. </div>
                     </div>
                 </div>
                 <div className="card-action">
-                {/* <a href="https://www.hikingproject.com/">This is a Link to hikingproject.com</a> */}
+                <a href="https://www.hikingproject.com/">This is a Link to hikingproject.com</a>
                 <button onClick={() => addFavorite(data)}>Add to Favorites</button>
                 </div>
             </div>
@@ -59,7 +58,7 @@ render () {
     }
 }
 
-hikeCard.propTypes = {
+HikeCard.propTypes = {
     auth: PropTypes.object.isRequired
   };
   
@@ -69,4 +68,4 @@ auth: state.auth
   
 export default connect(
 mapStateToProps
-)(hikeCard);
+)(HikeCard);

@@ -32,7 +32,6 @@ class Search extends Component {
 
     onSubmit(event) {
         event.preventDefault();
-        console.log(this);
 
         // const data = {
         //     maxDistance: this.state.maxDistance,
@@ -95,8 +94,8 @@ class Search extends Component {
                                 </select>
                             </div>
                             <br />
-                            <Button name='Search' type='submit' />
                         </form>
+                        <a href='/results'><Button name='Search' /></a>
                     </div>
                 </div>
             </div>
