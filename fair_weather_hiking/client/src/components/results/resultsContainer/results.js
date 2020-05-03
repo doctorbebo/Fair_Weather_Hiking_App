@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { Component } from 'react';
 import HikeCard from '../hike_card/index';
 
-function Results() {
+class Results extends Component {
+
+    render() {
 
     // Fake hike data for testing replace with real data. 
     const hikeData = {
@@ -22,6 +24,7 @@ function Results() {
         </div>
 
     )
+}
 }
 
 export default Results;

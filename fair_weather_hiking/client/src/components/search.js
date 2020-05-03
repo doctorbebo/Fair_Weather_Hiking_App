@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import Button from './button';
 import Label from './label';
 
@@ -95,7 +96,7 @@ class Search extends Component {
                             </div>
                             <br />
                         </form>
-                        <a href='/results'><Button name='Search' /></a>
+                        <Link to='/results'><Button name='Search' onClick={this.onClick} /></Link>
                     </div>
                 </div>
             </div>
