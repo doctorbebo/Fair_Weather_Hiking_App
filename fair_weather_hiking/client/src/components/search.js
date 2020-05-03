@@ -4,6 +4,14 @@ import Label from './label';
 
 import M from 'materialize-css';
 
+import addFavorite from './favorites/addFavorite'
+;
+
+const data = {
+    email: 'sarahmarie.carter@yahoo.com',
+    password: 'test123'
+}
+
 // document.addEventListener('DOMContentLoaded', function() {
 //     var elems = document.querySelectorAll('select');
 //     var instances = M.FormSelect.init(elems, options);
@@ -33,6 +41,7 @@ class Search extends Component {
     onSubmit(event) {
         event.preventDefault();
         console.log(this);
+        addFavorite(data);
 
         // const data = {
         //     maxDistance: this.state.maxDistance,

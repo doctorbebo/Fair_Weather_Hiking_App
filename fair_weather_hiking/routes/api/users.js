@@ -94,4 +94,8 @@ router.post('/login', function(req,res) {
     })
 })
 
+router.post('/favorite', function(req,res) {
+  return res.json(req.body)
+})
+
 module.exports = router;
