@@ -95,7 +95,16 @@ router.post('/login', function(req,res) {
 })
 
 router.post('/favorite', function(req,res) {
-  return res.json(req.body.data)
+  let id = ObjectId(req.body.userID);
+    User.findOne({ _id: id })
+    .then(user => {
+      if(!user) {
+        console.log('user not found')
+      } else {
+        console.log('user found')
+      }
+    })
+  //find user id in database. User.findOne{id: req.body.id}
 })
 
 module.exports = router;

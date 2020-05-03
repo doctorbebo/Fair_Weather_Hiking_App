@@ -1,16 +1,23 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
 import './style.css';
 import addFavorite from '../../favorites/addFavorite';
 
-const data = {
-    userID: 'user id',
-    hikeInfo: 'hike info'
-}
+// const data = {
+//     userID: 'user id',
+//     hikeInfo: 'hike info'
+// }
 
 class hikeCard extends Component {
 
     
 render () {
+    const { user } = this.props.auth;
+    const data = {
+        userID: user.id
+    }
+    console.log(data);
     return (
     <div className="row">
         <div className="col s12 m7">
@@ -52,4 +59,14 @@ render () {
     }
 }
 
-export default hikeCard;
+hikeCard.propTypes = {
+    auth: PropTypes.object.isRequired
+  };
+  
+const mapStateToProps = state => ({
+auth: state.auth
+});
+  
+export default connect(
+mapStateToProps
+)(hikeCard);
