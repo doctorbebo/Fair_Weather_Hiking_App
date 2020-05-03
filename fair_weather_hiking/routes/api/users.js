@@ -95,7 +95,7 @@ router.post('/login', function(req,res) {
 })
 
 router.post('/favorite', function(req,res) {
-  return res.json(req.body)
+  return res.json(req.body.data)
 })
 
 module.exports = router;

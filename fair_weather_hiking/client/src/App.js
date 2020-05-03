@@ -12,6 +12,7 @@ import Search from './components/search';
 // used for building result page
 import Result from "./components/results";
 // delete this refernce when finished also delete reference in the router component.
+import hikeCard from './components/results/hike_card'
 
 
 import jwt_decode from "jwt-decode";
@@ -58,6 +59,7 @@ function App() {
           <Route exact path='/dashboard' component={Dashboard} />
           <Route exact path='/search' component={Search} />
           <Route exact path='/results' component={Result} />
+          <Route exact path='/hikecard' component={hikeCard} />
         </div>
       </Router>
     </Provider>
