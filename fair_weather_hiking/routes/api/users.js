@@ -101,10 +101,9 @@ router.post('/favorite', function(req,res) {
       if(!user) {
         console.log('user not found')
       } else {
-        console.log('user found')
+        console.log('current user: ' + user)
       }
     })
-  //find user id in database. User.findOne{id: req.body.id}
 })
 
 module.exports = router;

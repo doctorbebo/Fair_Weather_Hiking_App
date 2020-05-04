@@ -1,6 +1,8 @@
 import axios from 'axios';
 
-function addFavorite(data) {
+function addFavorite(data, id) {
+  console.log('hike id: ' + id);
+  data.id = id;
    axios
    .post
    ('api/users/favorite', data)

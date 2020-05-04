@@ -7,6 +7,7 @@ class Results extends Component {
 
     // Fake hike data for testing replace with real data. 
     const hikeData = {
+        id: 1234,
         name: "Hike Name",
         difficulty: "Test Easy",
         distance: 100, 
@@ -18,13 +19,12 @@ class Results extends Component {
 
 
     return(
-        <div>
+        <div className='container'>
             <h2>Welcome to the results page</h2>
             <HikeCard hikeData = {hikeData} />;
         </div>
-
     )
-}
+    }
 }
 
 export default Results;
