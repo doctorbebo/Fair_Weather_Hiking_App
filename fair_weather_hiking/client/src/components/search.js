@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import Button from './button';
 import Label from './label';
 
@@ -32,7 +33,6 @@ class Search extends Component {
 
     onSubmit(event) {
         event.preventDefault();
-        console.log(this);
 
         // const data = {
         //     maxDistance: this.state.maxDistance,
@@ -95,8 +95,8 @@ class Search extends Component {
                                 </select>
                             </div>
                             <br />
-                            <Button name='Search' type='submit' />
                         </form>
+                        <Link to='/results'><Button name='Search' onClick={this.onClick} /></Link>
                     </div>
                 </div>
             </div>

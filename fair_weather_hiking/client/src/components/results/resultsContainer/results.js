@@ -1,10 +1,13 @@
-import React from 'react';
-import HikeCard from './results/hike_card';
+import React, { Component } from 'react';
+import HikeCard from '../hike_card/index';
 
-function Results() {
+class Results extends Component {
+
+    render() {
 
     // Fake hike data for testing replace with real data. 
     const hikeData = {
+        id: 1234,
         name: "Hike Name",
         difficulty: "Test Easy",
         distance: 100, 
@@ -16,12 +19,12 @@ function Results() {
 
 
     return(
-        <div>
+        <div className='container'>
             <h2>Welcome to the results page</h2>
             <HikeCard hikeData = {hikeData} />;
         </div>
-
     )
+    }
 }
 
 export default Results;
