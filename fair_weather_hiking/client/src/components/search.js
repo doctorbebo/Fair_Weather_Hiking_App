@@ -77,7 +77,7 @@ class Search extends Component {
                             <br />
                             <Button name='Search Hikes' onClick={this.onClick} type='submit' />
                         </form>
-                        {this.state.isSubmitted && <Results distance={this.state.maxDistance} length={this.state.maxLength}/>}
+                        {this.state.isSubmitted && <Results distance={this.state.maxTravel} length={this.state.maxLength}/>}
                     </div>
                 </div>
             </div>
