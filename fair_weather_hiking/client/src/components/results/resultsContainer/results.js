@@ -3,7 +3,10 @@ import HikeCard from '../hike_card/index';
 
 class Results extends Component {
 
+    //api call here
+
     render() {
+        console.log(this.props)
 
     // Fake hike data for testing replace with real data. 
     const hikeData = {
@@ -20,10 +23,9 @@ class Results extends Component {
 
     return(
         <div className='container'>
-            <h2>Welcome to the results page</h2>
             <HikeCard hikeData = {hikeData} />;
         </div>
-    )
+        )
     }
 }
 

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Button from './button';
 import Label from './label';
+import Results from './results/resultsContainer/results';
 
 import M from 'materialize-css';
 
@@ -20,9 +21,10 @@ class Search extends Component {
     constructor() {
         super();
         this.state = {
-          maxDistance: "",
+          maxLength: "",
           maxElevation: "",
-          maxTravel: ""
+          maxTravel: "",
+          isSubmitted: false
         };
       }
 
@@ -34,57 +36,35 @@ class Search extends Component {
     onSubmit(event) {
         event.preventDefault();
 
-        // const data = {
-        //     maxDistance: this.state.maxDistance,
-        //     maxElevation: this.state.maxElevation
-        // }
-
-        //const query = 
-        //this.props.searchHikes(query)
-        //api call to get hikes with criteria
+        this.setState({
+            isSubmitted: true
+        })
         console.log('searched for a hike')
     }
 
     render() {
-        console.log(this.state)
         return(
             <div className='container search'>
                 <div className='row'>
                     <div className='col s8 offset-s2'>
-                        {/* <form noValidate onSubmit={this.onSubmit}>
+                        <form noValidate onSubmit={this.onSubmit.bind(this)}>
                             <div className='input-field col s12'>
                                 <input
                                     onChange={this.onChange}
-                                    value={this.state.maxDistance}
+                                    value={this.state.maxTravel}
+                                    id="maxTravel"
+                                    type= 'number'
                                 />
-                                <Label name='Max Distance' />
+                                <Label name='Max Travel Distance' />
                             </div>
                             <div className='input-field col s12'>
                                 <input
                                     onChange={this.onChange}
-                                    value={this.state.maxElevation}
+                                    value={this.state.maxLength}
+                                    id="maxLength"
+                                    type='number'
                                 />
-                                <Label name='Max Elevation' />
-                            </div>
-                            <br />
-                            <Button name='Search' />
-                        </form> */}
-                        <form noValidate onSubmit={this.onSubmit}>
-                            <div className='input-field col s12'>
-                                <input
-                                    onChange={this.onChange}
-                                    value={this.state.maxDistance}
-                                    id=""
-                                />
-                                <Label name='Max Distance Travelled' />
-                            </div>
-                            <div className="input-field col s12">
-                                <select>
-                                    <option value="" disabled selected>Select Max Length</option>
-                                    <option value="1">1 mile</option>
-                                    <option value="2">2 mile</option>
-                                    <option value="3">3 mile</option>
-                                </select>
+                                <Label name='Select Max Hike Length' />
                             </div>
                             <div className="input-field col s12">
                                 <select>
@@ -95,14 +75,12 @@ class Search extends Component {
                                 </select>
                             </div>
                             <br />
+                            <Button name='Search Hikes' onClick={this.onClick} type='submit' />
                         </form>
-                        <Link to='/results'><Button name='Search' onClick={this.onClick} /></Link>
+                        {this.state.isSubmitted && <Results distance={this.state.maxDistance} length={this.state.maxLength}/>}
                     </div>
                 </div>
             </div>
-    
-            //create form here that allows user to search for hikes within radius
-            //on submit, take user to results page
         )        
     }
     
