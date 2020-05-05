@@ -6,6 +6,10 @@
   margin-top: 200px; 
 }
 
+.container {
+  margin: 0 auto
+}
+
 /*
 .container {
   background-image: url("./trees.jpeg");

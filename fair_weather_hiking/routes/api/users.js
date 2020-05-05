@@ -94,4 +94,16 @@ router.post('/login', function(req,res) {
     })
 })
 
+router.post('/favorite', function(req,res) {
+  console.log(req.body)
+    User.findOne({ _id: req.body.userID })
+    .then(user => {
+      if(!user) {
+        console.log('user not found')
+      } else {
+        console.log('current user: ' + user)
+      }
+    })
+})
+
 module.exports = router;

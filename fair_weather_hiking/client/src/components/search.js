@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import Button from './button';
 import Label from './label';
 import axios from 'axios';
@@ -91,6 +92,17 @@ class Search extends Component {
         .catch(function (error) {
             console.log(error)
         })
+
+
+        // const data = {
+        //     maxDistance: this.state.maxDistance,
+        //     maxElevation: this.state.maxElevation
+        // }
+
+        //const query = 
+        //this.props.searchHikes(query)
+        //api call to get hikes with criteria
+        console.log('searched for a hike')
     }
 
     render() {
@@ -155,8 +167,8 @@ class Search extends Component {
                                 </select>
                             </div>
                             <br />
-                            <Button name='Search' type='submit' />
                         </form>
+                        <Link to='/results'><Button name='Search' onClick={this.onClick} /></Link>
                     </div>
                 </div>
             </div>

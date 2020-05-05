@@ -9,6 +9,12 @@ import PrivateRoute from "./components/routes/privateRoute";
 import Dashboard from "./components/dashboard/dashboard";
 import Search from './components/search';
 
+// used for building result page
+import Results from "./components/results/resultsContainer/results";
+// delete this refernce when finished also delete reference in the router component.
+import HikeCard from './components/results/hike_card'
+
+
 import jwt_decode from "jwt-decode";
 import setAuthToken from "./utils/setAuthToken";
 import { setCurrentUser, logoutUser } from "./actions/authActions";
@@ -52,6 +58,8 @@ function App() {
           <Route exact path='/' component={Register} />
           <Route exact path='/dashboard' component={Dashboard} />
           <Route exact path='/search' component={Search} />
+          <Route exact path='/results' component={Results} />
+          <Route exact path='/Hikecard' component={HikeCard} />
         </div>
       </Router>
     </Provider>
