@@ -32,12 +32,12 @@ class Search extends Component {
         super();
             this.state = {
             maxDistance: "",
-            maxElevation: "",
+            maxElevation: null,
             maxTravel: "",
             latitude: 0,
             longitude: 0,
             hikes: [],
-            hikeLocations: []
+            
             };
             this.onSubmit=this.onSubmit.bind(this);
             
@@ -63,14 +63,31 @@ class Search extends Component {
         let longitude = "&lon="+this.state.longitude;
         let minLength = "&minLength="+this.state.maxDistance;
         let maxDistance = "&maxDistance="+this.state.maxTravel;
+        let resultQty = "&maxResults=50"
         let maxElevation = this.state.maxElevation
         let apiKey = "&key=200742179-23d7c8d71039f659f6a08818dd8bf810"
         let hikerequest = "https://cors-anywhere.herokuapp.com/https://www.hikingproject.com/data/get-trails?"
         console.log(hikerequest+this.state.latitude+this.state.longitude+minLength+maxDistance+apiKey)
-        await axios.get(hikerequest+latitude+longitude+minLength+maxDistance+apiKey)
+        await axios.get(hikerequest+latitude+longitude+minLength+maxDistance+resultQty+apiKey)
         .then(res => {
-          this.setState({ hikes: res.data.trails})
+            console.log(res.data.trails);
+            if(maxElevation !== null){
+                const filteredHikes = res.data.trails.filter(trail => trail.ascent < maxElevation)
+                console.log(filteredHikes)
+                this.setState({ hikes: filteredHikes})
+            } else {
+                this.setState({hikes: res.data.trails})
+            }
+           this.state.hikes.map((hike) => 
+            axios.get("https://cors-anywhere.herokuapp.com/https://api.openweathermap.org/data/2.5/weather?lat="+hike.latitude+"&lon="+hike.longitude+"&units=imperial&appid=af4b6cb437caa6db643b24a43b52989b")
+            .then(resp =>{
+              console.log("Weather Results--> Hike Location: "+resp.data.name+",  Temp: "+resp.data.main.temp);
+          })
+          .catch(function (error) {
+            console.log(error)
         })
+                
+        )})
         .catch(function (error) {
             console.log(error)
         })
@@ -119,15 +136,22 @@ class Search extends Component {
                                     <option value="10">10 miles</option>
                                     <option value="15">15 miles</option>
                                     <option value="25">25 miles</option>
-                                    <option value="25">50 miles</option>
+                                    <option value="50">50 miles</option>
+                                    <option value="100">100 miles</option>
                                 </select>
                             </div>
                             <div className="input-field col s12">
-                                <select>
-                                    <option value="" disabled selected>Select Max Elevation Gain</option>
-                                    <option value="1">1000 ft</option>
-                                    <option value="2">2000 ft</option>
-                                    <option value="3">3000 ft</option>
+                                <select
+                                onChange={this.onChange}
+                                value={this.state.maxElevation}
+                                id="maxElevation">
+                                >
+                                    
+                                    <option value="">Select Max Elevation Gain</option>
+                                    <option value="100">100 ft</option>
+                                    <option value="1000">1000 ft</option>
+                                    <option value="2000">2000 ft</option>
+                                    <option value="3000">3000 ft</option>
                                 </select>
                             </div>
                             <br />
