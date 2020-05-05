@@ -14,7 +14,18 @@ class Search extends Component {
     //initialize Materialize
     componentDidMount() {
         M.AutoInit();
-       
+        if ("geolocation" in navigator) {
+            console.log("Current location is Available");
+          } else {
+            console.log("Current location is Not Available");
+          }
+          navigator.geolocation.getCurrentPosition((position) => {
+            console.log("Latitude is :", position.coords.latitude);
+            console.log("Longitude is :", position.coords.longitude);
+            this.setState({latitude: position.coords.latitude, longitude: position.coords.longitude})
+            
+
+          });
     }
 
     constructor() {
@@ -23,19 +34,23 @@ class Search extends Component {
             maxDistance: "",
             maxElevation: "",
             maxTravel: "",
-            latitude: "",
-            longitude: ""
+            latitude: 0,
+            longitude: 0,
+            hikes: [],
+            hikeLocations: []
             };
             this.onSubmit=this.onSubmit.bind(this);
-            this.getuserlocation();
+            
             
       }
-    getuserlocation = () => {
-        navigator.geolocation.getCurrentPosition(function(position) {
-            console.log("Latitude is :", position.coords.latitude);
-            console.log("Longitude is :", position.coords.longitude);
-          });
-      }
+    // getuserlocation = () => {
+    //     navigator.geolocation.getCurrentPosition(function(position) {
+    //         console.log("Latitude is :", position.coords.latitude);
+    //         console.log("Longitude is :", position.coords.longitude);
+    //         this.setState ({latitude: position.coords.latitude})
+    //         this.setState ({longitude: position.coords.longitude})
+    //       });
+    //   }
 
     onChange = event => {
         console.log(event.target.value);
@@ -44,8 +59,8 @@ class Search extends Component {
 
      async onSubmit(event) {
         event.preventDefault();
-        let latitude = "lat=47.6849444";
-        let longitude = "&lon=-122.29822240000001"
+        let latitude = "lat="+this.state.latitude;
+        let longitude = "&lon="+this.state.longitude;
         let minLength = "&minLength="+this.state.maxDistance;
         let maxDistance = "&maxDistance="+this.state.maxTravel;
         let maxElevation = this.state.maxElevation
@@ -54,8 +69,7 @@ class Search extends Component {
         console.log(hikerequest+this.state.latitude+this.state.longitude+minLength+maxDistance+apiKey)
         await axios.get(hikerequest+latitude+longitude+minLength+maxDistance+apiKey)
         .then(res => {
-          const hikesData = res.data;
-          console.log(hikesData)
+          this.setState({ hikes: res.data.trails})
         })
         .catch(function (error) {
             console.log(error)
@@ -93,17 +107,19 @@ class Search extends Component {
                                     value={this.state.maxDistance}
                                     id="maxDistance"
                                 />
-                                <Label name='Max Distance Travelled' />
+                                <Label name='Minimum Hike Length' />
                             </div>
                             <div className="input-field col s12">
                                 <select
                                 onChange={this.onChange}
                                 value={this.state.maxTravel}
                                 id="maxTravel">
-                                    <option value="" disabled selected>Select Max Length</option>
+                                    <option value="" disabled selected>Select Maximum Distance to Trailhead</option>
                                     <option value= "5" >5 miles</option>
                                     <option value="10">10 miles</option>
                                     <option value="15">15 miles</option>
+                                    <option value="25">25 miles</option>
+                                    <option value="25">50 miles</option>
                                 </select>
                             </div>
                             <div className="input-field col s12">
