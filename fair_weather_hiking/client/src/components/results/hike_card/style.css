@@ -1,0 +1,29 @@
+.card-title
+{
+    padding: 12px;
+}
+.weather-icon-div
+{
+    position: absolute;
+    z-index: 1;
+    height: 100%;
+}
+.weather-icon
+{
+    height: 20%;
+    margin: 0;
+    padding: 0;
+}
+.bg
+{
+    background-color: rgba(0, 0, 0, 0.6);
+}
+.info-text
+{
+    font-size: 15px;
+}
+.three-cols
+{
+    display: inline-block;
+    width: 33%;
+}
