@@ -58,7 +58,7 @@ function App() {
           <Route exact path='/' component={Register} />
           <Route exact path='/dashboard' component={Dashboard} />
           <Route exact path='/search' component={Search} />
-          <Route exact path='/results' component={Results} />
+          <Route exact path='/results/:lat/:lon/:length/:dist/:elev' component={Results} />
           <Route exact path='/Hikecard' component={HikeCard} />
         </div>
       </Router>

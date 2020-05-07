@@ -26,8 +26,8 @@ render () {
                     <div className="card-content">
                         <div className = "info-text">
                             <div className="three-cols">Difficulty: {this.props.hikeData.difficulty}</div>
-                            <div className="three-cols">Distance: {this.props.hikeData.distance} ml.  </div> 
-                            <div className="three-cols">Elevation: {this.props.hikeData.elevation} ft. </div>
+                            {/* <div className="three-cols">Distance: {this.props.hikeData.distance} ml.  </div>  */}
+                            {/* <div className="three-cols">Elevation: {this.props.hikeData.elevation} ft. </div> */}
                         </div>
                     </div>
                     <div className="card-action">

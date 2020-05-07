@@ -6,11 +6,6 @@ import axios from 'axios';
 
 import M from 'materialize-css';
 
-// document.addEventListener('DOMContentLoaded', function() {
-//     var elems = document.querySelectorAll('select');
-//     var instances = M.FormSelect.init(elems, options);
-//   });
-
 class Search extends Component {
     //initialize Materialize
     componentDidMount() {
@@ -24,15 +19,13 @@ class Search extends Component {
             console.log("Latitude is :", position.coords.latitude);
             console.log("Longitude is :", position.coords.longitude);
             this.setState({latitude: position.coords.latitude, longitude: position.coords.longitude})
-            
-
           });
     }
 
     constructor() {
         super();
             this.state = {
-            maxDistance: "",
+            minLength: "",
             maxElevation: null,
             maxTravel: "",
             latitude: 0,
@@ -40,9 +33,7 @@ class Search extends Component {
             hikes: [],
             
             };
-            this.onSubmit=this.onSubmit.bind(this);
-            
-            
+            this.onSubmit=this.onSubmit.bind(this);     
       }
     // getuserlocation = () => {
     //     navigator.geolocation.getCurrentPosition(function(position) {
@@ -60,43 +51,37 @@ class Search extends Component {
 
      async onSubmit(event) {
         event.preventDefault();
-        let latitude = "lat="+this.state.latitude;
-        let longitude = "&lon="+this.state.longitude;
-        let minLength = "&minLength="+this.state.maxDistance;
-        let maxDistance = "&maxDistance="+this.state.maxTravel;
-        let resultQty = "&maxResults=50"
-        let maxElevation = this.state.maxElevation
-        let apiKey = "&key=200742179-23d7c8d71039f659f6a08818dd8bf810"
-        let hikerequest = "https://cors-anywhere.herokuapp.com/https://www.hikingproject.com/data/get-trails?"
-        console.log(hikerequest+this.state.latitude+this.state.longitude+minLength+maxDistance+apiKey)
-        await axios.get(hikerequest+latitude+longitude+minLength+maxDistance+resultQty+apiKey)
-        .then(res => {
-            console.log(res.data.trails);
-            if(maxElevation !== null){
-                const filteredHikes = res.data.trails.filter(trail => trail.ascent < maxElevation)
-                console.log(filteredHikes)
-                this.setState({ hikes: filteredHikes})
-            } else {
-                this.setState({hikes: res.data.trails})
-            }
-           this.state.hikes.map((hike) => 
-            axios.get("https://cors-anywhere.herokuapp.com/https://api.openweathermap.org/data/2.5/weather?lat="+hike.latitude+"&lon="+hike.longitude+"&units=imperial&appid=af4b6cb437caa6db643b24a43b52989b")
-            .then(resp =>{
-              console.log("Weather Results--> Hike Location: "+resp.data.name+",  Temp: "+resp.data.main.temp);
-          })
-          .catch(function (error) {
-            console.log(error)
-        })
+        this.props.history.push(`/results/${this.state.latitude}/${this.state.longitude}/${this.state.minLength}/${this.state.maxTravel}/${this.state.maxElevation}`)
+        // let minLength = "&minLength="+this.state.minLength;
+        // let maxDistance = "&maxDistance="+this.state.maxTravel;
+        // let resultQty = "&maxResults=50"
+        // let maxElevation = this.state.maxElevation
+        // let apiKey = "&key=200742179-23d7c8d71039f659f6a08818dd8bf810"
+        // let hikerequest = "https://cors-anywhere.herokuapp.com/https://www.hikingproject.com/data/get-trails?"
+        // console.log(hikerequest+this.state.latitude+this.state.longitude+minLength+maxDistance+apiKey)
+        // await axios.get(hikerequest+latitude+longitude+minLength+maxDistance+resultQty+apiKey)
+        // .then(res => {
+        //     console.log(res.data.trails);
+        //     if(maxElevation !== null){
+        //         const filteredHikes = res.data.trails.filter(trail => trail.ascent < maxElevation)
+        //         console.log(filteredHikes)
+        //         this.setState({ hikes: filteredHikes})
+        //     } else {
+        //         this.setState({hikes: res.data.trails})
+        //     }
+        //    this.state.hikes.map((hike) => 
+        //     axios.get("https://cors-anywhere.herokuapp.com/https://api.openweathermap.org/data/2.5/weather?lat="+hike.latitude+"&lon="+hike.longitude+"&units=imperial&appid=af4b6cb437caa6db643b24a43b52989b")
+        //     .then(resp =>{
+        //       console.log("Weather Results--> Hike Location: "+resp.data.name+",  Temp: "+resp.data.main.temp);
+        //   })
+        //   .catch(function (error) {
+        //     console.log(error)
+        // })
                 
-        )})
-        .catch(function (error) {
-            console.log(error)
-        })
-
-
-        this.setState({
-            isSubmitted: true
-        })
+        // )})
+        // .catch(function (error) {
+        //     console.log(error)
+        // })
         console.log('searched for a hike')
     }
 
@@ -106,20 +91,12 @@ class Search extends Component {
                 <div className='row'>
                     <div className='col s8 offset-s2'>
                         <form noValidate onSubmit={this.onSubmit.bind(this)}>
+                        
                             <div className='input-field col s12'>
                                 <input
                                     onChange={this.onChange}
-                                    value={this.state.maxTravel}
-                                    id="maxTravel"
-                                    type= 'number'
-                                />
-                                <Label name='Max Travel Distance' />
-                            </div>
-                            <div className='input-field col s12'>
-                                <input
-                                    onChange={this.onChange}
-                                    value={this.state.maxDistance}
-                                    id="maxDistance"
+                                    value={this.state.minLength}
+                                    id="minLength"
                                 />
                                 <Label name='Minimum Hike Length' />
                             </div>
@@ -152,9 +129,9 @@ class Search extends Component {
                                 </select>
                             </div>
                             <br />
-                            <Button name='Search Hikes' onClick={this.onClick} type='submit' />
+                            <Button name='Search Hikes' type='submit' />
                         </form>
-                        {this.state.isSubmitted && <Results distance={this.state.maxTravel} length={this.state.maxLength}/>}
+                        {/* {this.state.isSubmitted && <Results distance={this.state.maxTravel} length={this.state.maxLength}/>} */}
                     </div>
                 </div>
             </div>
