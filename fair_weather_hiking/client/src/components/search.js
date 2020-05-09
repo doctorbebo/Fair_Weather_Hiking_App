@@ -26,7 +26,7 @@ class Search extends Component {
     constructor() {
         super();
             this.state = {
-            minLength: "",
+            minLength: 10,
             maxElevation: null,
             maxTravel: "",
             latitude: 0,
@@ -137,7 +137,7 @@ class Search extends Component {
                         </form>
                         {this.state.isSubmitted && <Results
                             dist={this.state.maxTravel}
-                            length={this.state.maxLength}
+                            length={this.state.minLength}
                             lat={this.state.latitude}
                             lon={this.state.longitude}
                             elev={this.state.maxElevation}
