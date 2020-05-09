@@ -3,8 +3,11 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import './style.css';
 import addFavorite from '../../favorites/addFavorite';
+import axios from 'axios';
 
 class HikeCard extends Component {
+    
+    
     
 render () {
     const { user } = this.props.auth;
@@ -12,6 +15,13 @@ render () {
         userID: user.id
     }
     console.log(data);
+    axios.get(`https://cors-anywhere.herokuapp.com/api.openweathermap.org/data/2.5/forecast?lat=${this.props.hikedata.latitude}&lon=${this.props.hikedata.longitude}&appid=af4b6cb437caa6db643b24a43b52989b`)
+            .then(resp =>{
+              console.log(resp.list);
+          })
+          .catch(function (error) {
+            console.log(error)
+        })
     return (
         <div className="row">
             <div className="col s12 m7">
