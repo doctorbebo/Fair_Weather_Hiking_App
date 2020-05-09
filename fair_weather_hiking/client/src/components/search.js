@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Button from './button';
 import Label from './label';
 import axios from 'axios';
+import Results from './results/resultsContainer/results';
 
 import M from 'materialize-css';
 
@@ -51,7 +52,10 @@ class Search extends Component {
 
      async onSubmit(event) {
         event.preventDefault();
-        this.props.history.push(`/results/${this.state.latitude}/${this.state.longitude}/${this.state.minLength}/${this.state.maxTravel}/${this.state.maxElevation}`)
+        this.setState({
+            isSubmitted: true
+        })
+        //this.props.history.push(`/results/${this.state.latitude}/${this.state.longitude}/${this.state.minLength}/${this.state.maxTravel}/${this.state.maxElevation}`)
         // let minLength = "&minLength="+this.state.minLength;
         // let maxDistance = "&maxDistance="+this.state.maxTravel;
         // let resultQty = "&maxResults=50"
@@ -131,7 +135,13 @@ class Search extends Component {
                             <br />
                             <Button name='Search Hikes' type='submit' />
                         </form>
-                        {/* {this.state.isSubmitted && <Results distance={this.state.maxTravel} length={this.state.maxLength}/>} */}
+                        {this.state.isSubmitted && <Results
+                            dist={this.state.maxTravel}
+                            length={this.state.maxLength}
+                            lat={this.state.latitude}
+                            lon={this.state.longitude}
+                            elev={this.state.maxElevation}
+                            />}
                     </div>
                 </div>
             </div>
