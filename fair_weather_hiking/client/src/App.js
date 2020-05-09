@@ -59,7 +59,7 @@ function App() {
           <Route exact path='/dashboard' component={Dashboard} />
           <Route exact path='/search' component={Search} />
           <Route exact path='/results/:lat/:lon/:length/:dist/:elev' component={Results} />
-          <Route exact path='/Hikecard' component={HikeCard} />
+          <Route exact path='/hikecard' component={HikeCard} />
         </div>
       </Router>
     </Provider>
