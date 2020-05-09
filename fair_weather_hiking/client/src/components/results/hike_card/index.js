@@ -16,11 +16,6 @@ render () {
         <div className="row">
             <div className="col s12 m7">
                 <div className="card">
-                    <div className="weather-icon-div">
-                        <img className="weather-icon bg"
-                        // src={process.env.PUBLIC_URL + `./assets/images/icons/weather/${this.props.hikeData.weather}.png`}
-                        alt = "hike" />
-                    </div>
                     <div className="card-image">
                         <img src={this.props.imageURL} alt = "hike"/>
                         <span className="card-title bg">{this.props.name}</span>
