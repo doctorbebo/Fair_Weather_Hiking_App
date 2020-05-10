@@ -29,7 +29,7 @@ render () {
                     </div>
                     <div className="card-action">
                     <a href="https://www.hikingproject.com/">This is a Link to hikingproject.com</a>
-                    <button id={this.props.id} onClick={() => addFavorite(data, this.props.id)}>Add to Favorites</button>
+                    <button onClick={() => addFavorite(this.props.auth.user, this.props)}>Add to Favorites</button>
                     </div>
                 </div>
             </div>

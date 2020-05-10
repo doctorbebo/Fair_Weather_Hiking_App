@@ -33,6 +33,7 @@ require("./config/passport")(passport);
 
 // Routes
 app.use("/api/users", users);
+app.use('/api/favorite', users)
 // app.use("/api/hikes", hikes);
 
 

@@ -1,4 +1,7 @@
 const User = require('../../models/User');
+const Favorite = require('../../models/Favorite');
+
+console.log(typeof Favorite)
 
 const validateRegisterInput = require('../../validation/register');
 const validateLoginInput = require('../../validation/login');
@@ -95,15 +98,29 @@ router.post('/login', function(req,res) {
 })
 
 router.post('/favorite', function(req,res) {
-  console.log(req.body)
-    User.findOne({ _id: req.body.userID })
-    .then(user => {
-      if(!user) {
-        console.log('user not found')
-      } else {
-        console.log('current user: ' + user)
-      }
-    })
+  //console.log(body)
+  Favorite.create({
+    userID: req.body.auth.user.id,
+    hikeID: req.body.id,
+    name: req.body.name,
+    difficulty: req.body.difficulty,
+    elevation: req.body.elevation,
+    imageURL: req.body.imageURL,
+    summary: req.body.summary
+  }).then(dbFavorite => {
+    res.json(dbFavorite)
+  }).catch(err => {
+    res.status(400).json(err);
+  });
+
+    // User.findOne({ _id: req.body.userID })
+    // .then(user => {
+    //   if(!user) {
+    //     console.log('user not found')
+    //   } else {
+    //     console.log('current user: ' + user)
+    //   }
+    // })
 })
 
 module.exports = router;

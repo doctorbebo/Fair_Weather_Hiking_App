@@ -1,11 +1,11 @@
 import axios from 'axios';
 
-function addFavorite(data, id) {
-  console.log('hike id: ' + id);
-  data.id = id;
+function addFavorite(user, hike) {
+  console.log('this.props.auth.user: ' + user.id);
+  console.log('this.props: ' + hike)
    axios
    .post
-   ('api/users/favorite', data)
+   ('api/users/favorite', hike)
     .then(res => {console.log(res)})
     .catch(function (err) {
         console.log(err)
