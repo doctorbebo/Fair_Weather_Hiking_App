@@ -19,7 +19,7 @@ class Results extends Component  {
         let hikerequest = "https://cors-anywhere.herokuapp.com/https://www.hikingproject.com/data/get-trails?";
     
         let query = `${hikerequest}lat=${lat}&lon=${lon}&minLength=${length}&maxDistance=${dist}${resultQty}${apiKey}`;
-        console.log(query)
+        //console.log(query)
         axios.get(query)
             .then(res => {
                 this.setState({
@@ -27,7 +27,7 @@ class Results extends Component  {
                 })
             })
     }
-    
+
     render() {
         return this.state.trails.map(trail => {
             console.log(trail)

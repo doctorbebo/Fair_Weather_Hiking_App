@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-function addFavorite(user, hike) {
-  console.log('this.props.auth.user: ' + user.id);
+function addFavorite(hike) {
+  //console.log('this.props.auth.user: ' + user.id);
   console.log('this.props: ' + hike)
    axios
    .post

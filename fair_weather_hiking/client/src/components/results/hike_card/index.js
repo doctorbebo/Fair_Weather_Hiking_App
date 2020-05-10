@@ -5,6 +5,27 @@ import './style.css';
 import addFavorite from '../../favorites/addFavorite';
 
 class HikeCard extends Component {
+
+    handleClick = event =>
+    {
+        if(event.currentTarget.id === "to-index-page")
+        {
+            console.log("load index page");
+        }else if(event.currentTarget.id === "Add-to-favs")
+        {
+
+            console.log("Add to Favs");
+            addFavorite(this.props)
+
+        }else if(event.currentTarget.id === "Mark-complete")
+        {
+            console.log("Mark complete");
+
+        }else
+        {
+            console.log(event.currentTarget);
+        }
+    }
     
 render () {
     const { user } = this.props.auth;
@@ -14,39 +35,31 @@ render () {
     console.log(data);
     return (
         <div className="row">
-            <div className="col s12 m7">
-                <div className="card">
-                    <div className="card-image">
-                        <img src={this.props.imageURL} alt = "hike"/>
-                        <span className="card-title bg">{this.props.name}</span>
-                    </div>
-                    <div className="card-content">
-                        <div className = "info-text">
-                            <div className="three-cols">Difficulty: {this.props.difficulty}</div>
-                            {/* <div className="three-cols">Distance: {this.props.hikeData.distance} ml.  </div>  */}
-                            {/* <div className="three-cols">Elevation: {this.props.hikeData.elevation} ft. </div> */}
+            <div className="col s12 m12 l12">
+                <div className="card hoverable">
+                    <a>
+                        <div className="card-image" id="to-index-page" onClick={(e) => this.handleClick(e)}>
+                            <img  src={this.props.imageURL} alt = "hike"/>
+                            <span className="card-title bg">{this.props.name}</span>
                         </div>
-                    </div>
-                    <div className="card-action">
-                    <a href="https://www.hikingproject.com/">This is a Link to hikingproject.com</a>
-                    <button onClick={() => addFavorite(this.props.auth.user, this.props)}>Add to Favorites</button>
+                        <div className="card-content" id="to-index-page"onClick={(e) => this.handleClick(e)}>
+                            <div className = "info-text">
+                                <div className="three-cols">Difficulty: {this.props.difficulty}</div>
+                                <div className="three-cols">Difficulty: {this.props.difficulty}</div>
+                                <div className="three-cols">Difficulty: {this.props.difficulty}</div>
+                            </div>
+                        </div>
+                    </a>
+                    <div className="card-action no-padding">
+                            <a className="btn-large btn-by2" id="Add-to-favs" onClick={(e) => this.handleClick(e)}>Add to Favorites</a>
+                            <a className="btn-large btn-by2" id="Mark-complete" onClick={(e) => this.handleClick(e)}>Mark Complete</a>
                     </div>
                 </div>
             </div>
         </div>
     )
 
-    //send hike id to hike card as props.id
-    //need favorite button with id of props.id
-    
-    
-    
-    // return (
-    //     <div className="border border-dark">
-    //         <img src={process.env.PUBLIC_URL + `./assets/images/icons/weather/${props.hikeData.weather}.png`} />;
-    //         <h1>Hello this is a hike card</h1>
-    //     </div>
-    // );
+
     }
 }
 
@@ -61,3 +74,6 @@ auth: state.auth
 export default connect(
 mapStateToProps
 )(HikeCard);
+
+
+// () => addFavorite(data, this.props.id
