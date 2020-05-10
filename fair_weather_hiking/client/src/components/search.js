@@ -138,7 +138,7 @@ class Search extends Component {
                         {this.state.isSubmitted && <Results
                             dist={this.state.maxTravel}
                             length={this.state.maxLength}
-                            lat={this.state.latitude}
+                            lat={this.state.latitude} 
                             lon={this.state.longitude}
                             elev={this.state.maxElevation}
                             />}
