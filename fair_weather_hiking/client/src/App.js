@@ -1,7 +1,6 @@
 import React from 'react';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import './App.css';
-import Landing from './components/landing';
 //import Navbar from './components/navbar';
 import Register from './components/register';
 import Login from './components/login';
