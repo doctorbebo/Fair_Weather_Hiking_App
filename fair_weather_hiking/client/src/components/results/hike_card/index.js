@@ -46,8 +46,8 @@ render () {
                         </div>
                     </a>
                     <div className="card-action no-padding">
-                            <button className="btn-large btn-by2" id="Add-to-favs" onClick={(e) => this.handleClick(e)}>Add to Favorites</button>
-                            <button className="btn-large btn-by2" id="Mark-complete" onClick={(e) => this.handleClick(e)}>Mark Complete</button>
+                            <button className="btn-large btn-by2" id="Add-to-favs" onClick={(e) => this.handleClick(e)}>Add to Favorites <i class="small material-icons icon-yellow">star</i></button>
+                            <button className="btn-large btn-by2" id="Mark-complete" onClick={(e) => this.handleClick(e)}>Mark Complete <i class="small material-icons icon-green">check</i></button>
                     </div>
                 </div>
             </div>
