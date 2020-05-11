@@ -36,7 +36,11 @@ render () {
                         <div className="card-content" id="to-index-page"onClick={(e) => this.handleClick(e)}>
                             <div className = "info-text">
                                 <div className="three-cols">Length: {this.props.length} miles</div>
-                                <div className="three-cols">Highest Elevation: {this.props.elevation} ft</div>
+                                <div className="three-cols">
+                                    Highest Point: {this.props.elevation} ft
+                                    <br />
+                                    Elevation gain: {this.props.ascent}
+                                </div>
                                 <div className="three-cols">Difficulty: {this.props.difficulty}</div>
                             </div>
                         </div>
