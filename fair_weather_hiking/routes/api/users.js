@@ -118,7 +118,7 @@ router.get('/favorite/:id', function(req, res) {
   //console.log('id: ' + req.params.id)
   Favorite.find({userID: req.params.id})
     .then(favorite => {
-      console.log(favorite)
+      res.json(favorite)
     })
 })
 

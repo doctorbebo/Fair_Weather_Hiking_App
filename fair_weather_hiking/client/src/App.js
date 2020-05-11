@@ -8,6 +8,7 @@ import Login from './components/login';
 import PrivateRoute from "./components/routes/privateRoute";
 import Dashboard from "./components/dashboard/dashboard";
 import Search from './components/search';
+import Favorites from './components/favorites/favoriteContainer';
 
 // used for building result page
 import Results from "./components/results/resultsContainer/results";
@@ -58,6 +59,7 @@ function App() {
           <Route exact path='/' component={Register} />
           <Route exact path='/dashboard' component={Dashboard} />
           <Route exact path='/search' component={Search} />
+          <Route exact path='/favorites' component={Favorites} />
           <Route exact path='/results/:lat/:lon/:length/:dist/:elev' component={Results} />
           <Route exact path='/hikecard' component={HikeCard} />
         </div>

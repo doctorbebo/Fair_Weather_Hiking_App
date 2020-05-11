@@ -4,14 +4,24 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 import Button from '../button';
-import viewFavorites from '../viewFavorites';
+//import viewFavorites from '../favorites/viewFavorites';
 import { Redirect } from 'react-router-dom';
 
 class Dashboard extends Component {
+
   onLogoutClick = e => {
     e.preventDefault();
     this.props.logoutUser();
   };
+
+  // favorites = () => {
+  //   console.log(this.props.auth.id)
+  //   const favorites = viewFavorites(this.props.auth.id);
+  //   console.log(favorites)
+  //   this.setState({
+  //     favorites: favorites
+  //   })
+  //}
 
   render() {
     const { user } = this.props.auth;
@@ -43,7 +53,7 @@ class Dashboard extends Component {
             <div className='row'>
               <a href="/search"><Button name='Find A Hike' width='300px'/></a><br />
               <Button name='View Completed Hikes' width='300px'/><br />
-              <Button name='View Favorite Hikes' onClick={viewFavorites(user.id)} width='300px'/><br /><br />
+              <a href='/favorites'><Button name='View Favorite Hikes' width='300px'/></a><br /><br />
               <Link to='/login' onClick={this.onLogoutClick}>Log out</Link>
             </div>
 
