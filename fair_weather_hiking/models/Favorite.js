@@ -20,6 +20,9 @@ const FavoriteSchema = new Schema({
     imgMedium: {
         type: String
     },
+    length: {
+        type: String
+    },
     summary: {
         type: String
     }

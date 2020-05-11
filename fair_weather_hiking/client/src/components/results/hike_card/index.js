@@ -13,7 +13,6 @@ class HikeCard extends Component {
             console.log("load index page");
         }else if(event.currentTarget.id === "Add-to-favs")
         {
-
             console.log("Add to Favs");
             addFavorite(this.props)
 
@@ -28,11 +27,7 @@ class HikeCard extends Component {
     }
     
 render () {
-    const { user } = this.props.auth;
-    const data = {
-        userID: user.id
-    }
-    console.log(data);
+    //const { user } = this.props.auth;
     return (
         <div className="row">
             <div className="col s12 m12 l12">
@@ -44,8 +39,8 @@ render () {
                         </div>
                         <div className="card-content" id="to-index-page"onClick={(e) => this.handleClick(e)}>
                             <div className = "info-text">
-                                <div className="three-cols">Difficulty: {this.props.difficulty}</div>
-                                <div className="three-cols">Difficulty: {this.props.difficulty}</div>
+                                <div className="three-cols">Length: {this.props.length} miles</div>
+                                <div className="three-cols">Highest Elevation: {this.props.elevation} ft</div>
                                 <div className="three-cols">Difficulty: {this.props.difficulty}</div>
                             </div>
                         </div>

@@ -24,6 +24,7 @@ class Results extends Component  {
             //console.log(query)
             axios.get(query)
                 .then(res => {
+                    //console.log(res.data.trails)
                     this.setState({
                         trails: res.data.trails
                     })
@@ -50,7 +51,7 @@ class Results extends Component  {
             difficulty={trail.difficulty}
             elevation={trail.high}
             imgMedium={trail.imgMedium}
-            weather='clear'
+            length={trail.length}
             summary={trail.summary} />
         })
     }
