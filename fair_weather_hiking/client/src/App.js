@@ -1,7 +1,7 @@
 import React from 'react';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import './App.css';
-//import Navbar from './components/navbar';
+import Navbar from './components/navbar';
 import Register from './components/pages/register';
 import Login from './components/pages/login';
 import PrivateRoute from "./components/routes/privateRoute";
@@ -13,7 +13,6 @@ import FavoriteContainer from './components/favorites/favoriteContainer';
 import Results from "./components/pages/results";
 // delete this refernce when finished also delete reference in the router component.
 import HikeCard from './components/results/hike_card'
-
 
 import jwt_decode from "jwt-decode";
 import setAuthToken from "./utils/setAuthToken";
@@ -53,13 +52,13 @@ function App() {
     <Provider store={store}>
       <Router>
         <div className="App">
+          {/* <Navbar /> */}
+          <Route exact path='/' component={Register} />
           <Route exact path='/register' component={Register} />
           <Route exact path='/login' component={Login} />
-          <Route exact path='/' component={Register} />
           <Route exact path='/dashboard' component={Dashboard} />
           <Route exact path='/search' component={Search} />
           <Route exact path='/favorites' component={FavoriteContainer} />
-          <Route exact path='/results/:lat/:lon/:length/:dist/:elev' component={Results} />
           <Route exact path='/hikecard' component={HikeCard} />
         </div>
       </Router>

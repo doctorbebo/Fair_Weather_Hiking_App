@@ -7,26 +7,23 @@ import API from '../../../utils/API';
 class HikeCard extends Component {
 
     handleClick = event => {
-        if(event.currentTarget.id === "to-index-page")
-        {
-            console.log("load index page");
-        }else if(event.currentTarget.id === "Add-to-favs")
-        {
-            console.log("Add to Favs");
-            API.addFavorite(this.props)
-
-        }else if(event.currentTarget.id === "Mark-complete")
-        {
-            console.log("Mark complete");
-
-        }else
-        {
-            console.log(event.currentTarget);
+        switch (event.currentTarget.id) {
+            case "to-index-page":
+                console.log("load index page");                
+                break;
+            case "Add-to-favs":
+                API.addFavorite(this.props);
+                break;
+            case "Mark-complete":
+                console.log("Mark complete");
+                break;
+            default:
+                console.log(event.currentTarget);
+                break;
         }
     }
     
 render () {
-    //const { user } = this.props.auth;
     return (
         <div className="row">
             <div className="col s12 m12 l12">
@@ -51,10 +48,7 @@ render () {
                 </div>
             </div>
         </div>
-    )
-
-
-    }
+    )}
 }
 
 HikeCard.propTypes = {
@@ -68,6 +62,3 @@ auth: state.auth
 export default connect(
 mapStateToProps
 )(HikeCard);
-
-
-// () => addFavorite(data, this.props.id
