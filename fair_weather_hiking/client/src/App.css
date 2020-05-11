@@ -10,6 +10,22 @@
   margin: 0 auto
 }
 
+i.icon-yellow {
+  color: gold
+}
+
+i.icon-green {
+  color: green
+}
+
+i.icon-black {
+  color: black
+}
+
+i.icon-blue {
+  color: blue
+}
+
 /*
 .container {
   background-image: url("./trees.jpeg");

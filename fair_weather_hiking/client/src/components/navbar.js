@@ -4,19 +4,17 @@ import '../App.css';
 class Navbar extends Component {
   render() {
     return (
-      <div className='container'>
-        <div className='row'>
-          <div className='col s8 offset-s2'>
-            <nav className="z-depth-0" id='nav-bar'>
-              <ul id='nav-mobile' className='right hide-on-med-and-down'>
-                <li><a href='/'>Home</a></li>
-                <li><a href='/search'>Search</a></li>
-                <li><a href='/favorites'>Favorites</a></li>
-                <li><a href='#'>Completed</a></li>
-              </ul>
-            </nav>
+      <div className="navbar-fixed">
+        <nav className="z-depth-0">
+          <div className="nav-wrapper white">
+            <div className="col s5 brand-logo center black-text">
+              <a href='/'><i className="material-icons icon-black">home</i></a>
+              <a href='/favorites'><i className="material-icons icon-yellow">star</i></a>
+              <a href='#'><i className="material-icons icon-green">check</i></a>
+              <a href='/search'><i className="material-icons icon-blue">search</i></a>
+            </div>
           </div>
-        </div>
+        </nav>
       </div>
     );
   }
