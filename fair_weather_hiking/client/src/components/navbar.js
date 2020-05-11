@@ -1,24 +1,22 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import '../App.css';
 
 class Navbar extends Component {
   render() {
     return (
-      <div className="navbar-fixed">
-        <nav className="z-depth-0">
-          <div className="nav-wrapper white">
-            <a
-              href="/"
-              style={{
-                fontFamily: "monospace"
-              }}
-              className="col s5 brand-logo center black-text"
-            >
-              <i className="material-icons">code</i>
-              
-            </a>
+      <div className='container'>
+        <div className='row'>
+          <div className='col s8 offset-s2'>
+            <nav className="z-depth-0" id='nav-bar'>
+              <ul id='nav-mobile' className='right hide-on-med-and-down'>
+                <li><a href='/'>Home</a></li>
+                <li><a href='/search'>Search</a></li>
+                <li><a href='/favorites'>Favorites</a></li>
+                <li><a href='#'>Completed</a></li>
+              </ul>
+            </nav>
           </div>
-        </nav>
+        </div>
       </div>
     );
   }

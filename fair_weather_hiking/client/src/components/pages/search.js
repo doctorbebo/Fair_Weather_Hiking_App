@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Button from '../button';
 import Label from '../label';
 import Results from './results';
+import Navbar from '../navbar';
 
 import M from 'materialize-css';
 
@@ -78,11 +79,9 @@ class Search extends Component {
     render() {
         return(
             <div className='container search'>
-                <div className='nav-wrapper'>
-                    <a href='/favorites'>View Favorite Hikes</a>
-                </div>
                 <div className='row'>
                     <div className='col s8 offset-s2'>
+                        {this.state.isSubmitted && <Navbar />}
                         <form noValidate onSubmit={this.onSubmit.bind(this)}>
                         
                             <div className='input-field col s12'>
