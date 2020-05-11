@@ -2,19 +2,18 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import './style.css';
-import addFavorite from '../../favorites/addFavorite';
+import API from '../../../utils/API';
 
 class HikeCard extends Component {
 
-    handleClick = event =>
-    {
+    handleClick = event => {
         if(event.currentTarget.id === "to-index-page")
         {
             console.log("load index page");
         }else if(event.currentTarget.id === "Add-to-favs")
         {
             console.log("Add to Favs");
-            addFavorite(this.props)
+            API.addFavorite(this.props)
 
         }else if(event.currentTarget.id === "Mark-complete")
         {
@@ -46,8 +45,8 @@ render () {
                         </div>
                     </a>
                     <div className="card-action no-padding">
-                            <a className="btn-large btn-by2" id="Add-to-favs" onClick={(e) => this.handleClick(e)}>Add to Favorites</a>
-                            <a className="btn-large btn-by2" id="Mark-complete" onClick={(e) => this.handleClick(e)}>Mark Complete</a>
+                            <button className="btn-large btn-by2" id="Add-to-favs" onClick={(e) => this.handleClick(e)}>Add to Favorites</button>
+                            <button className="btn-large btn-by2" id="Mark-complete" onClick={(e) => this.handleClick(e)}>Mark Complete</button>
                     </div>
                 </div>
             </div>

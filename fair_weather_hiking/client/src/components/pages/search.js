@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import Button from './button';
-import Label from './label';
-import axios from 'axios';
-import Results from './results/resultsContainer/results';
+import Button from '../button';
+import Label from '../label';
+import Results from './results';
 
 import M from 'materialize-css';
 
@@ -55,14 +53,7 @@ class Search extends Component {
         this.setState({
             isSubmitted: true
         })
-        //this.props.history.push(`/results/${this.state.latitude}/${this.state.longitude}/${this.state.minLength}/${this.state.maxTravel}/${this.state.maxElevation}`)
-        // let minLength = "&minLength="+this.state.minLength;
-        // let maxDistance = "&maxDistance="+this.state.maxTravel;
-        // let resultQty = "&maxResults=50"
         // let maxElevation = this.state.maxElevation
-        // let apiKey = "&key=200742179-23d7c8d71039f659f6a08818dd8bf810"
-        // let hikerequest = "https://cors-anywhere.herokuapp.com/https://www.hikingproject.com/data/get-trails?"
-        // console.log(hikerequest+this.state.latitude+this.state.longitude+minLength+maxDistance+apiKey)
         // await axios.get(hikerequest+latitude+longitude+minLength+maxDistance+resultQty+apiKey)
         // .then(res => {
         //     console.log(res.data.trails);
@@ -79,11 +70,6 @@ class Search extends Component {
         //       console.log("Weather Results--> Hike Location: "+resp.data.name+",  Temp: "+resp.data.main.temp);
         //   })
         //   .catch(function (error) {
-        //     console.log(error)
-        // })
-                
-        // )})
-        // .catch(function (error) {
         //     console.log(error)
         // })
         console.log('searched for a hike')

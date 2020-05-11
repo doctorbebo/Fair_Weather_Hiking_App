@@ -1,6 +1,6 @@
 import React from 'react';
 //import Favorites from './favoriteCards';
-import Results from '../results/resultsContainer/results'
+import Results from '../pages/results'
 
 function FavoriteContainer() {
     return <div className='row'>

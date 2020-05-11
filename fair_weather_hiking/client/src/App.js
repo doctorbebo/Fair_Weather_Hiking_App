@@ -2,15 +2,15 @@ import React from 'react';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import './App.css';
 //import Navbar from './components/navbar';
-import Register from './components/register';
-import Login from './components/login';
+import Register from './components/pages/register';
+import Login from './components/pages/login';
 import PrivateRoute from "./components/routes/privateRoute";
 import Dashboard from "./components/dashboard/dashboard";
-import Search from './components/search';
+import Search from './components/pages/search';
 import FavoriteContainer from './components/favorites/favoriteContainer';
 
 // used for building result page
-import Results from "./components/results/resultsContainer/results";
+import Results from "./components/pages/results";
 // delete this refernce when finished also delete reference in the router component.
 import HikeCard from './components/results/hike_card'
 

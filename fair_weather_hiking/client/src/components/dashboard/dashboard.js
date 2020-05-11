@@ -4,8 +4,6 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 import Button from '../button';
-//import viewFavorites from '../favorites/viewFavorites';
-import { Redirect } from 'react-router-dom';
 
 class Dashboard extends Component {
 
@@ -13,15 +11,6 @@ class Dashboard extends Component {
     e.preventDefault();
     this.props.logoutUser();
   };
-
-  // favorites = () => {
-  //   console.log(this.props.auth.id)
-  //   const favorites = viewFavorites(this.props.auth.id);
-  //   console.log(favorites)
-  //   this.setState({
-  //     favorites: favorites
-  //   })
-  //}
 
   render() {
     const { user } = this.props.auth;

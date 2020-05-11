@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from "react-redux";
-import axios from 'axios';
-import HikeCard from '../hike_card/index';
+import HikeCard from '../results/hike_card/index';
+import API from '../../utils/API';
 
 class Results extends Component  {
 
@@ -16,31 +16,14 @@ class Results extends Component  {
     componentDidMount() {
         if(this.props.type === 'search-results') {
             const { lat, lon, length, dist, elev } = this.props
-            let resultQty = "&maxResults=10";
-            let apiKey = "&key=200749828-0bd185ee7af374a0fb370047ff15cc20";
-            let hikerequest = "https://cors-anywhere.herokuapp.com/https://www.hikingproject.com/data/get-trails?";
-        
-            let query = `${hikerequest}lat=${lat}&lon=${lon}&minLength=${length}&maxDistance=${dist}${resultQty}${apiKey}`;
-            //console.log(query)
-            axios.get(query)
-                .then(res => {
-                    //console.log(res.data.trails)
-                    this.setState({
-                        trails: res.data.trails
-                    })
-                })
+            API.searchHikes(lat, lon, length, dist, elev)
+            .then(res => {this.setState({trails: res.data.trails})})
         }
         else if(this.props.type === 'favorite-hikes') {
             let id = this.props.auth.user.id
-            axios.get(`/api/users/favorite/${id}`)
-            .then(res => {
-                console.log(res.data)
-                this.setState({
-                    trails: res.data
-                })
-            })
+            API.displayFavorites(id)
+                .then(res => {this.setState({trails: res.data})})
         }
-        
     }
 
     render() {
