@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 import Button from '../button';
+import viewFavorites from '../viewFavorites';
 import { Redirect } from 'react-router-dom';
 
 class Dashboard extends Component {
@@ -42,7 +43,7 @@ class Dashboard extends Component {
             <div className='row'>
               <a href="/search"><Button name='Find A Hike' width='300px'/></a><br />
               <Button name='View Completed Hikes' width='300px'/><br />
-              <a href='/results'><Button name='View Favorite Hikes' width='300px'/></a><br /><br />
+              <Button name='View Favorite Hikes' onClick={viewFavorites(user.id)} width='300px'/><br /><br />
               <Link to='/login' onClick={this.onLogoutClick}>Log out</Link>
             </div>
 

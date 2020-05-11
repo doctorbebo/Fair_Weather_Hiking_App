@@ -112,15 +112,14 @@ router.post('/favorite', function(req,res) {
   }).catch(err => {
     res.status(400).json(err);
   });
+})
 
-    // User.findOne({ _id: req.body.userID })
-    // .then(user => {
-    //   if(!user) {
-    //     console.log('user not found')
-    //   } else {
-    //     console.log('current user: ' + user)
-    //   }
-    // })
+router.get('/favorite/:id', function(req, res) {
+  //console.log('id: ' + req.params.id)
+  Favorite.find({userID: req.params.id})
+    .then(favorite => {
+      console.log(favorite)
+    })
 })
 
 module.exports = router;
