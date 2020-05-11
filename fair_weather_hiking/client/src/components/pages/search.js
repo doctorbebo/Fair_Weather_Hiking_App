@@ -25,8 +25,8 @@ class Search extends Component {
     constructor() {
         super();
             this.state = {
-            minLength: 10,
-            maxElevation: null,
+            minLength: "",
+            maxElevation: "",
             maxTravel: "",
             latitude: 0,
             longitude: 0,
@@ -49,7 +49,7 @@ class Search extends Component {
         this.setState({ [event.target.id]: event.target.value })
     }
 
-     async onSubmit(event) {
+    onSubmit(event) {
         event.preventDefault();
         this.setState({
             isSubmitted: true
@@ -69,10 +69,6 @@ class Search extends Component {
         //     axios.get("https://cors-anywhere.herokuapp.com/https://api.openweathermap.org/data/2.5/weather?lat="+hike.latitude+"&lon="+hike.longitude+"&units=imperial&appid=af4b6cb437caa6db643b24a43b52989b")
         //     .then(resp =>{
         //       console.log("Weather Results--> Hike Location: "+resp.data.name+",  Temp: "+resp.data.main.temp);
-        //   })
-        //   .catch(function (error) {
-        //     console.log(error)
-        // })
         console.log('searched for a hike')
     }
 
@@ -83,7 +79,6 @@ class Search extends Component {
                     <div className='col s8 offset-s2'>
                         {this.state.isSubmitted && <Navbar />}
                         <form noValidate onSubmit={this.onSubmit.bind(this)}>
-                        
                             <div className='input-field col s12'>
                                 <input
                                     onChange={this.onChange}
@@ -98,7 +93,7 @@ class Search extends Component {
                                 onChange={this.onChange}
                                 value={this.state.maxTravel}
                                 id="maxTravel">
-                                    <option value="" disabled selected>Select Maximum Distance to Trailhead</option>
+                                    <option value="">Select Maximum Distance to Trailhead</option>
                                     <option value= "5" >5 miles</option>
                                     <option value="10">10 miles</option>
                                     <option value="15">15 miles</option>
@@ -113,7 +108,6 @@ class Search extends Component {
                                 value={this.state.maxElevation}
                                 id="maxElevation">
                                 >
-                                    
                                     <option value="">Select Max Elevation Gain</option>
                                     <option value="100">100 ft</option>
                                     <option value="1000">1000 ft</option>
