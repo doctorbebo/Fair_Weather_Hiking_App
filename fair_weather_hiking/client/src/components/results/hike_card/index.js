@@ -39,7 +39,7 @@ render () {
                 <div className="card hoverable">
                     <a>
                         <div className="card-image" id="to-index-page" onClick={(e) => this.handleClick(e)}>
-                            <img  src={this.props.imageURL} alt = "hike"/>
+                            <img  src={this.props.imgMedium} alt = "hike"/>
                             <span className="card-title bg">{this.props.name}</span>
                         </div>
                         <div className="card-content" id="to-index-page"onClick={(e) => this.handleClick(e)}>

@@ -105,7 +105,7 @@ router.post('/favorite', function(req,res) {
     name: req.body.name,
     difficulty: req.body.difficulty,
     elevation: req.body.elevation,
-    imageURL: req.body.imageURL,
+    imgMedium: req.body.imgMedium,
     summary: req.body.summary
   }).then(dbFavorite => {
     res.json(dbFavorite)

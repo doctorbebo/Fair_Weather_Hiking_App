@@ -17,7 +17,7 @@ const FavoriteSchema = new Schema({
     elevation: {
         type: Number
     },
-    imageURL: {
+    imgMedium: {
         type: String
     },
     summary: {

@@ -144,6 +144,7 @@ class Search extends Component {
                             <Button name='Search Hikes' type='submit' />
                         </form>
                         {this.state.isSubmitted && <Results
+                            type='search-results'
                             dist={this.state.maxTravel}
                             length={this.state.minLength}
                             lat={this.state.latitude}
