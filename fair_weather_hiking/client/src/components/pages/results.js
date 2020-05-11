@@ -17,7 +17,14 @@ class Results extends Component  {
         if(this.props.type === 'search-results') {
             const { lat, lon, length, dist, elev } = this.props
             API.searchHikes(lat, lon, length, dist, elev)
-            .then(res => {this.setState({trails: res.data.trails})})
+            .then(res => {
+                if(elev !== null){
+                    const filteredHikes = res.data.trails.filter(trail => trail.ascent < elev)
+                    this.setState({ trails: filteredHikes})
+                } else {
+                    this.setState({trails: res.data.trails})
+                }
+            })
         }
         else if(this.props.type === 'favorite-hikes') {
             let id = this.props.auth.user.id
