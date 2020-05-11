@@ -26,6 +26,10 @@ i.icon-blue {
   color: blue
 }
 
+i:hover {
+  opacity: 0.6
+}
+
 /*
 .container {
   background-image: url("./trees.jpeg");
