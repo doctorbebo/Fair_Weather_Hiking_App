@@ -3,6 +3,7 @@ import Button from '../button';
 import Label from '../label';
 import Results from './results';
 import Navbar from '../navbar';
+import Hike from '../hike'
 
 import M from 'materialize-css';
 

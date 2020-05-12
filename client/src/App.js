@@ -7,7 +7,7 @@ import Login from './components/pages/login';
 import PrivateRoute from "./components/routes/privateRoute";
 import Dashboard from "./components/dashboard/dashboard";
 
-import Hike from './components/hike/hike'
+import Hike from './components/hike/'
 import Search from './components/pages/search';
 import FavoriteContainer from './components/favorites/favoriteContainer';
 import 'materialize-css/dist/css/materialize.min.css';
