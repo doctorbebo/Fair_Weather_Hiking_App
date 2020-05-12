@@ -2,14 +2,17 @@
   "name": "fair-weather-hiking",
   "version": "1.0.0",
   "description": "Mern Auth Example",
+  
   "main": "server.js",
   "scripts": {
     "client-install": "npm install --prefix client",
-    "start": "concurrently \"npm run server\" \"npm run client\"",
+    "start": "npm run dev",
     "server": "node server.js",
     "client": "cd client && npm run start",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "seed": "node seeders/seed.js"
+    "seed": "node seeders/seed.js",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install npm && run build"
+
   },
   "author": "",
   "license": "MIT",
