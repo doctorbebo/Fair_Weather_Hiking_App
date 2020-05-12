@@ -2,55 +2,57 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import './style.css';
-import addFavorite from '../../favorites/addFavorite';
+import API from '../../../utils/API';
 
 class HikeCard extends Component {
+
+    handleClick = event => {
+        switch (event.currentTarget.id) {
+            case "to-index-page":
+                console.log("load index page");                
+                break;
+            case "Add-to-favs":
+                API.addFavorite(this.props);
+                break;
+            case "Mark-complete":
+                console.log("Mark complete");
+                break;
+            default:
+                console.log(event.currentTarget);
+                break;
+        }
+    }
     
 render () {
-    const { user } = this.props.auth;
-    const data = {
-        userID: user.id
-    }
-    console.log(data);
     return (
         <div className="row">
-            <div className="col s12 m7">
-                <div className="card">
-                    <div className="weather-icon-div">
-                        <img className="weather-icon bg" src={process.env.PUBLIC_URL + `./assets/images/icons/weather/${this.props.hikeData.weather}.png`} alt = "hike" />
-                    </div>
-                    <div className="card-image">
-                        <img src={this.props.hikeData.imageURL} alt = "hike"/>
-                        <span className="card-title bg">{this.props.hikeData.name}</span>
-                    </div>
-                    <div className="card-content">
-                        <div className = "info-text">
-                            <div className="three-cols">Difficulty: {this.props.hikeData.difficulty}</div>
-                            {/* <div className="three-cols">Distance: {this.props.hikeData.distance} ml.  </div>  */}
-                            {/* <div className="three-cols">Elevation: {this.props.hikeData.elevation} ft. </div> */}
+            <div className="col s12 m12 l12">
+                <div className="card hoverable">
+                    <a>
+                        <div className="card-image" id="to-index-page" onClick={(e) => this.handleClick(e)}>
+                            <img  src={this.props.imgMedium} alt = "hike"/>
+                            <span className="card-title bg">{this.props.name}</span>
                         </div>
-                    </div>
-                    <div className="card-action">
-                    <a href="https://www.hikingproject.com/">This is a Link to hikingproject.com</a>
-                    <button id={this.props.hikeData.id} onClick={() => addFavorite(data, this.props.hikeData.id)}>Add to Favorites</button>
+                        <div className="card-content" id="to-index-page"onClick={(e) => this.handleClick(e)}>
+                            <div className = "info-text">
+                                <div className="three-cols">Length: {this.props.length} miles</div>
+                                <div className="three-cols">
+                                    Highest Point: {this.props.elevation} ft
+                                    <br />
+                                    Elevation gain: {this.props.ascent}
+                                </div>
+                                <div className="three-cols">Difficulty: {this.props.difficulty}</div>
+                            </div>
+                        </div>
+                    </a>
+                    <div className="card-action no-padding">
+                            <button className="btn-large btn-by2" id="Add-to-favs" onClick={(e) => this.handleClick(e)}>Add to Favorites <i className="small material-icons icon-yellow">star</i></button>
+                            <button className="btn-large btn-by2" id="Mark-complete" onClick={(e) => this.handleClick(e)}>Mark Complete <i className="small material-icons icon-green">check</i></button>
                     </div>
                 </div>
             </div>
         </div>
-    )
-
-    //send hike id to hike card as props.id
-    //need favorite button with id of props.id
-    
-    
-    
-    // return (
-    //     <div className="border border-dark">
-    //         <img src={process.env.PUBLIC_URL + `./assets/images/icons/weather/${props.hikeData.weather}.png`} />;
-    //         <h1>Hello this is a hike card</h1>
-    //     </div>
-    // );
-    }
+    )}
 }
 
 HikeCard.propTypes = {

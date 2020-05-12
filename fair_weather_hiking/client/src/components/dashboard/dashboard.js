@@ -4,9 +4,9 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 import Button from '../button';
-import { Redirect } from 'react-router-dom';
 
 class Dashboard extends Component {
+
   onLogoutClick = e => {
     e.preventDefault();
     this.props.logoutUser();
@@ -42,7 +42,7 @@ class Dashboard extends Component {
             <div className='row'>
               <a href="/search"><Button name='Find A Hike' width='300px'/></a><br />
               <Button name='View Completed Hikes' width='300px'/><br />
-              <a href='/results'><Button name='View Favorite Hikes' width='300px'/></a><br /><br />
+              <a href='/favorites'><Button name='View Favorite Hikes' width='300px'/></a><br /><br />
               <Link to='/login' onClick={this.onLogoutClick}>Log out</Link>
             </div>
 

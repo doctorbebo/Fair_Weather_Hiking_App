@@ -10,12 +10,22 @@
   margin: 0 auto
 }
 
-/*
-.container {
-  background-image: url("./trees.jpeg");
-  padding-bottom: 30px;
+i.icon-yellow {
+  color: gold
 }
 
-.formDiv {
-  background-color: white;
-} */
+i.icon-green {
+  color: green
+}
+
+i.icon-black {
+  color: black
+}
+
+i.icon-blue {
+  color: blue
+}
+
+i:hover {
+  opacity: 0.6
+}
