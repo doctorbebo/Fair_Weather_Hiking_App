@@ -6,10 +6,37 @@ import API from '../../../utils/API';
 
 class HikeCard extends Component {
 
+
+    constructor() {
+        super();
+        this.state = {
+            forecast: []
+        }
+    }
+
+    handleClick = event => {
+        switch (event.currentTarget.id) {
+            case "to-index-page":
+                console.log(this.props)
+                let forecastData =[]
+                API.getWeather(this.props)
+                .then(res =>{
+                    for ( let i = 4; i < 40; i=i+8){
+                        forecastData.push(res.data.list[i])
+                    }
+                    this.setState({forecast: forecastData})  
+                    console.log(this.state.forecast)   
+                    })
+                    .catch(function (error) {
+                        console.log(error)
+                    })
+                      
+
     handleClick = event => {
         switch (event.currentTarget.id) {
             case "to-index-page":
                 console.log("load index page");                
+
                 break;
             case "Add-to-favs":
                 API.addFavorite(this.props);

@@ -44,7 +44,11 @@ class Results extends Component  {
                 ascent={trail.ascent}
                 imgMedium={trail.imgMedium}
                 length={trail.length}
-                summary={trail.summary} />
+
+                summary={trail.summary} 
+                latitude ={trail.latitude}
+                longitude = {trail.longitude}/>
+
             })
         )
     }

@@ -2,7 +2,10 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const passport = require('passport');
+
+
 const path = require('path');
+
 
 const users = require('./routes/api/users');
 const hikes = require('./routes/api/hikes')
@@ -14,6 +17,7 @@ const app = express();
 
 const publicPath = path.join(__dirname, 'client/build');
 app.use(express.static(publicPath));
+
 
 // Bodyparser middleware
 app.use(
@@ -27,6 +31,12 @@ app.use(bodyParser.json());
 const db = require("./config/keys").mongoURI;
 
 // Connect to MongoDB
+
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/fairweather", { useNewUrlParser: true })
+  .then(() => console.log("MongoDB successfully connected"))
+  .catch(err => console.log(err));
+
+=
 mongoose
   .connect(
     db,
