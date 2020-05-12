@@ -13,6 +13,9 @@ export default {
     },
 
     addFavorite: function(hike) {
+
+        console.log('this.props: ' + hike)
+
         axios.post('api/users/favorite', hike)
             .then(res => {console.log(res)})
             .catch(function (err) {
@@ -22,6 +25,7 @@ export default {
 
     displayFavorites: function(id) {
         return axios.get(`/api/users/favorite/${id}`)
+
     },
 
     getWeather: async function(hike){
@@ -31,7 +35,6 @@ export default {
         let units = "&units=imperial";
         let apiKey = "&appid=af4b6cb437caa6db643b24a43b52989b";
         return axios.get(weatherRequest+lat+lon+units+apiKey)
-
     }
 
 }

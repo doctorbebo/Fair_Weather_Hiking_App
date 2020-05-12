@@ -40,6 +40,7 @@ class Results extends Component  {
                 return <HikeCard id={trail.id}
                 name={trail.name}
                 difficulty={trail.difficulty}
+
                 high={trail.high}
                 ascent={trail.ascent}
                 imgMedium={trail.imgMedium}

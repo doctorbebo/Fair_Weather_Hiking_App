@@ -122,6 +122,7 @@ router.post('/favorite', function(req,res) {
       console.log('hike already in favorites')
     }
   })
+
 })
 
 router.get('/favorite/:id', function(req, res) {

@@ -4,12 +4,14 @@ import { connect } from "react-redux";
 import './style.css';
 import API from '../../../utils/API';
 
-class HikeCard extends Component {
+import Hike from '../../hike/index'
 
+class HikeCard extends Component {
 
     constructor() {
         super();
         this.state = {
+            show_more: false,
             forecast: []
         }
     }
@@ -17,6 +19,9 @@ class HikeCard extends Component {
     handleClick = event => {
         switch (event.currentTarget.id) {
             case "to-index-page":
+
+                console.log("load index page");                
+
                 console.log(this.props)
                 let forecastData =[]
                 API.getWeather(this.props)
@@ -34,16 +39,24 @@ class HikeCard extends Component {
 
     handleClick = event => {
         switch (event.currentTarget.id) {
-            case "to-index-page":
-                console.log("load index page");                
-
-                break;
             case "Add-to-favs":
                 API.addFavorite(this.props);
                 break;
             case "Mark-complete":
                 console.log("Mark complete");
                 break;
+
+            case "More-Info":
+                console.log("More-Info");
+                console.log(this.props);
+                //API.getWeather()
+                console.log("load index page");    
+                this.setState({show_more: true});
+                break;
+            case 'Less-Info':
+                this.setState({show_more: false});
+                break;
+
             default:
                 console.log(event.currentTarget);
                 break;
@@ -64,7 +77,9 @@ render () {
                             <div className = "info-text">
                                 <div className="three-cols">Length: {this.props.length} miles</div>
                                 <div className="three-cols">
+
                                     Highest Point: {this.props.high} ft
+
                                     <br />
                                     Elevation gain: {this.props.ascent}
                                 </div>
@@ -72,9 +87,16 @@ render () {
                             </div>
                         </div>
                     </a>
+
+                    
+                    {this.state.show_more && <Hike/>}
                     <div className="card-action no-padding">
-                            <button className="btn-large btn-by2" id="Add-to-favs" onClick={(e) => this.handleClick(e)}>Add to Favorites <i className="small material-icons icon-yellow">star</i></button>
-                            <button className="btn-large btn-by2" id="Mark-complete" onClick={(e) => this.handleClick(e)}>Mark Complete <i className="small material-icons icon-green">check</i></button>
+                            <button className="btn-large btn-by3" id="Add-to-favs" onClick={(e) => this.handleClick(e)}>Add to Favorites <i className="small material-icons icon-yellow">star</i></button>
+                            <button className="btn-large btn-by3" id="Mark-complete" onClick={(e) => this.handleClick(e)}>Mark Complete <i className="small material-icons icon-green">check</i></button>
+                            {!this.state.show_more && <button className="btn-large btn-by3" id="More-Info" onClick={(e) => this.handleClick(e)}>Show More<i className="small material-icons icon-white">expand_more</i></button>}
+                            {this.state.show_more && <button className="btn-large btn-by3" id="Less-Info" onClick={(e) => this.handleClick(e)}>Show Less<i className="small material-icons icon-white">expand_less</i></button>}
+
+                    
                     </div>
                 </div>
             </div>
