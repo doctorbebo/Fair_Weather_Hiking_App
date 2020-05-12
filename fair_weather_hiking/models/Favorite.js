@@ -5,7 +5,7 @@ const FavoriteSchema = new Schema({
     userID: {
         type: String
     },
-    hikeID: {
+    id: {
         type: Number
     },
     name: {
