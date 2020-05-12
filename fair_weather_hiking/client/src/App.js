@@ -13,7 +13,7 @@ import Search from './components/search';
 import Results from "./components/results/resultsContainer/results";
 // delete this refernce when finished also delete reference in the router component.
 import HikeCard from './components/results/hike_card'
-
+import Hike from './components/hike/hike'
 
 import jwt_decode from "jwt-decode";
 import setAuthToken from "./utils/setAuthToken";
@@ -21,6 +21,7 @@ import { setCurrentUser, logoutUser } from "./actions/authActions";
 
 import { Provider } from "react-redux";
 import store from './store';
+import hike_card from './components/results/hike_card';
 
 // Check for token to keep user logged in
 if (localStorage.jwtToken) {
@@ -58,7 +59,8 @@ function App() {
           <Route exact path='/' component={Register} />
           <Route exact path='/dashboard' component={Dashboard} />
           <Route exact path='/search' component={Search} />
-          <Route exact path='/results/:lat/:lon/:length/:dist/:elev' component={Results} />
+          <Route exact path='/results' component={Results} />
+          <Route exact path='/hike' component={Hike} />
           <Route exact path='/Hikecard' component={HikeCard} />
         </div>
       </Router>
