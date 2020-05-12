@@ -7,7 +7,7 @@ import axios from 'axios';
 
 class Hike extends Component {
   // Setting this.state.friends to the friends json array
-  state = {
+ // state = {
 // <<<<<<< new_weather
 //     weather: []
 // =======
@@ -15,7 +15,7 @@ class Hike extends Component {
 // >>>>>>> master
 //   };
 
-    getWeather = () => {
+   // getWeather = () => {
 
 //     let lat = 39.9787;
 // <<<<<<< new_weather
@@ -30,9 +30,9 @@ class Hike extends Component {
 // >>>>>>> master
     
     // Here we run our AJAX call to the OpenWeatherMap API
-    return axios.get(queryURL)
+    //return axios.get(queryURL)
     // We store all of the retrieved data inside of an object called "response"
-    .then(response => {
+    //.then(response => {
     //     let latitude = response.city.coord.lat;
     //     let longitude = response.city.coord.lon;
     //     let weatherIcon = "http://openweathermap.org/img/w/" + response.list[0].weather[0].icon + ".png";
@@ -45,9 +45,9 @@ class Hike extends Component {
 
     //   }
       // Log the resulting object
-      console.log(response);
-    });
-}
+//       console.log(response);
+//     });
+// }
 
 
 
@@ -90,7 +90,7 @@ class Hike extends Component {
     }
   }
 
-export default(Hike) ;
+export default (Hike) ;
 
 // const location = "seattle"
 // let APIKey = "e1ded9334debf557f66848e3668d8c49";
