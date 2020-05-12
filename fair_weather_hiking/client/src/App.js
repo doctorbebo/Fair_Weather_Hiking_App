@@ -1,19 +1,15 @@
 import React from 'react';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import './App.css';
-import Landing from './components/landing';
-//import Navbar from './components/navbar';
-import Register from './components/register';
-import Login from './components/login';
+// import Navbar from './components/navbar';
+import Register from './components/pages/register';
+import Login from './components/pages/login';
 import PrivateRoute from "./components/routes/privateRoute";
 import Dashboard from "./components/dashboard/dashboard";
-import Search from './components/search';
+import Search from './components/pages/search';
+import FavoriteContainer from './components/favorites/favoriteContainer';
 
-// used for building result page
-import Results from "./components/results/resultsContainer/results";
-// delete this refernce when finished also delete reference in the router component.
-import HikeCard from './components/results/hike_card'
-
+import 'materialize-css/dist/css/materialize.min.css';
 
 import jwt_decode from "jwt-decode";
 import setAuthToken from "./utils/setAuthToken";
@@ -53,13 +49,13 @@ function App() {
     <Provider store={store}>
       <Router>
         <div className="App">
+          {/* <Navbar /> */}
+          <Route exact path='/' component={Register} />
           <Route exact path='/register' component={Register} />
           <Route exact path='/login' component={Login} />
-          <Route exact path='/' component={Register} />
           <Route exact path='/dashboard' component={Dashboard} />
           <Route exact path='/search' component={Search} />
-          <Route exact path='/results/:lat/:lon/:length/:dist/:elev' component={Results} />
-          <Route exact path='/hikecard' component={HikeCard} />
+          <Route exact path='/favorites' component={FavoriteContainer} />
         </div>
       </Router>
     </Provider>
