@@ -37,15 +37,6 @@ mongoose
   .catch(err => console.log(err));
 
 
-mongoose
-  .connect(
-    db,
-    { useNewUrlParser: true }
-  )
-  .then(() => console.log("MongoDB successfully connected"))
-  .catch(err => console.log(err));
-
-
 // Passport middleware
 app.use(passport.initialize());
 
