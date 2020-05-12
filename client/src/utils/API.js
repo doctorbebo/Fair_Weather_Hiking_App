@@ -23,6 +23,22 @@ export default {
 
     displayFavorites: function(id) {
         return axios.get(`/api/users/favorite/${id}`)
+    },
+
+    getWeather: async function(hike){
+        let weatherRequest = "https://cors-anywhere.herokuapp.com/api.openweathermap.org/data/2.5/forecast?";
+        // Temporary lat and lon
+        let lat = "lat="+hike.latitude
+        let lon = "&lon="+hike.longitude
+        let units = "&units=imperial";
+        let apiKey = "&appid=af4b6cb437caa6db643b24a43b52989b";
+        await axios.get(weatherRequest+lat+lon+units+apiKey)
+        .then(res =>{
+            console.log(res.data.list)
+              })
+              .catch(function (error) {
+                console.log(error)
+            })
     }
 
 }

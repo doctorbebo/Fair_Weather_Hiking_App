@@ -9,7 +9,7 @@ class HikeCard extends Component {
     handleClick = event => {
         switch (event.currentTarget.id) {
             case "to-index-page":
-                console.log("load index page");                
+                API.getWeather(this.props)              
                 break;
             case "Add-to-favs":
                 API.addFavorite(this.props);
