@@ -5,9 +5,11 @@ import './App.css';
 import Register from './components/pages/register';
 import Login from './components/pages/login';
 import PrivateRoute from "./components/routes/privateRoute";
-import Dashboard from "./components/dashboard/dashboard";
 
-import Hike from './components/hike/'
+
+import Dashboard from "./components/dashboard/dashboard";
+import Hike from './components/hike/hike'
+
 import Search from './components/pages/search';
 import FavoriteContainer from './components/favorites/favoriteContainer';
 import 'materialize-css/dist/css/materialize.min.css';
@@ -18,7 +20,7 @@ import { setCurrentUser, logoutUser } from "./actions/authActions";
 
 import { Provider } from "react-redux";
 import store from './store';
-import hike_card from './components/results/hike_card';
+
 
 // Check for token to keep user logged in
 if (localStorage.jwtToken) {

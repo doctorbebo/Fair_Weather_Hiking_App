@@ -40,13 +40,18 @@ class Results extends Component  {
                 return <HikeCard id={trail.id}
                 name={trail.name}
                 difficulty={trail.difficulty}
-                elevation={trail.high}
+
+                high={trail.high}
                 ascent={trail.ascent}
                 imgMedium={trail.imgMedium}
                 length={trail.length}
-                summary={trail.summary} />
+
+                summary={trail.summary} 
+                latitude ={trail.latitude}
+                longitude = {trail.longitude}/>
+
             })
-        ) 
+        )
     }
 }
 

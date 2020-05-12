@@ -98,20 +98,31 @@ router.post('/login', function(req,res) {
 })
 
 router.post('/favorite', function(req,res) {
-  //console.log(body)
-  Favorite.create({
-    userID: req.body.auth.user.id,
-    hikeID: req.body.id,
-    name: req.body.name,
-    difficulty: req.body.difficulty,
-    elevation: req.body.elevation,
-    imgMedium: req.body.imgMedium,
-    summary: req.body.summary
-  }).then(dbFavorite => {
-    res.json(dbFavorite)
-  }).catch(err => {
-    res.status(400).json(err);
-  });
+  //console.log('users.js hike id: ' + req.body.id)
+  Favorite.findOne({id : req.body.id})
+  .then(res => {
+    if(res == null) {
+      Favorite.create({
+        userID: req.body.auth.user.id,
+        id: req.body.id,
+        name: req.body.name,
+        difficulty: req.body.difficulty,
+        high: req.body.high,
+        imgMedium: req.body.imgMedium,
+        summary: req.body.summary,
+        ascent: req.body.ascent,
+        length: req.body.length
+      }).then(dbFavorite => {
+        res.json(dbFavorite)
+      }).catch(err => {
+        res.status(400).json(err);
+      });
+    }
+    else {
+      console.log('hike already in favorites')
+    }
+  })
+
 })
 
 router.get('/favorite/:id', function(req, res) {
