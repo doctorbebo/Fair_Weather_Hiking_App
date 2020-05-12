@@ -11,6 +11,7 @@ const router = express.Router();
 
 const app = express();
 
+
 const publicPath = path.join(__dirname, 'client/build');
 app.use(express.static(publicPath));
 
@@ -24,6 +25,7 @@ app.use(bodyParser.json());
 
 // DB Config
 const db = require("./config/keys").mongoURI;
+
 // Connect to MongoDB
 mongoose
   .connect(
@@ -32,6 +34,7 @@ mongoose
   )
   .then(() => console.log("MongoDB successfully connected"))
   .catch(err => console.log(err));
+
 // Passport middleware
 app.use(passport.initialize());
 
