@@ -76,8 +76,8 @@ class Search extends Component {
         return(
             <div className='container search'>
                 <div className='row'>
-                    <div className='col s8 offset-s2'>
-                        {this.state.isSubmitted && <Navbar />}
+                    <div className='col s8 push-s2'>
+                        <Navbar />
                         <form noValidate onSubmit={this.onSubmit.bind(this)}>
                             <div className='input-field col s12'>
                                 <input
