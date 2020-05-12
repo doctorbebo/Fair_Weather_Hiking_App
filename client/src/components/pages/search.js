@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from "react-redux";
+
 import Button from '../button';
 import Label from '../label';
 import Results from './results';
@@ -12,6 +13,7 @@ class Search extends Component {
     //initialize Materialize
     componentDidMount() {
         console.log(this.props.auth)
+
         M.AutoInit();
         if ("geolocation" in navigator) {
             console.log("Current location is Available");

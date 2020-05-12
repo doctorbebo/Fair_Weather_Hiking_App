@@ -13,7 +13,6 @@ export default {
     },
 
     addFavorite: function(hike) {
-        console.log('hike id: ' + hike.id)
         axios.post('api/users/favorite', hike)
             .then(res => {console.log(res)})
             .catch(function (err) {

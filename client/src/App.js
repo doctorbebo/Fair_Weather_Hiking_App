@@ -5,10 +5,11 @@ import './App.css';
 import Register from './components/pages/register';
 import Login from './components/pages/login';
 import PrivateRoute from "./components/routes/privateRoute";
+
 import Dashboard from "./components/dashboard/dashboard";
+import Hike from './components/hike/hike'
 import Search from './components/pages/search';
 import FavoriteContainer from './components/favorites/favoriteContainer';
-
 import 'materialize-css/dist/css/materialize.min.css';
 
 import jwt_decode from "jwt-decode";
@@ -55,6 +56,7 @@ function App() {
           <Route exact path='/login' component={Login} />
           <Route exact path='/dashboard' component={Dashboard} />
           <Route exact path='/search' component={Search} />
+          <Route exact path='/hike' component={Hike} />
           <Route exact path='/favorites' component={FavoriteContainer} />
         </div>
       </Router>

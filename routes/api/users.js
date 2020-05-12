@@ -98,7 +98,7 @@ router.post('/login', function(req,res) {
 })
 
 router.post('/favorite', function(req,res) {
-  console.log('users.js hike id: ' + req.body.id)
+  //console.log('users.js hike id: ' + req.body.id)
   Favorite.findOne({id : req.body.id})
   .then(res => {
     if(res == null) {
