@@ -8,16 +8,26 @@ import axios from 'axios';
 class Hike extends Component {
   // Setting this.state.friends to the friends json array
   state = {
-    weather: []
-  };
+// <<<<<<< new_weather
+//     weather: []
+// =======
+//     weather: {}
+// >>>>>>> master
+//   };
 
     getWeather = () => {
 
-    let lat = 39.9787;
-    let lon = -105.2755; 
-    let units = "&units=imperial";       
-    let APIKey = "e1ded9334debf557f66848e3668d8c49";
-    let queryURL = `https://cors-anywhere.herokuapp.com/https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}${units}&appid=${APIKey}`
+//     let lat = 39.9787;
+// <<<<<<< new_weather
+//     let lon = -105.2755; 
+//     let units = "&units=imperial";       
+//     let APIKey = "e1ded9334debf557f66848e3668d8c49";
+//     let queryURL = `https://cors-anywhere.herokuapp.com/https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}${units}&appid=${APIKey}`
+// =======
+//     let lon = -105.2755;        
+//     let APIKey = "e1ded9334debf557f66848e3668d8c49";
+//     let queryURL = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${APIKey}`
+// >>>>>>> master
     
     // Here we run our AJAX call to the OpenWeatherMap API
     return axios.get(queryURL)

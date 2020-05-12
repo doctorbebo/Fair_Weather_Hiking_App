@@ -6,6 +6,7 @@ import API from '../../../utils/API';
 
 class HikeCard extends Component {
 
+
     constructor() {
         super();
         this.state = {
@@ -30,6 +31,12 @@ class HikeCard extends Component {
                         console.log(error)
                     })
                       
+
+    handleClick = event => {
+        switch (event.currentTarget.id) {
+            case "to-index-page":
+                console.log("load index page");                
+
                 break;
             case "Add-to-favs":
                 API.addFavorite(this.props);

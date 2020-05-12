@@ -32,6 +32,7 @@ export default {
         let units = "&units=imperial";
         let apiKey = "&appid=af4b6cb437caa6db643b24a43b52989b";
         return axios.get(weatherRequest+lat+lon+units+apiKey)
+
     }
 
 }
