@@ -31,7 +31,7 @@ class Search extends Component {
             latitude: 0,
             longitude: 0,
             hikes: [],
-            
+            isSubmitted: false
             };
             this.onSubmit=this.onSubmit.bind(this);     
       }

@@ -104,9 +104,11 @@ router.post('/favorite', function(req,res) {
     hikeID: req.body.id,
     name: req.body.name,
     difficulty: req.body.difficulty,
-    elevation: req.body.elevation,
+    high: req.body.high,
     imgMedium: req.body.imgMedium,
-    summary: req.body.summary
+    summary: req.body.summary,
+    ascent: req.body.ascent,
+    length: req.body.length
   }).then(dbFavorite => {
     res.json(dbFavorite)
   }).catch(err => {

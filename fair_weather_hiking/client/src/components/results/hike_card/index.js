@@ -37,7 +37,7 @@ render () {
                             <div className = "info-text">
                                 <div className="three-cols">Length: {this.props.length} miles</div>
                                 <div className="three-cols">
-                                    Highest Point: {this.props.elevation} ft
+                                    Highest Point: {this.props.high} ft
                                     <br />
                                     Elevation gain: {this.props.ascent}
                                 </div>

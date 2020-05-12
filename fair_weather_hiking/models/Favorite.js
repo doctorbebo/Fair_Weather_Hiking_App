@@ -14,7 +14,7 @@ const FavoriteSchema = new Schema({
     difficulty: {
         type: String
     },
-    elevation: {
+    high: {
         type: Number
     },
     imgMedium: {
@@ -22,6 +22,9 @@ const FavoriteSchema = new Schema({
     },
     length: {
         type: String
+    },
+    ascent: {
+        type: Number
     },
     summary: {
         type: String
