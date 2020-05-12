@@ -11,8 +11,11 @@ class HikeCard extends Component {
             case "to-index-page":
                 console.log("load index page");                
                 break;
-            case "Add-to-favs":
+            case "add-favorite":
                 API.addFavorite(this.props);
+                break;
+            case "remove-favorite":
+                API.removeFavorite(this.props);
                 break;
             case "Mark-complete":
                 console.log("Mark complete");
@@ -24,6 +27,11 @@ class HikeCard extends Component {
     }
     
 render () {
+
+    const addBtnInnerText  = this.props.buttonType === "add" ? "Add to Favorites" : "Remove from Favorites";
+    // const completeBtnInnerText  = this.props.buttonType === "add" ? "Add to Favorites" : "Remove from Favorites";
+
+
     return (
         <div className="row">
             <div className="col s12 m12 l12">
@@ -46,7 +54,7 @@ render () {
                         </div>
                     </a>
                     <div className="card-action no-padding">
-                            <button className="btn-large btn-by2" id="Add-to-favs" onClick={(e) => this.handleClick(e)}>Add to Favorites <i className="small material-icons icon-yellow">star</i></button>
+                            <button className="btn-large btn-by2" id={`${this.props.buttonType}-favorite`} onClick={(e) => this.handleClick(e)}>{addBtnInnerText}<i className="small material-icons icon-yellow">star</i></button>
                             <button className="btn-large btn-by2" id="Mark-complete" onClick={(e) => this.handleClick(e)}>Mark Complete <i className="small material-icons icon-green">check</i></button>
                     </div>
                 </div>

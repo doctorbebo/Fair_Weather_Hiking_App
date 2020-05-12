@@ -34,19 +34,40 @@ class Results extends Component  {
     }
 
     render() {
-        return(
-            this.state.trails.map(trail => {
-                //console.log(trail)
-                return <HikeCard id={trail.id}
-                name={trail.name}
-                difficulty={trail.difficulty}
-                elevation={trail.high}
-                ascent={trail.ascent}
-                imgMedium={trail.imgMedium}
-                length={trail.length}
-                summary={trail.summary} />
-            })
-        ) 
+
+        if(this.props.type === 'favorite-hikes')
+        {
+            return(
+                this.state.trails.map(trail => {
+                    //console.log(trail)
+                    return <HikeCard id={trail.id}
+                    name={trail.name}
+                    difficulty={trail.difficulty}
+                    elevation={trail.high}
+                    ascent={trail.ascent}
+                    imgMedium={trail.imgMedium}
+                    length={trail.length}
+                    summary={trail.summary}
+                    buttonType={"remove"} />
+                })
+            ) 
+        }else
+        {
+            return(
+                this.state.trails.map(trail => {
+                    //console.log(trail)
+                    return <HikeCard id={trail.id}
+                    name={trail.name}
+                    difficulty={trail.difficulty}
+                    elevation={trail.high}
+                    ascent={trail.ascent}
+                    imgMedium={trail.imgMedium}
+                    length={trail.length}
+                    summary={trail.summary} 
+                    buttonType={"add"} />
+                })
+            )
+        }
     }
 }
 
