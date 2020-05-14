@@ -1,14 +1,23 @@
 import React, { Component } from 'react';
+
+import PropTypes from 'prop-types';
+import { connect } from "react-redux";
+
+
 import Button from '../button';
 import Label from '../label';
 import Results from './results';
 import Navbar from '../navbar';
+
+import Hike from '../hike'
+
 
 import M from 'materialize-css';
 
 class Search extends Component {
     //initialize Materialize
     componentDidMount() {
+
         M.AutoInit();
         if ("geolocation" in navigator) {
             console.log("Current location is Available");
@@ -31,7 +40,9 @@ class Search extends Component {
             latitude: 0,
             longitude: 0,
             hikes: [],
-            
+
+            isSubmitted: false
+
             };
             this.onSubmit=this.onSubmit.bind(this);     
       }
@@ -77,7 +88,7 @@ class Search extends Component {
             <div className='container search'>
                 <div className='row'>
                     <div className='col s8 push-s2'>
-                        <Navbar />
+                        <Navbar page='search'/>
                         <form noValidate onSubmit={this.onSubmit.bind(this)}>
                             <div className='input-field col s12'>
                                 <input
@@ -141,4 +152,16 @@ class Search extends Component {
     
 }
 
-export default Search;
+
+Search.propTypes = {
+    auth: PropTypes.object.isRequired
+  };
+  
+  const mapStateToProps = state => ({
+    auth: state.auth
+  });
+  
+  export default connect(
+    mapStateToProps
+  )(Search);
+

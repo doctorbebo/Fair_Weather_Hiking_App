@@ -15,7 +15,6 @@ function WeatherCard(props) {
                         Temp: 
                             <br/>
                         Condition: 
-                        <button onClick = {props.getWeather} ></button>
 
                         </div>
                     </div> 
