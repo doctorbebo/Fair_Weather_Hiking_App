@@ -31,13 +31,19 @@ class Results extends Component  {
             API.displayFavorites(id)
                 .then(res => {this.setState({trails: res.data})})
         }
+        else if(this.props.type === 'completed-hikes') {
+            let id = this.props.auth.user.id
+            API.displayCompleted(id)
+                .then(res => {this.setState({trails: res.data})})
+        }
     }
 
     render() {
         return(
             this.state.trails.map(trail => {
                 //console.log(trail)
-                return <HikeCard id={trail.id}
+                return <HikeCard type={this.props.type}
+                id={trail.id}
                 name={trail.name}
                 difficulty={trail.difficulty}
 
