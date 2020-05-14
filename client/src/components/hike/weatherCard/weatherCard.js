@@ -1,25 +1,30 @@
 import React from "react";
+import moment from "moment";
+import './style.css';
 
 
 function WeatherCard(props) {
   return(
         <div>
-            <div className = " col s2 m2 l2 ">
-                <div className="card">
-                    <div className="card-image weather-icon-div">
-                     Img here 
-                        
-                    </div>
-                    <div className="card-content">
-                        <div className = "info-text align-left">
-                        Temp: 
-                            <br/>
-                        Condition: 
-
+            {props.forecast.map(day =>(
+                <div key={day.dt} className = "col s2 m2 l2">
+                    <div className="card">
+                        <span className="card-date">{
+                            moment().add(props.forecast.indexOf(day), 'days').format('l')
+                            }</span>
+                        <div className="card-image weather-icon-div">
+                        <img src = {`http://openweathermap.org/img/w/`+ day.weather[0].icon + ".png"} alt= "weather-icon"></img>
+                           
                         </div>
-                    </div> 
-                </div>                 
-            </div>
+                        <div className="card-content">
+                            <div className = "info-text align-left">
+                                {Math.trunc(day.main.temp)}&deg;F
+                            </div>
+                        </div> 
+                    </div>                 
+                </div>
+            ))}
+            
         </div>
 
   ) 

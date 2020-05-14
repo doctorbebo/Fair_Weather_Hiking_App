@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import WeatherCard from "./weatherCard/weatherCard"
-import BestDay from "../hike/BestDay/BestDay"
-import Reports from "../hike/reports/reports"
+import BestDay from "./BestDay/BestDay"
+import Reports from "./reports/reports"
 import axios from 'axios';
 
 class Hike extends Component {
@@ -15,11 +15,8 @@ class Hike extends Component {
                   <h6>5-Day Forcast:</h6>
                   <div className = "row">
                       <div className = "col s1 m1 12"></div>
-                      <WeatherCard></WeatherCard>
-                      <WeatherCard></WeatherCard>
-                      <WeatherCard></WeatherCard>
-                      <WeatherCard></WeatherCard>
-                      <WeatherCard></WeatherCard>
+                      <WeatherCard forecast = {this.props.forecast}></WeatherCard>
+
                   </div>
                   <h6>Best Day:</h6>
                   <div className = "row">

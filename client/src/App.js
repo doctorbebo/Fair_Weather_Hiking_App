@@ -8,7 +8,7 @@ import PrivateRoute from "./components/routes/privateRoute";
 
 
 import Dashboard from "./components/dashboard/dashboard";
-import Hike from './components/hike/hike';
+
 import Stats from './components/pages/stats';
 import Search from './components/pages/search';
 import FavoriteContainer from './components/favorites/favoriteContainer';
@@ -60,7 +60,6 @@ function App() {
           <Route exact path='/login' component={Login} />
           <Route exact path='/dashboard' component={Dashboard} />
           <Route exact path='/search' component={Search} />
-          <Route exact path='/hike' component={Hike} />
           <Route exact path='/favorites' component={FavoriteContainer} />
           <Route exact path='/stats' component={Stats} />
           <Route exact path='/completed' component={CompletedContainer} />
