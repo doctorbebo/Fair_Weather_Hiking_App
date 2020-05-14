@@ -8,10 +8,6 @@ import {Redirect} from 'react-router-dom'
 
 class Dashboard extends Component {
 
-  componentDidMount() {
-    
-  }
-
   onLogoutClick = e => {
     e.preventDefault();
     this.props.logoutUser();
