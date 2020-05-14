@@ -12,6 +12,7 @@ import Hike from './components/hike/hike'
 
 import Search from './components/pages/search';
 import FavoriteContainer from './components/favorites/favoriteContainer';
+import CompletedContainer from './components/completed/completedContainer';
 import 'materialize-css/dist/css/materialize.min.css';
 
 import jwt_decode from "jwt-decode";
@@ -61,6 +62,7 @@ function App() {
           <Route exact path='/search' component={Search} />
           <Route exact path='/hike' component={Hike} />
           <Route exact path='/favorites' component={FavoriteContainer} />
+          <Route exact path='/completed' component={CompletedContainer} />
 
         </div>
       </Router>

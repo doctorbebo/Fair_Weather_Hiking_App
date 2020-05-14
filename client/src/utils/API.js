@@ -35,6 +35,19 @@ export default {
         let units = "&units=imperial";
         let apiKey = "&appid=af4b6cb437caa6db643b24a43b52989b";
         return axios.get(weatherRequest+lat+lon+units+apiKey)
-    }
+    },
+
+    addComplete: function(hike) {
+        console.log('this.props: ' + hike)
+        axios.post('api/users/completed', hike)
+            .then(res => {console.log(res)})
+            .catch(function (err) {
+                console.log(err)
+        });
+    },
+
+    displayCompleted: function(id) {
+        return axios.get(`/api/users/completed/${id}`)
+    },
 
 }
