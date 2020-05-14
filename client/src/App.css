@@ -6,6 +6,15 @@
   margin-top: 200px; 
 }
 
+.alert {
+  margin-top: 10px;
+  border-radius: 5px;
+  padding: 5px;
+  background-color: rgba(255, 0, 0, 0.473);
+  color: rgb(53, 0, 0);
+  border: 1px rgb(53, 0, 0);
+}
+
 .container {
   margin: 0 auto
 }

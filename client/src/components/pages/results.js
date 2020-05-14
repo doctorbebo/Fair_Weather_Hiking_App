@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from "react-redux";
 import HikeCard from '../results/hike_card/index';
+import Alert from '../alert';
 import API from '../../utils/API';
 
 class Results extends Component  {
@@ -40,23 +41,25 @@ class Results extends Component  {
 
     render() {
         return(
-            this.state.trails.map(trail => {
-                //console.log(trail)
-                return <HikeCard type={this.props.type}
-                id={trail.id}
-                name={trail.name}
-                difficulty={trail.difficulty}
+            <div>
+                {this.state.trails.length == 0 && <Alert />}
+                {this.state.trails.map(trail => {
+                    //console.log(trail)
+                    return <HikeCard type={this.props.type}
+                    id={trail.id}
+                    name={trail.name}
+                    difficulty={trail.difficulty}
 
-                high={trail.high}
-                ascent={trail.ascent}
-                imgMedium={trail.imgMedium}
-                length={trail.length}
+                    high={trail.high}
+                    ascent={trail.ascent}
+                    imgMedium={trail.imgMedium}
+                    length={trail.length}
 
-                summary={trail.summary} 
-                latitude ={trail.latitude}
-                longitude = {trail.longitude}/>
-
-            })
+                    summary={trail.summary} 
+                    latitude ={trail.latitude}
+                    longitude = {trail.longitude}/>
+                })}
+            </div>
         )
     }
 }
