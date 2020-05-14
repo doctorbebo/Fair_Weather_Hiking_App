@@ -18,6 +18,9 @@ class Navbar extends Component {
               
               {this.props.page !== 'search' &&
               <a href='/search'><i className="material-icons icon-blue">search</i></a>}
+            
+              {this.props.page !== 'stats' && 
+              <a href='/stats'><i className="material-icons icon-black">show_chart</i></a>}
             </div>
           </div>
         </nav>
