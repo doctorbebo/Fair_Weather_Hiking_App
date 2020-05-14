@@ -35,7 +35,7 @@ class HikeCard extends Component {
                 API.addFavorite(this.props);
                 break;
             case "Mark-complete":
-                console.log("Mark complete");
+                API.addComplete(this.props);
                 break;
             default:
                 console.log(event.currentTarget);

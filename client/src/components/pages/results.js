@@ -31,6 +31,11 @@ class Results extends Component  {
             API.displayFavorites(id)
                 .then(res => {this.setState({trails: res.data})})
         }
+        else if(this.props.type === 'completed-hikes') {
+            let id = this.props.auth.user.id
+            API.displayCompleted(id)
+                .then(res => {this.setState({trails: res.data})})
+        }
     }
 
     render() {

@@ -10,7 +10,7 @@ class Navbar extends Component {
             <div className="col s5 brand-logo center black-text">
               <a href='/'><i className="material-icons icon-black">home</i></a>
               <a href='/favorites'><i className="material-icons icon-yellow">star</i></a>
-              <a href='#'><i className="material-icons icon-green">check</i></a>
+              <a href='/completed'><i className="material-icons icon-green">check</i></a>
               <a href='/search'><i className="material-icons icon-blue">search</i></a>
             </div>
           </div>
