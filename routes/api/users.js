@@ -1,8 +1,6 @@
 const User = require('../../models/User');
 const Favorite = require('../../models/Favorite');
 
-console.log(typeof Favorite)
-
 const validateRegisterInput = require('../../validation/register');
 const validateLoginInput = require('../../validation/login');
 
