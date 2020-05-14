@@ -41,6 +41,19 @@ export default {
         console.log(userID)
         //Completed.find({userID}) find all hikes user has completed
         //calculate stats. res.json to front end
+    },
+
+    addComplete: function(hike) {
+        console.log('this.props: ' + hike)
+        axios.post('api/users/completed', hike)
+            .then(res => {console.log(res)})
+            .catch(function (err) {
+                console.log(err)
+        });
+    },
+
+    displayCompleted: function(id) {
+        return axios.get(`/api/users/completed/${id}`)
     }
 
 }

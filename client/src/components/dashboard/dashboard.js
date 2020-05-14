@@ -41,7 +41,7 @@ class Dashboard extends Component {
             </button> */}
             <div className='row'>
               <a href="/search"><Button name='Find A Hike' width='300px'/></a><br />
-              <Button name='View Completed Hikes' width='300px'/><br />
+              <a href="/completed"><Button name='View Completed Hikes' width='300px'/></a><br />
               <a href='/favorites'><Button name='View Favorite Hikes' width='300px'/></a><br /><br />
               <Link to='/login' onClick={this.onLogoutClick}>Log out</Link>
             </div>

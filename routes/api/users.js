@@ -1,5 +1,6 @@
 const User = require('../../models/User');
 const Favorite = require('../../models/Favorite');
+const Completed = require('../../models/Completed');
 
 const validateRegisterInput = require('../../validation/register');
 const validateLoginInput = require('../../validation/login');
@@ -121,6 +122,33 @@ router.post('/favorite', function(req,res) {
     }
   })
 
+})
+
+router.post('/completed', function(req,res) {
+  //console.log(body)
+  Completed.create({
+    userID: req.body.auth.user.id,
+    hikeID: req.body.id,
+    name: req.body.name,
+    difficulty: req.body.difficulty,
+    elevation: req.body.elevation,
+    imgMedium: req.body.imgMedium,
+    summary: req.body.summary
+  }).then(dbCompleted => {
+    console.log(dbCompleted)
+    res.json(dbCompleted)
+  }).catch(err => {
+    res.status(400).json(err);
+  });
+})
+
+router.get('/completed/:id', function(req, res) {
+  //console.log('id: ' + req.params.id)
+  Completed.find({userID: req.params.id})
+    .then(completed => {
+      console.log(completed)
+      res.json(completed)
+    })
 })
 
 router.get('/favorite/:id', function(req, res) {

@@ -1,0 +1,27 @@
+.card-title
+{
+    padding: 12px;
+}
+.info-text
+{
+    font-size: 15px;
+}
+.three-cols
+{
+    display: inline-block;
+    width: 33%;
+}
+.btn-by2
+{
+    display: inline-block;
+    box-sizing: border-box;
+    width: 50%;
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+
+}
+
+.no-padding
+{
+    padding: 0;
+}
