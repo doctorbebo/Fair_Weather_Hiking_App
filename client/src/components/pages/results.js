@@ -37,7 +37,8 @@ class Results extends Component  {
         return(
             this.state.trails.map(trail => {
                 //console.log(trail)
-                return <HikeCard id={trail.id}
+                return <HikeCard type={this.props.type}
+                id={trail.id}
                 name={trail.name}
                 difficulty={trail.difficulty}
 
