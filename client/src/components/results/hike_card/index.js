@@ -24,10 +24,11 @@ class HikeCard extends Component {
             case "Mark-complete":
                 API.addComplete(this.props);
                 break;
-
+            case 'delete-favorite':
+                API.deleteFavorite(this.props.id);
             case "More-Info":
                 console.log("More-Info");
-                console.log(this.props);
+                //console.log(this.props);
                 //API.getWeather()
                 console.log("load index page");    
                 this.setState({show_more: true});
@@ -63,7 +64,7 @@ render () {
                                 </div>
                                 <div className="three-cols">Difficulty: {this.props.difficulty}</div>
                                 <div className="three-cols">
-                                    <i class="material-icons">location_on</i> {this.props.location}
+                                    <i className="material-icons">location_on</i> {this.props.location}
                                 </div>
                             </div>
                         </div>
@@ -74,6 +75,7 @@ render () {
                     <div className="card-action no-padding">
                             {this.props.type !== 'favorite-hikes' && <button className="btn-large btn-by3" id="Add-to-favs" onClick={(e) => this.handleClick(e)}>Add to Favorites <i className="small material-icons icon-yellow">star</i></button>}
                             {this.props.type !== 'completed-hikes' && <button className="btn-large btn-by3" id="Mark-complete" onClick={(e) => this.handleClick(e)}>Mark Complete <i className="small material-icons icon-green">check</i></button>}
+                            {this.props.type == 'favorite-hikes' && <button className="btn-large btn-by3" id="delete-favorite" onClick={(e) => this.handleClick(e)}>Delete from Favorites <i className="small material-icons icon-red">delete_forever</i></button>}
                             {!this.state.show_more && <button className="btn-large btn-by3" id="More-Info" onClick={(e) => this.handleClick(e)}>Show More<i className="small material-icons icon-white">expand_more</i></button>}
                             {this.state.show_more && <button className="btn-large btn-by3" id="Less-Info" onClick={(e) => this.handleClick(e)}>Show Less<i className="small material-icons icon-white">expand_less</i></button>}
 
