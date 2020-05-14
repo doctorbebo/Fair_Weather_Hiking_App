@@ -88,7 +88,7 @@ class Search extends Component {
             <div className='container search'>
                 <div className='row'>
                     <div className='col s8 push-s2'>
-                        <Navbar />
+                        <Navbar page='search'/>
                         <form noValidate onSubmit={this.onSubmit.bind(this)}>
                             <div className='input-field col s12'>
                                 <input
