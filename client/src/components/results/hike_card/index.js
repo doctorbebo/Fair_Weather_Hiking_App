@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import './style.css';
 import API from '../../../utils/API';
 
-import Hike from '../../hike/index'
+import Hike from '../../hike'
 
 class HikeCard extends Component {
 
@@ -15,7 +15,7 @@ class HikeCard extends Component {
             forecast: []
         }
     }
-
+    
     handleClick = event => {
         switch (event.currentTarget.id) {
             case "Add-to-favs":
@@ -26,10 +26,19 @@ class HikeCard extends Component {
                 break;
 
             case "More-Info":
-                console.log("More-Info");
-                console.log(this.props);
-                //API.getWeather()
-                console.log("load index page");    
+                let forecastData =[]
+                API.getWeather(this.props)
+                .then(res =>{
+                    for ( let i = 4; i < 40; i=i+8){
+                        forecastData.push(res.data.list[i])
+                    }
+                    this.setState({forecast: forecastData})  
+                    console.log(this.state.forecast)
+                    
+                    })
+                    .catch(function (error) {
+                        console.log(error)
+                    })   
                 this.setState({show_more: true});
                 break;
             case 'Less-Info':
@@ -68,7 +77,9 @@ render () {
                     </a>
 
                     
-                    {this.state.show_more && <Hike/>}
+                    {this.state.show_more && <Hike
+                        forecast = {this.state.forecast}
+                    />}
                     <div className="card-action no-padding">
                             <button className="btn-large btn-by3" id="Add-to-favs" onClick={(e) => this.handleClick(e)}>Add to Favorites <i className="small material-icons icon-yellow">star</i></button>
                             <button className="btn-large btn-by3" id="Mark-complete" onClick={(e) => this.handleClick(e)}>Mark Complete <i className="small material-icons icon-green">check</i></button>
