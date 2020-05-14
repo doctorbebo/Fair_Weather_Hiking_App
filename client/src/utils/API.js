@@ -37,6 +37,12 @@ export default {
         return axios.get(weatherRequest+lat+lon+units+apiKey)
     },
 
+    getStats: function(userID) {
+        console.log(userID)
+        //Completed.find({userID}) find all hikes user has completed
+        //calculate stats. res.json to front end
+    },
+
     addComplete: function(hike) {
         console.log('this.props: ' + hike)
         axios.post('api/users/completed', hike)
@@ -48,6 +54,6 @@ export default {
 
     displayCompleted: function(id) {
         return axios.get(`/api/users/completed/${id}`)
-    },
+    }
 
 }

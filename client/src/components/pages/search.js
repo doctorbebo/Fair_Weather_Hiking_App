@@ -17,7 +17,7 @@ import M from 'materialize-css';
 class Search extends Component {
     //initialize Materialize
     componentDidMount() {
-
+        console.log(this.props.auth)
         M.AutoInit();
         if ("geolocation" in navigator) {
             console.log("Current location is Available");
