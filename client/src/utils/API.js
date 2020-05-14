@@ -39,6 +39,7 @@ export default {
 
     getStats: function(userID) {
         console.log(userID)
+        return axios.get(`/api/users/completed/${userID}`)
         //Completed.find({userID}) find all hikes user has completed
         //calculate stats. res.json to front end
     },
