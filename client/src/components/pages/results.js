@@ -10,7 +10,8 @@ class Results extends Component  {
     constructor() {
         super();
         this.state = {
-            trails: []
+            trails: [],
+            noTrails: false
         }
     }
 
@@ -19,8 +20,13 @@ class Results extends Component  {
             const { lat, lon, length, dist, elev } = this.props
             API.searchHikes(lat, lon, length, dist, elev)
             .then(res => {
-                console.log(res.data.trails[0])
-                if(elev !== null){
+                if(res.data.trails.length === 0) {
+                    this.setState({
+                        noTrails: true
+                    })
+                }
+                // console.log(res.data.trails.length)
+                else if(elev !== null){
                     const filteredHikes = res.data.trails.filter(trail => trail.ascent < elev)
                     this.setState({ trails: filteredHikes})
                 } else {
@@ -43,7 +49,10 @@ class Results extends Component  {
     render() {
         return(
             <div>
-                
+                {!this.state.noTrails &&
+                    <div className="progress">
+                        <div className="indeterminate"></div>
+                    </div> }
                 {this.state.trails.map(trail => {
                     //console.log(trail)
                     return <HikeCard type={this.props.type}
@@ -61,7 +70,7 @@ class Results extends Component  {
                     latitude ={trail.latitude}
                     longitude = {trail.longitude}/>
                 })}
-                {this.state.trails.length == 0 && <Alert />}
+                {this.state.noTrails &&  <Alert />}
             </div>
         )
     }

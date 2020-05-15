@@ -11,6 +11,9 @@
     display: inline-block;
     width: 33%;
 }
+.location-cols {
+    width: 40%
+}
 .btn-by2
 {
     display: inline-block;
