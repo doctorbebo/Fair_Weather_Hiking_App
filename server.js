@@ -13,8 +13,12 @@ const router = express.Router();
 const app = express();
 
 
-const publicPath = path.join(__dirname, 'client/build');
-app.use(express.static(publicPath));
+if(process.env.NODE_ENV === "production")
+{
+  app.use(express.static(publicPath));
+}
+// const publicPath = path.join(__dirname, 'client/build');
+// app.use(express.static(publicPath));
 
 // Bodyparser middleware
 app.use(
