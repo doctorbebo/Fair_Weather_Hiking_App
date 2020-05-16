@@ -40,9 +40,10 @@ class Dashboard extends Component {
               Logout
             </button> */}
             <div className='row'>
+              {/* Heroku needs a "Link" tag instead of an "a" tag. Also be sure to change "href" to "to" like below. */}
               <Link to="/search"><Button name='Find A Hike' width='300px'/></Link><br />
-              <Link href="/completed"><Button name='View Completed Hikes' width='300px'/></Link><br />
-              <Link href='/favorites'><Button name='View Favorite Hikes' width='300px'/></Link><br /><br />
+              <Link to="/completed"><Button name='View Completed Hikes' width='300px'/></Link><br />
+              <Link to='/favorites'><Button name='View Favorite Hikes' width='300px'/></Link><br /><br />
               <Link to='/login' onClick={this.onLogoutClick}>Log out</Link>
             </div>
 
