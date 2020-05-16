@@ -35,7 +35,7 @@ mongoose
     process.env.MONGODB_URI || "mongodb://fairweather:fa1rweather@ds139956.mlab.com:39956/heroku_z0n9lrbw",
     { useNewUrlParser: true }
   )
-  .then(() => console.log("MongoDB successfully connected (New)"))
+  .then(() => console.log("MongoDB successfully connected"))
   .catch(err => console.log(err));
 
 
