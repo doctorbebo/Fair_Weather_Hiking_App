@@ -11,7 +11,8 @@ class Results extends Component  {
         super();
         this.state = {
             trails: [],
-            noTrails: false
+            noTrails: false,
+            loading: true
         }
     }
 
@@ -30,12 +31,12 @@ class Results extends Component  {
                     const filteredHikes = res.data.trails.filter(trail => trail.ascent < elev)
                     this.setState({
                         trails: filteredHikes,
-                        noTrails: true
+                        loading: false
                     })
                 } else {
                     this.setState({
                         trails: res.data.trails,
-                        noTrails: true
+                        loading: false
                     })
                 }
             })
@@ -55,7 +56,7 @@ class Results extends Component  {
     render() {
         return(
             <div>
-                {!this.state.noTrails &&
+                {this.state.loading &&
                     <div className="progress">
                         <div className="indeterminate"></div>
                     </div> }
