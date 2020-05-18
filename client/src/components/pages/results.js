@@ -28,9 +28,15 @@ class Results extends Component  {
                 // console.log(res.data.trails.length)
                 else if(elev !== null){
                     const filteredHikes = res.data.trails.filter(trail => trail.ascent < elev)
-                    this.setState({ trails: filteredHikes})
+                    this.setState({
+                        trails: filteredHikes,
+                        noTrails: true
+                    })
                 } else {
-                    this.setState({trails: res.data.trails})
+                    this.setState({
+                        trails: res.data.trails,
+                        noTrails: true
+                    })
                 }
             })
         }
