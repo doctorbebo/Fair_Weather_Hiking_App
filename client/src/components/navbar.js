@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from 'react-router-dom';
 import '../App.css';
 
 class Navbar extends Component {
@@ -11,16 +12,16 @@ class Navbar extends Component {
               <a href='/'><i className="material-icons icon-black">home</i></a>
               
               {this.props.page !== 'favorites' &&
-              <a href='/favorites'><i className="material-icons icon-yellow">star</i></a>}
+              <Link to='/favorites'><i className="material-icons icon-yellow">star</i></Link>}
               
               {!this.props.page !== 'completed' &&
-              <a href='/completed'><i className="material-icons icon-green">check</i></a>}
+              <Link to='/completed'><i className="material-icons icon-green">check</i></Link>}
               
               {this.props.page !== 'search' &&
-              <a href='/search'><i className="material-icons icon-blue">search</i></a>}
+              <Link to='/search'><i className="material-icons icon-blue">search</i></Link>}
             
               {this.props.page !== 'stats' && 
-              <a href='/stats'><i className="material-icons icon-black">show_chart</i></a>}
+              <Link to='/stats'><i className="material-icons icon-black">show_chart</i></Link>}
             </div>
           </div>
         </nav>
