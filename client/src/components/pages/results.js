@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from "react-redux";
 import HikeCard from '../results/hike_card/index';
+import Alert from '../alert';
 import API from '../../utils/API';
 
 class Results extends Component  {
@@ -9,7 +10,9 @@ class Results extends Component  {
     constructor() {
         super();
         this.state = {
-            trails: []
+            trails: [],
+            noTrails: false,
+            loading: true
         }
     }
 
@@ -18,11 +21,23 @@ class Results extends Component  {
             const { lat, lon, length, dist, elev } = this.props
             API.searchHikes(lat, lon, length, dist, elev)
             .then(res => {
-                if(elev !== null){
+                if(res.data.trails.length === 0) {
+                    this.setState({
+                        noTrails: true
+                    })
+                }
+                // console.log(res.data.trails.length)
+                else if(elev !== null){
                     const filteredHikes = res.data.trails.filter(trail => trail.ascent < elev)
-                    this.setState({ trails: filteredHikes})
+                    this.setState({
+                        trails: filteredHikes,
+                        loading: false
+                    })
                 } else {
-                    this.setState({trails: res.data.trails})
+                    this.setState({
+                        trails: res.data.trails,
+                        loading: false
+                    })
                 }
             })
         }
@@ -40,23 +55,30 @@ class Results extends Component  {
 
     render() {
         return(
-            this.state.trails.map(trail => {
-                //console.log(trail)
-                return <HikeCard type={this.props.type}
-                id={trail.id}
-                name={trail.name}
-                difficulty={trail.difficulty}
+            <div>
+                {this.state.loading &&
+                    <div className="progress">
+                        <div className="indeterminate"></div>
+                    </div> }
+                {this.state.trails.map(trail => {
+                    //console.log(trail)
+                    return <HikeCard type={this.props.type}
+                    id={trail.id}
+                    name={trail.name}
+                    difficulty={trail.difficulty}
+                    location={trail.location}
 
-                high={trail.high}
-                ascent={trail.ascent}
-                imgMedium={trail.imgMedium}
-                length={trail.length}
+                    high={trail.high}
+                    ascent={trail.ascent}
+                    imgMedium={trail.imgMedium}
+                    length={trail.length}
 
-                summary={trail.summary} 
-                latitude ={trail.latitude}
-                longitude = {trail.longitude}/>
-
-            })
+                    summary={trail.summary} 
+                    latitude ={trail.latitude}
+                    longitude = {trail.longitude}/>
+                })}
+                {this.state.noTrails &&  <Alert />}
+            </div>
         )
     }
 }

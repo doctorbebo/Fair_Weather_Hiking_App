@@ -38,7 +38,8 @@ class HikeCard extends Component {
                     this.toggleModal()
                 // API.addComplete(this.props);
                 break;
-
+            case 'delete-favorite':
+                API.deleteFavorite(this.props.id);
             case "More-Info":
                 let forecastData =[]
                 API.getWeather(this.props)
@@ -88,19 +89,21 @@ render () {
                     <a>
                         <div className="card-image" id="to-index-page" onClick={(e) => this.handleClick(e)}>
                             <img  src={this.props.imgMedium} alt = "hike"/>
-                            <span className="card-title bg">{this.props.name}</span>
+                            <span className="card-title bg">{this.props.name}
+                            {/* <br />
+                            {this.props.location} */}
+                            </span>
                         </div>
                         <div className="card-content" id="to-index-page"onClick={(e) => this.handleClick(e)}>
                             <div className = "info-text">
-                                <div className="three-cols">Length: {this.props.length} miles</div>
-                                <div className="three-cols">
-
-                                    Highest Point: {this.props.high} ft
-
+                                <div className="three-cols">Length: {this.props.length} miles
                                     <br />
-                                    Elevation gain: {this.props.ascent}
+                                    Elevation gain: {this.props.ascent} ft
                                 </div>
                                 <div className="three-cols">Difficulty: {this.props.difficulty}</div>
+                                <div className="three-cols">
+                                    <i className="material-icons">location_on</i> {this.props.location}
+                                </div>
                             </div>
                         </div>
                     </a>
@@ -111,7 +114,8 @@ render () {
                     />}
                     <div className="card-action no-padding">
                             {this.props.type !== 'favorite-hikes' && <button className="btn-large btn-by3" id="Add-to-favs" onClick={(e) => this.handleClick(e)}>Add to Favorites <i className="small material-icons icon-yellow">star</i></button>}
-                            <button className="btn-large btn-by3" id="Mark-complete" onClick={(e) => this.handleClick(e)}>Mark Complete <i className="small material-icons icon-green">check</i></button>
+                            {this.props.type !== 'completed-hikes' && <button className="btn-large btn-by3" id="Mark-complete" onClick={(e) => this.handleClick(e)}>Mark Complete <i className="small material-icons icon-green">check</i></button>}
+                            {this.props.type == 'favorite-hikes' && <button className="btn-large btn-by3" id="delete-favorite" onClick={(e) => this.handleClick(e)}>Delete from Favorites <i className="small material-icons icon-red">delete_forever</i></button>}
                             {!this.state.show_more && <button className="btn-large btn-by3" id="More-Info" onClick={(e) => this.handleClick(e)}>Show More<i className="small material-icons icon-white">expand_more</i></button>}
                             {this.state.show_more && <button className="btn-large btn-by3" id="Less-Info" onClick={(e) => this.handleClick(e)}>Show Less<i className="small material-icons icon-white">expand_less</i></button>}
 

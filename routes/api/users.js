@@ -110,7 +110,8 @@ router.post('/favorite', function(req,res) {
         imgMedium: req.body.imgMedium,
         summary: req.body.summary,
         ascent: req.body.ascent,
-        length: req.body.length
+        length: req.body.length,
+        location: req.body.location
       }).then(dbFavorite => {
         res.json(dbFavorite)
       }).catch(err => {
@@ -128,12 +129,14 @@ router.post('/completed', function(req,res) {
   //console.log(body)
   Completed.create({
     userID: req.body.auth.user.id,
-    hikeID: req.body.id,
+    id: req.body.id,
     name: req.body.name,
     difficulty: req.body.difficulty,
-    elevation: req.body.elevation,
+    high: req.body.high,
     imgMedium: req.body.imgMedium,
-    summary: req.body.summary
+    ascent: req.body.ascent,
+    summary: req.body.summary,
+    length: req.body.length
   }).then(dbCompleted => {
     console.log(dbCompleted)
     res.json(dbCompleted)
@@ -157,6 +160,14 @@ router.get('/favorite/:id', function(req, res) {
     .then(favorite => {
       res.json(favorite)
     })
+})
+
+router.delete('/delete/:id', function(req,res) {
+  Favorite.findOneAndDelete({id: req.params.id})
+    .then(hike => {
+      console.log('deleted: ' + hike)
+    })
+    console.log("Successful deletion");
 })
 
 module.exports = router;
