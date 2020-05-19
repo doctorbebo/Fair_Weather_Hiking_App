@@ -13,8 +13,10 @@ const router = express.Router();
 const app = express();
 
 
-const publicPath = path.join(__dirname, 'client/build');
-app.use(express.static(publicPath));
+if(process.env.NODE_ENV === "production")
+{
+  app.use(express.static('client/build'));
+}
 
 // Bodyparser middleware
 app.use(
@@ -30,7 +32,7 @@ const db = require("./config/keys").mongoURI;
 // Connect to MongoDB
 mongoose
   .connect(
-    db,
+    process.env.MONGODB_URI || "mongodb://fairweather:fa1rweather@ds139956.mlab.com:39956/heroku_z0n9lrbw",
     { useNewUrlParser: true }
   )
   .then(() => console.log("MongoDB successfully connected"))
