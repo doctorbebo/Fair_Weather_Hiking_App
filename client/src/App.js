@@ -53,7 +53,7 @@ function App() {
   return (
     <Provider store={store}>
       <Router>
-        <div className="App">
+        <div className="App background">
           {/* <Navbar /> */}
           <Route exact path='/' component={Register} />
           <Route exact path='/register' component={Register} />
