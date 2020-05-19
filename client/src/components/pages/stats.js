@@ -12,17 +12,11 @@ class Stats extends Component {
         super();
         this.state = {
             elevation: [],
-            miles: []
+            miles: [],
+            totalElevation: '',
+            totalMiles: ''
         }
     }
-
-    // constructor() {
-    //     super();
-    //     this.state = {
-    //         totalElevation: "",
-    //         totalMiles: ""
-    //     }
-    // }
 
 
     componentDidMount() {
@@ -47,15 +41,11 @@ class Stats extends Component {
                     totalMiles += miles
 
                 }
-                // console.log('totalElevation: ' + totalElevation)
-                // console.log('totalMiles: ' + totalMiles)
-                // this.setState({
-                //     elevation: totalElevation,
-                //     miles: totalMiles
-                // })
                 this.setState({
                     elevation: elevationByMonth,
-                    miles: milesByMonth
+                    miles: milesByMonth,
+                    totalElevation: totalElevation,
+                    totalMiles: totalMiles
                 })
             })
     }
@@ -63,8 +53,6 @@ class Stats extends Component {
     render() {
         return <div>
             <Navbar page='stats' />
-            {/* <p>Total Elevation: {this.state.elevation} ft</p>
-            <p>Total Miles: {this.state.miles} miles</p> */}
             <div style={{width: '60%', height: '200px'}}>
             <Bar
             data={{
@@ -80,6 +68,7 @@ class Stats extends Component {
             }}
             options={{ maintainAspectRatio: false }}
             />
+            <p>Total Elevation: {this.state.totalElevation} ft</p>
             <Bar
             data={{
                 labels: ['January', 'February', 'March',
@@ -94,6 +83,7 @@ class Stats extends Component {
             }}
             options={{ maintainAspectRatio: false }}
             />
+            <p>Total Miles: {this.state.totalMiles} miles</p>
             </div>
         </div>
     }
