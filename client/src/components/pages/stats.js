@@ -66,7 +66,23 @@ class Stats extends Component {
                     }
                 ]
             }}
-            options={{ maintainAspectRatio: false }}
+            options={{
+                maintainAspectRatio: false,
+                legend: {
+                    display: false
+                },
+                title: {
+                    display: true,
+                    text: 'Elevation Hiked By Month'
+                },
+                tooltips: {
+                    callbacks: {
+                       label: function(tooltipItem) {
+                              return tooltipItem.yLabel;
+                       }
+                    }
+                }
+            }}
             />
             <p>Total Elevation: {this.state.totalElevation} ft</p>
             <Bar
@@ -75,13 +91,28 @@ class Stats extends Component {
                     'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
                 datasets: [
                     {
-                        label: 'Miles',
-                        backgroundColor: 'rgba(75,192,192,1)',
+                        backgroundColor: 'rgba(70,191,255,1)',
                         data: this.state.miles
                     }
                 ]
             }}
-            options={{ maintainAspectRatio: false }}
+            options={{
+                maintainAspectRatio: false,
+                title: {
+                    display: true,
+                    text: 'Miles Hiked By Month'
+                },
+                legend: {
+                    display: false
+                },
+                tooltips: {
+                    callbacks: {
+                       label: function(tooltipItem) {
+                              return tooltipItem.yLabel;
+                       }
+                    }
+                }
+            }}
             />
             <p>Total Miles: {this.state.totalMiles} miles</p>
             </div>
