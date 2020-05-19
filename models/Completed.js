@@ -28,6 +28,10 @@ const CompletedSchema = new Schema({
     },
     summary: {
         type: String
+    },
+    day: {
+        type: Date,
+        default: Date
     }
 })
 
