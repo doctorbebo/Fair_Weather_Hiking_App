@@ -5,6 +5,7 @@ import './style.css';
 import API from '../../../utils/API';
 import Weather from '../../../utils/weather'
 
+import Modal from '../../completed/modal'
 import Hike from '../../hike'
 
 class HikeCard extends Component {
@@ -14,10 +15,22 @@ class HikeCard extends Component {
         this.state = {
             show_more: false,
             forecast: [],
-            bestDay: []
+            bestDay: [],
+            showModal: false,
+            userComment: ""
+            
         }
     }
+    toggleModal = () => {
+        this.setState({
+          showModal: !this.state.showModal
+        });
+      }
 
+      onChange = event => {
+        console.log(event.target.value);
+        this.setState({ userComment: event.target.value })
+    }
 
     handleClick = event => {
         switch (event.currentTarget.id) {
@@ -25,7 +38,8 @@ class HikeCard extends Component {
                 API.addFavorite(this.props);
                 break;
             case "Mark-complete":
-                API.addComplete(this.props);
+                    this.toggleModal()
+                // API.addComplete(this.props);
                 break;
 
             case "More-Info":
@@ -62,6 +76,15 @@ class HikeCard extends Component {
             case 'Less-Info':
                 this.setState({show_more: false});
                 break;
+            case 'submit-complete':
+                    let postedComment = {"userComment": this.state.userComment}
+                    let completedHike = [this.props];
+                    console.log(this.props)
+                    completedHike.push(postedComment)
+                    console.log(completedHike)
+                    this.toggleModal();
+                API.addComplete(completedHike)
+
             default:
                 console.log(event.currentTarget);
                 break;
@@ -71,6 +94,13 @@ class HikeCard extends Component {
 render () {
     return (
         <div className="row">
+             <Modal
+          show={this.state.showModal}
+          closeCallback={(e) => this.handleClick(e)}
+          onChangeCallback={(e) => this.onChange(e)}
+          customClass="custom_modal_class"
+          commentText={this.state.userComment}
+        ></Modal>
             <div className="col s12 m12 l12">
                 <div className="card hoverable">
                     <a>
