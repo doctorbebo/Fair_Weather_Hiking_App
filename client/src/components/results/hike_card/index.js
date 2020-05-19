@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import './style.css';
 import API from '../../../utils/API';
+import Weather from '../../../utils/weather'
 
 import Hike from '../../hike'
 
@@ -12,10 +13,12 @@ class HikeCard extends Component {
         super();
         this.state = {
             show_more: false,
-            forecast: []
+            forecast: [],
+            bestDay: []
         }
     }
-    
+
+
     handleClick = event => {
         switch (event.currentTarget.id) {
             case "Add-to-favs":
@@ -32,19 +35,33 @@ class HikeCard extends Component {
                     for ( let i = 4; i < 40; i=i+8){
                         forecastData.push(res.data.list[i])
                     }
-                    this.setState({forecast: forecastData})  
+                    this.setState({forecast: forecastData})
                     console.log(this.state.forecast)
-                    
-                    })
-                    .catch(function (error) {
+
+                }).then(() =>{
+                    let bestTemp = Weather.getBestDay(this.state.forecast)
+                   
+                    return bestTemp
+                })
+                .then((bestTemp)=>{
+                    let bestWeather = Weather.bestWeather(bestTemp)
+                    return bestWeather
+                })
+                .then((res)=>{
+                    let sorted = Weather.weatherSort(res)
+                    console.log("this is the day")
+                    console.log(sorted)
+                    this.setState({bestDay: sorted})
+                })
+                .catch(function (error) {
                         console.log(error)
-                    })   
+                })   
                 this.setState({show_more: true});
+                
                 break;
             case 'Less-Info':
                 this.setState({show_more: false});
                 break;
-
             default:
                 console.log(event.currentTarget);
                 break;
