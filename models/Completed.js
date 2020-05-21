@@ -11,6 +11,9 @@ const CompletedSchema = new Schema({
     name: {
         type: String
     },
+    ascent: {
+        type: Number
+    },
     difficulty: {
         type: String
     },
@@ -29,6 +32,11 @@ const CompletedSchema = new Schema({
     summary: {
         type: String
     },
+
+    userComment: {
+        type: String
+    },
+
     day: {
         type: Date,
         default: Date

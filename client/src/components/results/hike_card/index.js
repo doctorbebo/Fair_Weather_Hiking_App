@@ -29,11 +29,10 @@ class HikeCard extends Component {
       }
 
       onChange = event => {
-        console.log(event.target.value);
         this.setState({ userComment: event.target.value })
     }
 
-    handleClick = event => {
+     handleClick = event => {
         switch (event.currentTarget.id) {
             case "Add-to-favs":
                 API.addFavorite(this.props);
@@ -80,10 +79,10 @@ class HikeCard extends Component {
                 this.setState({show_more: false});
                 break;
             case 'submit-complete':
-                    let postedComment = {"userComment": this.state.userComment}
-                    let completedHike = [this.props];
                     console.log(this.props)
-                    completedHike.push(postedComment)
+                    let completedHike = [this.props];
+                     console.log(completedHike)
+                     completedHike.push({'userComment': this.state.userComment, 'Date': null})
                     console.log(completedHike)
                     this.toggleModal();
                 API.addComplete(completedHike)
@@ -121,9 +120,13 @@ render () {
                                     Elevation gain: {this.props.ascent} ft
                                 </div>
                                 <div className="three-cols">Difficulty: {this.props.difficulty}</div>
+
+                                {this.props.type =='completed-hikes' && <div>Your Notes: {this.props.userComment}</div>}
+
                                 <div className="three-cols">
                                     <i className="material-icons">location_on</i> {this.props.location}
                                 </div>
+
                             </div>
                         </div>
                     </a>
@@ -135,8 +138,11 @@ render () {
                     />}
                     <div className="card-action no-padding">
                             {this.props.type !== 'favorite-hikes' && <button className="btn-large btn-by3" id="Add-to-favs" onClick={(e) => this.handleClick(e)}>Add to Favorites <i className="small material-icons icon-yellow">star</i></button>}
-                            {this.props.type !== 'completed-hikes' && <button className="btn-large btn-by3" id="Mark-complete" onClick={(e) => this.handleClick(e)}>Mark Complete <i className="small material-icons icon-green">check</i></button>}
+
+                            {this.props.type !=='completed-hikes' &&<button className="btn-large btn-by3" id="Mark-complete" onClick={(e) => this.handleClick(e)}>Mark Complete <i className="small material-icons icon-green">check</i></button>}
+
                             {this.props.type == 'favorite-hikes' && <button className="btn-large btn-by3" id="delete-favorite" onClick={(e) => this.handleClick(e)}>Delete from Favorites <i className="small material-icons icon-red">delete_forever</i></button>}
+
                             {!this.state.show_more && <button className="btn-large btn-by3" id="More-Info" onClick={(e) => this.handleClick(e)}>Show More<i className="small material-icons icon-white">expand_more</i></button>}
                             {this.state.show_more && <button className="btn-large btn-by3" id="Less-Info" onClick={(e) => this.handleClick(e)}>Show Less<i className="small material-icons icon-white">expand_less</i></button>}
 
