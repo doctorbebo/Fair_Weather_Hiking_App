@@ -8,7 +8,7 @@ export default function Alert(props) {
         case 'search-results':
             text = 'No Hikes Found! Please change search criteria'
             break;
-        case 'favorite-hikes':
+        case 'favorites':
             text = 'No favorite hikes yet!'
             break;
         case 'completed-hikes':

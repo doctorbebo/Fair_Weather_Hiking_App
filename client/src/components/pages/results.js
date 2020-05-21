@@ -44,18 +44,43 @@ class Results extends Component  {
             let id = this.props.auth.user.id
             API.displayFavorites(id)
                 .then(res => {
-                    console.log('favorites: ' + res.data);
-                    this.setState({
-                        trails: res.data,
-                        loading: false})
+                    if(res.data == '') {
+                        console.log('no favorites')
+                        this.setState({
+                            page: 'favorites',
+                            noTrails: true,
+                            loading: false
+                        })
+                    }
+                    // console.log('favorites: ' + res);
+                    else {
+                        this.setState({
+                            trails: res.data,
+                            loading: false
+                        })
+                    }
                 })
         }
         else if(this.props.type === 'completed-hikes') {
             let id = this.props.auth.user.id
-            API.displayCompleted(id)
-                .then(res => {this.setState({
-                    trails: res.data,
-                    loading: false})})
+            API.displayFavorites(id)
+                .then(res => {
+                    if(res.data == '') {
+                        console.log('no favorites')
+                        this.setState({
+                            page: 'favorites',
+                            noTrails: true,
+                            loading: false
+                        })
+                    }
+                    // console.log('favorites: ' + res);
+                    else {
+                        this.setState({
+                            trails: res.data,
+                            loading: false
+                        })
+                    }
+                })
         }
     }
 
@@ -83,7 +108,7 @@ class Results extends Component  {
                     latitude ={trail.latitude}
                     longitude = {trail.longitude}/>
                 })}
-                {this.state.noTrails &&  <Alert type={this.props.type}/>}
+                {this.state.noTrails &&  <Alert type={this.state.page}/>}
             </div>
         )
     }
