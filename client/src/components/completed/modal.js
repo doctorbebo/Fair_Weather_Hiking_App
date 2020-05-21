@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 import './modal.css';
 
@@ -13,7 +14,7 @@ const Modal = ({customClass, show, closeCallback, onChangeCallback, commentText 
                 How was the Hike?:
                 <input type="text" name="commentBox" id="commentBox" onChange={onChangeCallback} value={commentText} />
             </label>
-            <input type="button" id="submit-complete" onClick={closeCallback} value="Submit" />
+            <Link class="waves-effect waves-light btn hoverable blue accent-3" id="submit-complete" value="Submit" onClick={closeCallback}>Submit</Link>
         </form>
     </div>
   </div>

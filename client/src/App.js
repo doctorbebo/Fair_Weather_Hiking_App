@@ -63,7 +63,6 @@ function App() {
           <Route exact path='/favorites' component={FavoriteContainer} />
           <Route exact path='/stats' component={Stats} />
           <Route exact path='/completed' component={CompletedContainer} />
-
         </div>
       </Router>
     </Provider>
