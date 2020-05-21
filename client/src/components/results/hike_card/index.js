@@ -4,9 +4,10 @@ import { connect } from "react-redux";
 import './style.css';
 import API from '../../../utils/API';
 import Weather from '../../../utils/weather'
-
+import Moment from "moment"
 import Modal from '../../completed/modal'
 import Hike from '../../hike'
+import { ConnectionStates } from "mongoose";
 
 class HikeCard extends Component {
 
@@ -16,6 +17,8 @@ class HikeCard extends Component {
             show_more: false,
             forecast: [],
             bestDay: [],
+            bestDayMain: [],
+            bestDayWeather:[],
             showModal: false,
             userComment: ""
             
@@ -46,15 +49,14 @@ class HikeCard extends Component {
                 let forecastData =[]
                 API.getWeather(this.props)
                 .then(res =>{
-                    for ( let i = 4; i < 40; i=i+8){
+                    for ( let i = 4; i < 40; i=i+8)
+                    {
                         forecastData.push(res.data.list[i])
                     }
                     this.setState({forecast: forecastData})
-                    console.log(this.state.forecast)
-
+                    return
                 }).then(() =>{
                     let bestTemp = Weather.getBestDay(this.state.forecast)
-                   
                     return bestTemp
                 })
                 .then((bestTemp)=>{
@@ -63,14 +65,23 @@ class HikeCard extends Component {
                 })
                 .then((res)=>{
                     let sorted = Weather.weatherSort(res)
-                    console.log("this is the day")
-                    console.log(sorted)
-                    this.setState({bestDay: sorted})
+                    this.setState({
+                        bestDay: sorted,
+                        bestDayMain: sorted[0].main,
+                        bestDayWeather: sorted[0].weather[0]
+                    })
+                    console.log("main")
+                    console.log(sorted[0].main)
+                    console.log(sorted[0].weather[0])
+                    return
+                }).then(()=>{
+                    this.setState({show_more: true})
+                    return
                 })
                 .catch(function (error) {
                         console.log(error)
                 })   
-                this.setState({show_more: true});
+               
                 
                 break;
             case 'Less-Info':
@@ -126,6 +137,7 @@ render () {
                     
                     {this.state.show_more && <Hike
                         forecast = {this.state.forecast}
+                        bestDay = {this.state.bestDay}
                     />}
                     <div className="card-action no-padding">
                             {this.props.type !== 'favorite-hikes' && <button className="btn-large btn-by3" id="Add-to-favs" onClick={(e) => this.handleClick(e)}>Add to Favorites <i className="small material-icons icon-yellow">star</i></button>}

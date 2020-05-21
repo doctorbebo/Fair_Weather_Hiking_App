@@ -66,7 +66,7 @@ export default {
     },
         
     bestWeather: function(day){
-        console.log(day)
+        // console.log(day)
         let rain = [];
         let clear = [];
         let clouds = [];
@@ -78,7 +78,7 @@ export default {
 
         for(let i = 0; i < day.length; i++){
             let x = day[i].weather[0].id
-            console.log(x)
+            // console.log(x)
             switch(true){
 
                 case x >= 800:
@@ -116,14 +116,14 @@ export default {
                     break;
 
             }
-            console.log(clear)
-            console.log(clouds)
-            console.log(atm)
-            console.log(drizzle)
-            console.log(rain)
-            console.log(snow)
-            console.log(thunderstorms)
-            console.log(hazardous)
+            // console.log(clear)
+            // console.log(clouds)
+            // console.log(atm)
+            // console.log(drizzle)
+            // console.log(rain)
+            // console.log(snow)
+            // console.log(thunderstorms)
+            // console.log(hazardous)
         }
 
 
@@ -157,8 +157,8 @@ export default {
 
     weatherSort: function(day){
         
-        console.log("this is pre sorted day")
-        console.log(day);
+        // console.log("this is pre sorted day")
+        // console.log(day);
         if (day.length === 1){
             return day;
         }
@@ -178,7 +178,7 @@ export default {
             // insert the value once you've reached the location where items[j] <= value
             day[j + 1] = value;
         }
-        console.log(day[1]);
+        // console.log(day[1]);
         return day[1];
     }
     
