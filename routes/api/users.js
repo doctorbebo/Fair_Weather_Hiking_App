@@ -127,13 +127,16 @@ router.post('/favorite', function(req,res) {
 router.post('/completed', function(req,res) {
   //console.log(body)
   Completed.create({
-    userID: req.body.auth.user.id,
-    hikeID: req.body.id,
-    name: req.body.name,
-    difficulty: req.body.difficulty,
-    elevation: req.body.elevation,
-    imgMedium: req.body.imgMedium,
-    summary: req.body.summary
+    userID: req.body[0].auth.user.id,
+    hikeID: req.body[0].id,
+    name: req.body[0].name,
+    difficulty: req.body[0].difficulty,
+    high: req.body[0].high,
+    imgMedium: req.body[0].imgMedium,
+    summary: req.body[0].summary,
+    ascent: req.body[0].ascent,
+    length: req.body[0].length,
+    userComment: req.body[1].userComment
   }).then(dbCompleted => {
     console.log(dbCompleted)
     res.json(dbCompleted)

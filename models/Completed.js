@@ -11,10 +11,13 @@ const CompletedSchema = new Schema({
     name: {
         type: String
     },
+    ascent: {
+        type: Number
+    },
     difficulty: {
         type: String
     },
-    elevation: {
+    high: {
         type: Number
     },
     imgMedium: {
@@ -24,6 +27,9 @@ const CompletedSchema = new Schema({
         type: String
     },
     summary: {
+        type: String
+    },
+    userComment: {
         type: String
     }
 })
