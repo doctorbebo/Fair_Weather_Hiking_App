@@ -12,7 +12,8 @@ class Results extends Component  {
         this.state = {
             trails: [],
             noTrails: false,
-            loading: true
+            loading: true,
+            page: ''
         }
     }
 
@@ -52,7 +53,6 @@ class Results extends Component  {
                             loading: false
                         })
                     }
-                    // console.log('favorites: ' + res);
                     else {
                         this.setState({
                             trails: res.data,
@@ -63,17 +63,16 @@ class Results extends Component  {
         }
         else if(this.props.type === 'completed-hikes') {
             let id = this.props.auth.user.id
-            API.displayFavorites(id)
+            API.displayCompleted(id)
                 .then(res => {
+                    console.log('completed: ' + res.data)
                     if(res.data == '') {
-                        console.log('no favorites')
                         this.setState({
-                            page: 'favorites',
+                            page: 'completed',
                             noTrails: true,
                             loading: false
                         })
                     }
-                    // console.log('favorites: ' + res);
                     else {
                         this.setState({
                             trails: res.data,
@@ -92,7 +91,6 @@ class Results extends Component  {
                         <div className="indeterminate"></div>
                     </div> }
                 {this.state.trails.map(trail => {
-                    //console.log(trail)
                     return <HikeCard type={this.props.type}
                     id={trail.id}
                     name={trail.name}
@@ -108,7 +106,7 @@ class Results extends Component  {
                     latitude ={trail.latitude}
                     longitude = {trail.longitude}/>
                 })}
-                {this.state.noTrails &&  <Alert type={this.state.page}/>}
+                {this.state.noTrails &&  <Alert page={this.state.page}/>}
             </div>
         )
     }
