@@ -29,6 +29,11 @@ export default {
 
     },
 
+    deleteFavorite: function(id) {
+        console.log('id: ' + id)
+        axios.delete(`/api/users/delete/${id}`)
+    },
+
     getWeather: async function(hike){
         let weatherRequest = "https://cors-anywhere.herokuapp.com/api.openweathermap.org/data/2.5/forecast?";
         let lat = "lat="+hike.latitude
@@ -40,6 +45,7 @@ export default {
 
     getStats: function(userID) {
         console.log(userID)
+        return axios.get(`/api/users/completed/${userID}`)
         //Completed.find({userID}) find all hikes user has completed
         //calculate stats. res.json to front end
     },
