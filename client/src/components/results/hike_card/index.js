@@ -40,6 +40,7 @@ class HikeCard extends Component {
                 break;
             case 'delete-favorite':
                 API.deleteFavorite(this.props.id);
+                break;
             case "More-Info":
                 let forecastData =[]
                 API.getWeather(this.props)
@@ -47,9 +48,7 @@ class HikeCard extends Component {
                     for ( let i = 4; i < 40; i=i+8){
                         forecastData.push(res.data.list[i])
                     }
-                    this.setState({forecast: forecastData})  
-                    console.log(this.state.forecast)
-                    
+                    this.setState({forecast: forecastData})                      
                     })
                     .catch(function (error) {
                         console.log(error)
@@ -62,9 +61,7 @@ class HikeCard extends Component {
             case 'submit-complete':
                     let postedComment = {"userComment": this.state.userComment}
                     let completedHike = [this.props];
-                    console.log(this.props)
                     completedHike.push(postedComment)
-                    console.log(completedHike)
                     this.toggleModal();
                 API.addComplete(completedHike)
 

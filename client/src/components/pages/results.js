@@ -65,7 +65,6 @@ class Results extends Component  {
             let id = this.props.auth.user.id
             API.displayCompleted(id)
                 .then(res => {
-                    console.log('completed: ' + res.data)
                     if(res.data == '') {
                         this.setState({
                             page: 'completed',
