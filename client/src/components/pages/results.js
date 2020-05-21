@@ -55,20 +55,6 @@ class Results extends Component  {
 
     render() {
         return(
-
-            this.state.trails.map(trail => {
-                //console.log(trail)
-                return <HikeCard 
-                type={this.props.type}
-                key={trail.id}
-                name={trail.name}
-                difficulty={trail.difficulty}
-
-                high={trail.high}
-                ascent={trail.ascent}
-                imgMedium={trail.imgMedium}
-                length={trail.length}
-
             <div>
                 {this.state.loading &&
                     <div className="progress">
@@ -77,7 +63,7 @@ class Results extends Component  {
                 {this.state.trails.map(trail => {
                     //console.log(trail)
                     return <HikeCard type={this.props.type}
-                    id={trail.id}
+                    key={trail.id}
                     name={trail.name}
                     difficulty={trail.difficulty}
                     location={trail.location}

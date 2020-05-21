@@ -17,8 +17,6 @@ class HikeCard extends Component {
             show_more: false,
             forecast: [],
             bestDay: [],
-            bestDayMain: [],
-            bestDayWeather:[],
             showModal: false,
             userComment: ""
             
@@ -66,14 +64,7 @@ class HikeCard extends Component {
                 })
                 .then((res)=>{
                     let sorted = Weather.weatherSort(res)
-                    this.setState({
-                        bestDay: sorted,
-                        bestDayMain: sorted[0].main,
-                        bestDayWeather: sorted[0].weather[0]
-                    })
-                    console.log("main")
-                    console.log(sorted[0].main)
-                    console.log(sorted[0].weather[0])
+                    this.setState({bestDay: sorted})
                     return
                 }).then(()=>{
                     this.setState({show_more: true})
