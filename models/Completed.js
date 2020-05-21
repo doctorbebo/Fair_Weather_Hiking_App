@@ -5,7 +5,7 @@ const CompletedSchema = new Schema({
     userID: {
         type: String
     },
-    hikeID: {
+    id: {
         type: Number
     },
     name: {
@@ -26,11 +26,20 @@ const CompletedSchema = new Schema({
     length: {
         type: String
     },
+    ascent: {
+        type: Number
+    },
     summary: {
         type: String
     },
+
     userComment: {
         type: String
+    },
+
+    day: {
+        type: Date,
+        default: Date
     }
 })
 

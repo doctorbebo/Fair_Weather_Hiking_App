@@ -110,7 +110,8 @@ router.post('/favorite', function(req,res) {
         imgMedium: req.body.imgMedium,
         summary: req.body.summary,
         ascent: req.body.ascent,
-        length: req.body.length
+        length: req.body.length,
+        location: req.body.location
       }).then(dbFavorite => {
         res.json(dbFavorite)
       }).catch(err => {
@@ -160,6 +161,14 @@ router.get('/favorite/:id', function(req, res) {
     .then(favorite => {
       res.json(favorite)
     })
+})
+
+router.delete('/delete/:id', function(req,res) {
+  Favorite.findOneAndDelete({id: req.params.id})
+    .then(hike => {
+      console.log('deleted: ' + hike)
+    })
+    console.log("Successful deletion");
 })
 
 module.exports = router;

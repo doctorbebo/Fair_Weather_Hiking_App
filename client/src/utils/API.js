@@ -5,6 +5,7 @@ export default {
     searchHikes: function(lat, lon, length, dist, elev) {
         let resultQty = "&maxResults=10";
         let apiKey = "&key=200749828-0bd185ee7af374a0fb370047ff15cc20";
+        
         let hikerequest = "https://cors-anywhere.herokuapp.com/https://www.hikingproject.com/data/get-trails?";
         let query = `${hikerequest}lat=${lat}&lon=${lon}&minLength=${length}&maxDistance=${dist}${resultQty}${apiKey}`;
 
@@ -28,6 +29,11 @@ export default {
 
     },
 
+    deleteFavorite: function(id) {
+        console.log('id: ' + id)
+        axios.delete(`/api/users/delete/${id}`)
+    },
+
     getWeather: async function(hike){
         let weatherRequest = "https://cors-anywhere.herokuapp.com/api.openweathermap.org/data/2.5/forecast?";
         let lat = "lat="+hike.latitude
@@ -39,6 +45,7 @@ export default {
 
     getStats: function(userID) {
         console.log(userID)
+        return axios.get(`/api/users/completed/${userID}`)
         //Completed.find({userID}) find all hikes user has completed
         //calculate stats. res.json to front end
     },
@@ -58,6 +65,6 @@ export default {
 
     displayCompleted: function(id) {
         return axios.get(`/api/users/completed/${id}`)
-    }
-
+    },
 }
+

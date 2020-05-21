@@ -5,9 +5,7 @@ const FavoriteSchema = new Schema({
     userID: {
         type: String
     },
-
     id: {
-
         type: Number
     },
     name: {
@@ -16,9 +14,7 @@ const FavoriteSchema = new Schema({
     difficulty: {
         type: String
     },
-
     high: {
-
         type: Number
     },
     imgMedium: {
@@ -33,6 +29,9 @@ const FavoriteSchema = new Schema({
     },
 
     summary: {
+        type: String
+    },
+    location: {
         type: String
     }
 })
