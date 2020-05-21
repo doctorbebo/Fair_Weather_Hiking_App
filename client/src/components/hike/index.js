@@ -19,7 +19,7 @@ class Hike extends Component {
                   </div>
                   <h6>Best Day:</h6>
                   <div className = "row">
-                      <BestDay></BestDay>
+                      <BestDay bestDay = {this.props.bestDay}></BestDay>
                   </div>
                   <h6>Trail Reports:</h6>
                   <div className = "row">

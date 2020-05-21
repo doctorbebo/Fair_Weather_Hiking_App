@@ -3,8 +3,11 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import './style.css';
 import API from '../../../utils/API';
+import Weather from '../../../utils/weather'
+import Moment from "moment"
 import Modal from '../../completed/modal'
 import Hike from '../../hike'
+import { ConnectionStates } from "mongoose";
 
 class HikeCard extends Component {
 
@@ -13,6 +16,7 @@ class HikeCard extends Component {
         this.state = {
             show_more: false,
             forecast: [],
+            bestDay: [],
             showModal: false,
             userComment: ""
             
@@ -25,11 +29,10 @@ class HikeCard extends Component {
       }
 
       onChange = event => {
-        console.log(event.target.value);
         this.setState({ userComment: event.target.value })
     }
 
-    handleClick = event => {
+     handleClick = event => {
         switch (event.currentTarget.id) {
             case "Add-to-favs":
                 API.addFavorite(this.props);
@@ -45,23 +48,42 @@ class HikeCard extends Component {
                 let forecastData =[]
                 API.getWeather(this.props)
                 .then(res =>{
-                    for ( let i = 4; i < 40; i=i+8){
+                    for ( let i = 4; i < 40; i=i+8)
+                    {
                         forecastData.push(res.data.list[i])
                     }
-                    this.setState({forecast: forecastData})                      
-                    })
-                    .catch(function (error) {
+                    this.setState({forecast: forecastData})
+                    return
+                }).then(() =>{
+                    let bestTemp = Weather.getBestDay(this.state.forecast)
+                    return bestTemp
+                })
+                .then((bestTemp)=>{
+                    let bestWeather = Weather.bestWeather(bestTemp)
+                    return bestWeather
+                })
+                .then((res)=>{
+                    let sorted = Weather.weatherSort(res)
+                    this.setState({bestDay: sorted})
+                    return
+                }).then(()=>{
+                    this.setState({show_more: true})
+                    return
+                })
+                .catch(function (error) {
                         console.log(error)
-                    })   
-                this.setState({show_more: true});
+                })   
+               
+                
                 break;
             case 'Less-Info':
                 this.setState({show_more: false});
                 break;
             case 'submit-complete':
-                    let postedComment = {"userComment": this.state.userComment}
+                    console.log(this.props)
                     let completedHike = [this.props];
-                    completedHike.push(postedComment)
+                     console.log(completedHike)
+                     completedHike.push({'userComment': this.state.userComment, 'Date': null})
                     this.toggleModal();
                 API.addComplete(completedHike)
 
@@ -98,9 +120,13 @@ render () {
                                     Elevation gain: {this.props.ascent} ft
                                 </div>
                                 <div className="three-cols">Difficulty: {this.props.difficulty}</div>
+
+                                {this.props.type =='completed-hikes' && <div>Your Notes: {this.props.userComment}</div>}
+
                                 <div className="three-cols">
                                     <i className="material-icons">location_on</i> {this.props.location}
                                 </div>
+
                             </div>
                         </div>
                     </a>
@@ -108,11 +134,15 @@ render () {
                     
                     {this.state.show_more && <Hike
                         forecast = {this.state.forecast}
+                        bestDay = {this.state.bestDay}
                     />}
                     <div className="card-action no-padding">
                             {this.props.type !== 'favorite-hikes' && <button className="btn-large btn-by3" id="Add-to-favs" onClick={(e) => this.handleClick(e)}>Add to Favorites <i className="small material-icons icon-yellow">star</i></button>}
-                            {this.props.type !== 'completed-hikes' && <button className="btn-large btn-by3" id="Mark-complete" onClick={(e) => this.handleClick(e)}>Mark Complete <i className="small material-icons icon-green">check</i></button>}
+
+                            {this.props.type !=='completed-hikes' &&<button className="btn-large btn-by3" id="Mark-complete" onClick={(e) => this.handleClick(e)}>Mark Complete <i className="small material-icons icon-green">check</i></button>}
+
                             {this.props.type == 'favorite-hikes' && <button className="btn-large btn-by3" id="delete-favorite" onClick={(e) => this.handleClick(e)}>Delete from Favorites <i className="small material-icons icon-red">delete_forever</i></button>}
+
                             {!this.state.show_more && <button className="btn-large btn-by3" id="More-Info" onClick={(e) => this.handleClick(e)}>Show More<i className="small material-icons icon-white">expand_more</i></button>}
                             {this.state.show_more && <button className="btn-large btn-by3" id="Less-Info" onClick={(e) => this.handleClick(e)}>Show Less<i className="small material-icons icon-white">expand_less</i></button>}
 

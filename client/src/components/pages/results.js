@@ -62,6 +62,7 @@ class Results extends Component  {
                 })
         }
         else if(this.props.type === 'completed-hikes') {
+            console.log(this.props)
             let id = this.props.auth.user.id
             API.displayCompleted(id)
                 .then(res => {
@@ -91,19 +92,25 @@ class Results extends Component  {
                     </div> }
                 {this.state.trails.map(trail => {
                     return <HikeCard type={this.props.type}
-                    id={trail.id}
+                    key={trail.id}
                     name={trail.name}
                     difficulty={trail.difficulty}
                     location={trail.location}
 
-                    high={trail.high}
-                    ascent={trail.ascent}
-                    imgMedium={trail.imgMedium}
-                    length={trail.length}
 
-                    summary={trail.summary} 
-                    latitude ={trail.latitude}
-                    longitude = {trail.longitude}/>
+                summary={trail.summary} 
+                latitude ={trail.latitude}
+                longitude = {trail.longitude}
+                userComment = {trail.userComment}
+                high={trail.high}
+                ascent={trail.ascent}
+                imgMedium={trail.imgMedium}
+                length={trail.length}
+                />
+                
+
+
+      
                 })}
                 {this.state.noTrails &&  <Alert page={this.state.page}/>}
             </div>
