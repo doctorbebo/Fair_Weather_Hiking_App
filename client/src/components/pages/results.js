@@ -26,7 +26,6 @@ class Results extends Component  {
                         noTrails: true
                     })
                 }
-                // console.log(res.data.trails.length)
                 else if(elev !== null){
                     const filteredHikes = res.data.trails.filter(trail => trail.ascent < elev)
                     this.setState({
@@ -44,12 +43,19 @@ class Results extends Component  {
         else if(this.props.type === 'favorite-hikes') {
             let id = this.props.auth.user.id
             API.displayFavorites(id)
-                .then(res => {this.setState({trails: res.data})})
+                .then(res => {
+                    console.log('favorites: ' + res.data);
+                    this.setState({
+                        trails: res.data,
+                        loading: false})
+                })
         }
         else if(this.props.type === 'completed-hikes') {
             let id = this.props.auth.user.id
             API.displayCompleted(id)
-                .then(res => {this.setState({trails: res.data})})
+                .then(res => {this.setState({
+                    trails: res.data,
+                    loading: false})})
         }
     }
 
@@ -77,7 +83,7 @@ class Results extends Component  {
                     latitude ={trail.latitude}
                     longitude = {trail.longitude}/>
                 })}
-                {this.state.noTrails &&  <Alert />}
+                {this.state.noTrails &&  <Alert type={this.props.type}/>}
             </div>
         )
     }
