@@ -63,10 +63,11 @@ class Results extends Component  {
                 {this.state.trails.map(trail => {
                     //console.log(trail)
                     return <HikeCard type={this.props.type}
-                    id={trail.id}
+                    key={trail.id}
                     name={trail.name}
                     difficulty={trail.difficulty}
                     location={trail.location}
+
 
                     high={trail.high}
                     ascent={trail.ascent}
