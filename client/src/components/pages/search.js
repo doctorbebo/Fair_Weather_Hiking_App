@@ -83,6 +83,7 @@ class Search extends Component {
                                     value={this.state.minLength}
                                     id="minLength"
                                     type="number"
+                                    min="0"
                                 />
                                 <Label name='Minimum Hike Length' />
                             </div>
