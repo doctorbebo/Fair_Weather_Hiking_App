@@ -21,17 +21,15 @@ class Results extends Component  {
 
         let id = this.props.auth.user.id
 
-        let useResults = (res, page) => {
-            if(res.data == '' || res.data.trails.length === 0) {
-                console.log('no favorites')
+        //function that sets state of component with results of api call
+        let useResults = (trailList, page) => {
+            if(trailList == '' || trailList.length === 0) {
                 this.setState({
                     page: page, //need page to determine which alert will be used for no results
-                    noTrails: true,
-                    loading: false
+                    noTrails: true, //alerts user that no trails were found
+                    loading: false //removes loading bar
                 })
-            }
-            else {this.setState({ trails: res.data, loading: false })
-            }
+            } else {this.setState({ trails: trailList, loading: false })}
         }
 
         switch (this.props.type) {
@@ -41,21 +39,20 @@ class Results extends Component  {
                     .then(res => {
                         if(elev !== null){
                             const filteredHikes = res.data.trails.filter(trail => trail.ascent < elev)
-                            this.setState({
-                                trails: filteredHikes,
-                                loading: false
-                            })
+                            useResults(filteredHikes, 'search-results')
                         }
-                        else {useResults(res, '')} 
+                        else {useResults(res.data.trails, 'search-results')}
                     })
                 break;
             case 'favorite-hikes':
+                //api call to favorites database, finds all hikes correlated with user id
                 API.displayFavorites(id)
-                    .then(res => {useResults(res, 'favorites')})
+                    .then(res => {useResults(res.data, 'favorites')})
                 break;
             case 'completed-hikes':
+                //api call to completed database, finds all hikes correlated with user id
                 API.displayCompleted(id)
-                    .then(res => {useResults(res, 'completed')})
+                    .then(res => {useResults(res.data, 'completed')})
                 break;       
             default:
                 break;
@@ -65,10 +62,12 @@ class Results extends Component  {
     render() {
         return(
             <div>
+                {/* materialize loading bar for when hikes are loading */}
                 {this.state.loading &&
                     <div className="progress">
                         <div className="indeterminate"></div>
                     </div> }
+                {/* map the array of trails, create hikecard component for each trail */}
                 {this.state.trails.map(trail => {
                     return <HikeCard type={this.props.type}
                     key={trail.id}
@@ -85,7 +84,7 @@ class Results extends Component  {
                     length={trail.length}
                     />
                 })}
-
+                {/* Alert user when no trails are found. Alert text changes depending on which results are being displayed */}
                 {this.state.noTrails &&  <Alert page={this.state.page}/>}
             </div>
         )
