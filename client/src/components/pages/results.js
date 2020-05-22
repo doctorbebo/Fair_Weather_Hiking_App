@@ -18,68 +18,47 @@ class Results extends Component  {
     }
 
     componentDidMount() {
-        if(this.props.type === 'search-results') {
-            const { lat, lon, length, dist, elev } = this.props
-            API.searchHikes(lat, lon, length, dist, elev)
-            .then(res => {
-                if(res.data.trails.length === 0) {
-                    this.setState({
-                        noTrails: true
-                    })
-                }
-                else if(elev !== null){
-                    const filteredHikes = res.data.trails.filter(trail => trail.ascent < elev)
-                    this.setState({
-                        trails: filteredHikes,
-                        loading: false
-                    })
-                } else {
-                    this.setState({
-                        trails: res.data.trails,
-                        loading: false
-                    })
-                }
-            })
-        }
-        else if(this.props.type === 'favorite-hikes') {
-            let id = this.props.auth.user.id
-            API.displayFavorites(id)
-                .then(res => {
-                    if(res.data == '') {
-                        console.log('no favorites')
-                        this.setState({
-                            page: 'favorites',
-                            noTrails: true,
-                            loading: false
-                        })
-                    }
-                    else {
-                        this.setState({
-                            trails: res.data,
-                            loading: false
-                        })
-                    }
+
+        let id = this.props.auth.user.id
+
+        let useResults = (res, page) => {
+            if(res.data == '' || res.data.trails.length === 0) {
+                console.log('no favorites')
+                this.setState({
+                    page: page, //need page to determine which alert will be used for no results
+                    noTrails: true,
+                    loading: false
                 })
+            }
+            else {this.setState({ trails: res.data, loading: false })
+            }
         }
-        else if(this.props.type === 'completed-hikes') {
-            console.log(this.props)
-            let id = this.props.auth.user.id
-            API.displayCompleted(id)
-                .then(res => {
-                    if(res.data == '') {
-                        this.setState({
-                            page: 'completed',
-                            noTrails: true,
-                            loading: false
-                        })
-                    }
-                    else {
-                        this.setState({
-                            trails: res.data,
-                            loading: false
-                        })
-                    }
-                })
+
+        switch (this.props.type) {
+            case 'search-results':
+                const { lat, lon, length, dist, elev } = this.props
+                API.searchHikes(lat, lon, length, dist, elev)
+                    .then(res => {
+                        if(elev !== null){
+                            const filteredHikes = res.data.trails.filter(trail => trail.ascent < elev)
+                            this.setState({
+                                trails: filteredHikes,
+                                loading: false
+                            })
+                        }
+                        else {useResults(res, '')} 
+                    })
+                break;
+            case 'favorite-hikes':
+                API.displayFavorites(id)
+                    .then(res => {useResults(res, 'favorites')})
+                break;
+            case 'completed-hikes':
+                API.displayCompleted(id)
+                    .then(res => {useResults(res, 'completed')})
+                break;       
+            default:
+                break;
         }
     }
 
@@ -106,7 +85,7 @@ class Results extends Component  {
                     length={trail.length}
                     />
                 })}
-                
+
                 {this.state.noTrails &&  <Alert page={this.state.page}/>}
             </div>
         )
