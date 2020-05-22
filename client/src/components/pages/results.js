@@ -96,22 +96,17 @@ class Results extends Component  {
                     name={trail.name}
                     difficulty={trail.difficulty}
                     location={trail.location}
-
-
-                summary={trail.summary} 
-                latitude ={trail.latitude}
-                longitude = {trail.longitude}
-                userComment = {trail.userComment}
-                high={trail.high}
-                ascent={trail.ascent}
-                imgMedium={trail.imgMedium}
-                length={trail.length}
-                />
-                
-
-
-      
+                    summary={trail.summary} 
+                    latitude ={trail.latitude}
+                    longitude = {trail.longitude}
+                    userComment = {trail.userComment}
+                    high={trail.high}
+                    ascent={trail.ascent}
+                    imgMedium={trail.imgMedium}
+                    length={trail.length}
+                    />
                 })}
+                
                 {this.state.noTrails &&  <Alert page={this.state.page}/>}
             </div>
         )
