@@ -35,6 +35,7 @@ class HikeCard extends Component {
      handleClick = event => {
         switch (event.currentTarget.id) {
             case "Add-to-favs":
+                console.log(this.props)
                 API.addFavorite(this.props);
                 break;
             case "Mark-complete":

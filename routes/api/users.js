@@ -97,14 +97,18 @@ router.post('/login', function(req,res) {
 })
 
 router.post('/favorite', function(req,res) {
+  console.log('req.body.id: ' + req.body.id)
   //console.log('users.js hike id: ' + req.body.id)
-  Favorite.findOne({id : req.body.id})
+  Favorite.findOne({
+    id : req.body.id,
+    userID: req.body.auth.user.id
+  })
   .then(res => {
+    console.log('res: ' + res)
     if(res == null) {
       Favorite.create({
         userID: req.body.auth.user.id,
         id: req.body.id,
-        key: req.body.id,
         name: req.body.name,
         difficulty: req.body.difficulty,
         high: req.body.high,

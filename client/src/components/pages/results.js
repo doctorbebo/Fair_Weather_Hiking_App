@@ -47,7 +47,10 @@ class Results extends Component  {
             case 'favorite-hikes':
                 //api call to favorites database, finds all hikes correlated with user id
                 API.displayFavorites(id)
-                    .then(res => {useResults(res.data, 'favorites')})
+                    .then(res => {
+                        // console.log(res.data)
+                        useResults(res.data, 'favorites')
+                    })
                 break;
             case 'completed-hikes':
                 //api call to completed database, finds all hikes correlated with user id
@@ -70,7 +73,7 @@ class Results extends Component  {
                 {/* map the array of trails, create hikecard component for each trail */}
                 {this.state.trails.map(trail => {
                     return <HikeCard type={this.props.type}
-                    key={trail.id}
+                    id={trail.id}
                     name={trail.name}
                     difficulty={trail.difficulty}
                     location={trail.location}
