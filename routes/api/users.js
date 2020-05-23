@@ -104,6 +104,7 @@ router.post('/favorite', function(req,res) {
       Favorite.create({
         userID: req.body.auth.user.id,
         id: req.body.id,
+        key: req.body.id,
         name: req.body.name,
         difficulty: req.body.difficulty,
         high: req.body.high,
