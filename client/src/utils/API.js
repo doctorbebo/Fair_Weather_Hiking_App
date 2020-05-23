@@ -29,9 +29,9 @@ export default {
 
     },
 
-    deleteFavorite: function(id) {
-        console.log('id: ' + id)
-        axios.delete(`/api/users/delete/${id}`)
+    deleteFavorite: function(id, userID) {
+        console.log('userid: ' + userID)
+        axios.delete(`/api/users/delete/${id}/${userID}`)
     },
 
     getWeather: async function(hike){
