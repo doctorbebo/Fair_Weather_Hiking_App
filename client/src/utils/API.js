@@ -52,7 +52,11 @@ export default {
 
     addComplete: function(hike) {
         console.log(hike)
-        axios.post('api/users/completed', hike)
+        axios({
+            url: 'api/users/completed', 
+            method: 'post',
+            data: hike
+        })
             .then(res => {console.log(res)})
             .catch(function (err) {
                 console.log(err)

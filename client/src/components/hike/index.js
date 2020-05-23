@@ -3,11 +3,9 @@ import WeatherCard from "./weatherCard/weatherCard"
 import BestDay from "./BestDay/BestDay"
 import Reports from "./reports/reports"
 import Summary from "./Summary/summary"
-import axios from 'axios';
+
 
 class Hike extends Component {
-  // To access state from parrent use this.props."bla"
-  // Map through the props.weather 
   render() {
     return (
         <div >

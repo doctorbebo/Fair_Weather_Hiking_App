@@ -12,73 +12,85 @@ class Results extends Component  {
         this.state = {
             trails: [],
             noTrails: false,
-            loading: true
+            loading: true,
+            page: ''
         }
     }
 
     componentDidMount() {
-        if(this.props.type === 'search-results') {
-            const { lat, lon, length, dist, elev } = this.props
-            API.searchHikes(lat, lon, length, dist, elev)
-            .then(res => {
-                if(res.data.trails.length === 0) {
-                    this.setState({
-                        noTrails: true
-                    })
-                }
-                // console.log(res.data.trails.length)
-                else if(elev !== null){
-                    const filteredHikes = res.data.trails.filter(trail => trail.ascent < elev)
-                    this.setState({
-                        trails: filteredHikes,
-                        loading: false
-                    })
-                } else {
-                    this.setState({
-                        trails: res.data.trails,
-                        loading: false
-                    })
-                }
-            })
+
+        let id = this.props.auth.user.id
+
+        //function that sets state of component with results of api call
+        let useResults = (trailList, page) => {
+            if(trailList == '' || trailList.length === 0) {
+                this.setState({
+                    page: page, //need page to determine which alert will be used for no results
+                    noTrails: true, //alerts user that no trails were found
+                    loading: false //removes loading bar
+                })
+            } else {this.setState({ trails: trailList, loading: false })}
         }
-        else if(this.props.type === 'favorite-hikes') {
-            let id = this.props.auth.user.id
-            API.displayFavorites(id)
-                .then(res => {this.setState({trails: res.data})})
-        }
-        else if(this.props.type === 'completed-hikes') {
-            let id = this.props.auth.user.id
-            API.displayCompleted(id)
-                .then(res => {this.setState({trails: res.data})})
+
+        switch (this.props.type) {
+            case 'search-results':
+                const { lat, lon, length, dist, elev } = this.props
+                API.searchHikes(lat, lon, length, dist, elev)
+                    .then(res => {
+                        if(elev !== null){
+                            const filteredHikes = res.data.trails.filter(trail => trail.ascent < elev)
+                            useResults(filteredHikes, 'search-results')
+                        }
+                        else {useResults(res.data.trails, 'search-results')}
+                    })
+                break;
+            case 'favorite-hikes':
+                //api call to favorites database, finds all hikes correlated with user id
+                API.displayFavorites(id)
+                    .then(res => {useResults(res.data, 'favorites')})
+                break;
+            case 'completed-hikes':
+                //api call to completed database, finds all hikes correlated with user id
+                API.displayCompleted(id)
+                    .then(res => {useResults(res.data, 'completed')})
+                break;       
+            default:
+                break;
         }
     }
 
     render() {
         return(
             <div>
+                {/* materialize loading bar for when hikes are loading */}
                 {this.state.loading &&
                     <div className="progress">
                         <div className="indeterminate"></div>
                     </div> }
+                {/* map the array of trails, create hikecard component for each trail */}
                 {this.state.trails.map(trail => {
-                    //console.log(trail)
                     return <HikeCard type={this.props.type}
                     key={trail.id}
                     name={trail.name}
                     difficulty={trail.difficulty}
                     location={trail.location}
+<<<<<<< HEAD
                     summary={trail.summary}
                    
+=======
+                    summary={trail.summary} 
+                    latitude ={trail.latitude}
+                    longitude = {trail.longitude}
+                    userComment = {trail.userComment}
+>>>>>>> master
                     high={trail.high}
                     ascent={trail.ascent}
                     imgMedium={trail.imgMedium}
                     length={trail.length}
-
-                    summary={trail.summary} 
-                    latitude ={trail.latitude}
-                    longitude = {trail.longitude}/>
+                    />
                 })}
-                {this.state.noTrails &&  <Alert />}
+                {/* Alert user when no trails are found. Alert text changes depending on which results are being displayed */}
+                {this.state.noTrails &&  <Alert page={this.state.page}/>}
             </div>
         )
     }

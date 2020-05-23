@@ -6,11 +6,11 @@ import './modal.css';
 const Modal = ({customClass, show, closeCallback, onChangeCallback, commentText }) => (
   <div className={`modal ${customClass}`} style={{ display: show ? 'block' : 'none'}}>
     <div className="overlay" onClick={closeCallback}></div>
+    <div className="title">Hikers Journal</div>
     <div className="modal_content">
-
-        <form noValidate>
+        <form className="journalEntry">
             <label>
-                How was the Hike?:
+                Notes:
                 <input type="text" name="commentBox" id="commentBox" onChange={onChangeCallback} value={commentText} />
             </label>
             <input type="button" id="submit-complete" onClick={closeCallback} value="Submit" />
