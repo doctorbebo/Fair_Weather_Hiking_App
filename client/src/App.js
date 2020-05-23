@@ -22,6 +22,8 @@ import { setCurrentUser, logoutUser } from "./actions/authActions";
 import { Provider } from "react-redux";
 import store from './store';
 
+import Background from "./background";
+
 
 // Check for token to keep user logged in
 if (localStorage.jwtToken) {
@@ -52,18 +54,19 @@ if (localStorage.jwtToken) {
 function App() {
   return (
     <Provider store={store}>
+    <Background />
       <Router>
-        <div className="App background">
-          {/* <Navbar /> */}
-          <Route exact path='/' component={Register} />
-          <Route exact path='/register' component={Register} />
-          <Route exact path='/login' component={Login} />
-          <Route exact path='/dashboard' component={Dashboard} />
-          <Route exact path='/search' component={Search} />
-          <Route exact path='/favorites' component={FavoriteContainer} />
-          <Route exact path='/stats' component={Stats} />
-          <Route exact path='/completed' component={CompletedContainer} />
-        </div>
+          <div className="App">
+            {/* <Navbar /> */}
+            <Route exact path='/' component={Register} />
+            <Route exact path='/register' component={Register} />
+            <Route exact path='/login' component={Login} />
+            <Route exact path='/dashboard' component={Dashboard} />
+            <Route exact path='/search' component={Search} />
+            <Route exact path='/favorites' component={FavoriteContainer} />
+            <Route exact path='/stats' component={Stats} />
+            <Route exact path='/completed' component={CompletedContainer} />
+          </div>
       </Router>
     </Provider>
     
