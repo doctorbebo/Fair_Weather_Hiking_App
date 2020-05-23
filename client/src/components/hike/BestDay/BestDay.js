@@ -10,7 +10,7 @@ function BestDay(props) {
             {Moment(props.bestDay[0].dt_txt).subtract(1, 'day').format('dddd')}
             {console.log(props.bestDay)}
             <br></br>
-            It will feel like {parseInt(Math.trunc(props.bestDay[0].main.feels_like))}&deg;F with {props.bestDay[0].weather[0].description}
+            {/* It will feel like {parseInt(Math.trunc(props.bestDay[0].main.feels_like))}&deg;F with {props.bestDay[0].weather[0].description} */}
            
         </div>
 

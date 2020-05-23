@@ -15,7 +15,7 @@ export default {
 
     addFavorite: function(hike) {
 
-        console.log('favorite this.props: ' + hike)
+        console.log(hike)
 
         axios.post('api/users/favorite', hike)
             .then(res => {console.log(res)})
@@ -64,7 +64,14 @@ export default {
     },
 
     displayCompleted: function(id) {
+        console.log(`${id}`)
         return axios.get(`/api/users/completed/${id}`)
+        
     },
+    deleteCompleted: function(id) {
+        console.log('id: ' + id)
+        axios.delete(`/api/users/delete/${id}`)
+        console.log("done")
+    }
 }
 

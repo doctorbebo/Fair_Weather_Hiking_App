@@ -6,7 +6,7 @@ const CompletedSchema = new Schema({
         type: String
     },
     id: {
-        type: Number
+        type: String
     },
     name: {
         type: String

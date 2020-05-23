@@ -18,8 +18,8 @@ class Results extends Component  {
 
     componentDidMount() {
         if(this.props.type === 'search-results') {
-            const { lat, lon, length, dist, elev } = this.props
-            API.searchHikes(lat, lon, length, dist, elev)
+            const { lat, lon, length, dist, elev, key, id } = this.props
+            API.searchHikes(lat, lon, length, dist, elev, key, id)
             .then(res => {
                 if(res.data.trails.length === 0) {
                     this.setState({
@@ -65,6 +65,7 @@ class Results extends Component  {
                     //console.log(trail)
                     return <HikeCard type={this.props.type}
                     key={trail.id}
+                    id={trail._id}
                     name={trail.name}
                     difficulty={trail.difficulty}
                     location={trail.location}
