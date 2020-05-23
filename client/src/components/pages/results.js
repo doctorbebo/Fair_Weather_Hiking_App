@@ -67,8 +67,8 @@ class Results extends Component  {
                     name={trail.name}
                     difficulty={trail.difficulty}
                     location={trail.location}
-
-
+                    summary={trail.summary}
+                   
                     high={trail.high}
                     ascent={trail.ascent}
                     imgMedium={trail.imgMedium}

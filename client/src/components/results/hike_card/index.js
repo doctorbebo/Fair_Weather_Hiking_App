@@ -40,7 +40,6 @@ class HikeCard extends Component {
                 break;
             case "Mark-complete":
                     this.toggleModal()
-                // API.addComplete(this.props);
                 break;
             case 'delete-favorite':
                 API.deleteFavorite(this.props.id);
@@ -50,28 +49,36 @@ class HikeCard extends Component {
                 .then(res =>{
                     for ( let i = 4; i < 40; i=i+8)
                     {
-                        forecastData.push(res.data.list[i])
+                        forecastData.push(res.data.list[i]);
                     }
-                    this.setState({forecast: forecastData})
-                    return
+                    this.setState({forecast: forecastData});
+                    return;
                 }).then(() =>{
-                    let bestTemp = Weather.getBestDay(this.state.forecast)
-                    return bestTemp
+                    let bestTemp = Weather.getBestDay(this.state.forecast);
+                    return bestTemp;
                 })
                 .then((bestTemp)=>{
-                    let bestWeather = Weather.bestWeather(bestTemp)
-                    return bestWeather
+                    let bestWeather = Weather.bestWeather(bestTemp);
+                    return bestWeather;
                 })
                 .then((res)=>{
-                    let sorted = Weather.weatherSort(res)
-                    this.setState({bestDay: sorted})
-                    return
+                    let sorted = Weather.weatherSort(res);
+                    let bestWeather;
+                    if(sorted.constructor === Array){
+                        bestWeather = sorted;
+                    } else{
+                        bestWeather = [sorted];
+                    }
+                    this.setState({
+                        bestDay: bestWeather,
+                    })
+                    return;
                 }).then(()=>{
-                    this.setState({show_more: true})
-                    return
+                    this.setState({show_more: true});
+                    return;
                 })
                 .catch(function (error) {
-                        console.log(error)
+                        console.log(error);
                 })   
                
                 
@@ -132,6 +139,8 @@ render () {
                     {this.state.show_more && <Hike
                         forecast = {this.state.forecast}
                         bestDay = {this.state.bestDay}
+                        summary ={this.props.summary}
+                        
                     />}
                     <div className="card-action no-padding">
                             {this.props.type !== 'favorite-hikes' && <button className="btn-large btn-by3" id="Add-to-favs" onClick={(e) => this.handleClick(e)}>Add to Favorites <i className="small material-icons icon-yellow">star</i></button>}

@@ -1,6 +1,6 @@
 import React from "react";
 
-function Reports(props){
+function summary(props){
     return(
         <div>
         
@@ -10,4 +10,4 @@ function Reports(props){
     )
 }
 
-export default  Reports;
+export default  summary;
