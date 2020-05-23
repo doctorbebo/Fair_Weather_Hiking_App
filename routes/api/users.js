@@ -161,19 +161,22 @@ router.get('/completed/:id', function(req, res) {
 })
 
 router.get('/favorite/:id', function(req, res) {
-  //console.log('id: ' + req.params.id)
   Favorite.find({userID: req.params.id})
     .then(favorite => {
       res.json(favorite)
     })
 })
 
-router.delete('/delete/:id', function(req,res) {
-  Favorite.findOneAndDelete({id: req.params.id})
+router.delete('/delete/:id/:userID', function(req,res) {
+  console.log(req.params)
+  Favorite.findOneAndDelete({
+    id: req.params.id,
+    userID: req.params.userID
+  })
     .then(hike => {
-      console.log('deleted: ' + hike)
+      console.log("Successful deletion");
+      //console.log('deleted: ' + hike)
     })
-    console.log("Successful deletion");
 })
 
 module.exports = router;
