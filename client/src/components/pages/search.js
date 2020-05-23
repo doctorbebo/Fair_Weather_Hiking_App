@@ -15,12 +15,18 @@ import Hike from '../hike'
 import M from 'materialize-css';
 
 class Search extends Component {
-    //initialize Materialize
     componentDidMount() {
+        //redirect user to login page if user is not logged in
         if(!this.props.auth.isAuthenticated) {
             this.props.history.push('/login')
         }
+
+        console.log('componentdidmount submitted: ' +  this.state.isSubmitted)
+
+        //initialize Materialize
         M.AutoInit();
+
+        //locate users current location
         if ("geolocation" in navigator) {
             console.log("Current location is Available");
           } else {
@@ -42,24 +48,17 @@ class Search extends Component {
             latitude: 0,
             longitude: 0,
             hikes: [],
-
             isSubmitted: false
-
             };
             this.onSubmit=this.onSubmit.bind(this);     
       }
-    // getuserlocation = () => {
-    //     navigator.geolocation.getCurrentPosition(function(position) {
-    //         console.log("Latitude is :", position.coords.latitude);
-    //         console.log("Longitude is :", position.coords.longitude);
-    //         this.setState ({latitude: position.coords.latitude})
-    //         this.setState ({longitude: position.coords.longitude})
-    //       });
-    //   }
 
     onChange = event => {
         console.log(event.target.value);
-        this.setState({ [event.target.id]: event.target.value })
+        this.setState({
+            [event.target.id]: event.target.value,
+            isSubmitted: false
+        })
     }
 
     onSubmit(event) {
@@ -67,7 +66,6 @@ class Search extends Component {
         this.setState({
             isSubmitted: true
         })
-        console.log('searched for a hike')
     }
 
     render() {
@@ -83,6 +81,7 @@ class Search extends Component {
                                     value={this.state.minLength}
                                     id="minLength"
                                     type="number"
+                                    min="0"
                                 />
                                 <Label name='Minimum Hike Length' />
                             </div>

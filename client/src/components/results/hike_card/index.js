@@ -43,6 +43,7 @@ class HikeCard extends Component {
                 break;
             case 'delete-favorite':
                 API.deleteFavorite(this.props.id);
+                break;
             case "More-Info":
                 let forecastData =[]
                 API.getWeather(this.props)
@@ -83,7 +84,6 @@ class HikeCard extends Component {
                     let completedHike = [this.props];
                      console.log(completedHike)
                      completedHike.push({'userComment': this.state.userComment, 'Date': null})
-                    console.log(completedHike)
                     this.toggleModal();
                 API.addComplete(completedHike)
 

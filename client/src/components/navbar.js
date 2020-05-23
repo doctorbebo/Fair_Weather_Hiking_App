@@ -14,7 +14,7 @@ class Navbar extends Component {
               {this.props.page !== 'favorites' &&
               <Link to='/favorites'><i className="material-icons icon-yellow">star</i></Link>}
               
-              {!this.props.page !== 'completed' &&
+              {this.props.page !== 'completed' &&
               <Link to='/completed'><i className="material-icons icon-green">check</i></Link>}
               
               {this.props.page !== 'search' &&

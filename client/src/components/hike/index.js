@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import WeatherCard from "./weatherCard/weatherCard"
 import BestDay from "./BestDay/BestDay"
 import Reports from "./reports/reports"
-import axios from 'axios';
 
 class Hike extends Component {
   // To access state from parrent use this.props."bla"
