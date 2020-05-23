@@ -5,7 +5,7 @@ import Navbar from '../navbar';
 function CompletedContainer() {
     return <div className='container'>
         <div className='row'>
-            <Navbar />
+            <Navbar page='completed' />
         </div>
         <div className='row'>
             <div className='col s8 offset-s2'>
