@@ -8,6 +8,9 @@ const CompletedSchema = new Schema({
     id: {
         type: Number
     },
+    completedId: {
+        type: String
+    },
     name: {
         type: String
     },
@@ -40,6 +43,9 @@ const CompletedSchema = new Schema({
     day: {
         type: Date,
         default: Date
+    },
+    TEST: {
+        type: String
     }
 })
 

@@ -73,11 +73,12 @@ class Results extends Component  {
                 {/* map the array of trails, create hikecard component for each trail */}
                 {this.state.trails.map(trail => {
                     return <HikeCard type={this.props.type}
+                    // id={trail.id}
                     id={trail.id}
                     name={trail.name}
                     difficulty={trail.difficulty}
                     location={trail.location}
-
+                    completedId={trail._id}
                     summary={trail.summary} 
                     latitude ={trail.latitude}
                     longitude = {trail.longitude}

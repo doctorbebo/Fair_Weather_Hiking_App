@@ -33,6 +33,10 @@ export default {
         console.log('userid: ' + userID)
         axios.delete(`/api/users/delete/${id}/${userID}`)
     },
+    deleteCompleted: function(completedId) {
+        console.log("completed id: " +completedId)
+        axios.delete(`/api/delete/${completedId}`)
+    },
 
     getWeather: async function(hike){
         let weatherRequest = "https://cors-anywhere.herokuapp.com/api.openweathermap.org/data/2.5/forecast?";
@@ -51,7 +55,6 @@ export default {
     },
 
     addComplete: function(hike) {
-        console.log(hike)
         axios({
             url: 'api/users/completed', 
             method: 'post',
