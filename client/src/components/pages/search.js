@@ -9,9 +9,6 @@ import Label from '../label';
 import Results from './results';
 import Navbar from '../navbar';
 
-import Hike from '../hike'
-
-
 import M from 'materialize-css';
 
 class Search extends Component {
@@ -45,6 +42,7 @@ class Search extends Component {
             minLength: "",
             maxElevation: "",
             maxTravel: "",
+            sort: "",
             latitude: 0,
             longitude: 0,
             hikes: [],
@@ -74,6 +72,7 @@ class Search extends Component {
                 <div className='row'>
                     <div className='col s8 push-s2'>
                         <Navbar page='search'/>
+                        {/* <h6 className='search-title'>Enter Hike Criteria:</h6> */}
                         <form noValidate onSubmit={this.onSubmit.bind(this)}>
                             <div className='input-field col s12'>
                                 <input
@@ -90,7 +89,7 @@ class Search extends Component {
                                 onChange={this.onChange}
                                 value={this.state.maxTravel}
                                 id="maxTravel">
-                                    <option value="">Select Maximum Distance to Trailhead</option>
+                                    <option value="" className='option'>Select Maximum Distance to Trailhead</option>
                                     <option value= "5" >5 miles</option>
                                     <option value="10">10 miles</option>
                                     <option value="15">15 miles</option>
@@ -119,10 +118,44 @@ class Search extends Component {
                                     <option value="10000">10000 ft</option>
                                 </select>
                             </div>
+                            <div className='sort-buttons'>
+                                <div className='sort-buttons'>Sort by:          </div>  
+                                    <label>
+                                        <input 
+                                        onChange={this.onChange} 
+                                        value='distance'
+                                        id='sort' class="with-gap" 
+                                        name="group1" type="radio" 
+                                        checked={this.state.sort === 'distance'}  />
+                                        <span>Distance</span>
+                                    </label>
+                            </div>
+                            <div className='sort-buttons'>
+                                <label>
+                                    <input 
+                                    onChange={this.onChange} 
+                                    value='quality'
+                                    id='sort' class="with-gap" 
+                                    name="group1" type="radio" 
+                                    checked={this.state.sort === 'quality'}  />
+                                    <span>Quality</span>
+                                </label>
+                            </div>
+                            {/* <h6 className='or'>OR</h6>
                             <br />
-                            <Button name='Search Hikes' type='submit' />
+                            <div className='input-field col s12'>
+                                <input
+                                    onChange={this.onChange}
+                                    value={this.state.hikeName}
+                                    id="hikeName"
+                                />
+                                <Label name='Search for hike by name' />
+                            </div> */}
+                            <br />
+                            <Button name='Search Hikes' type='submit' id='search-button' />
                         </form>
                         {this.state.isSubmitted && <Results
+                            sort={this.state.sort}
                             type='search-results'
                             dist={this.state.maxTravel}
                             length={this.state.minLength}
