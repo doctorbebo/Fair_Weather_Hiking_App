@@ -43,12 +43,14 @@ class Results extends Component  {
                         }
                         else {useResults(res.data.trails, 'search-results')}
                     })
+                    console.log(this.props)
                 break;
             case 'favorite-hikes':
                 //api call to favorites database, finds all hikes correlated with user id
                 API.displayFavorites(id)
                     .then(res => {
-                        // console.log(res.data)
+                        console.log(res.data)
+                        console.log(this.props)
                         useResults(res.data, 'favorites')
                     })
                 break;
@@ -74,10 +76,10 @@ class Results extends Component  {
                 {this.state.trails.map(trail => {
                     return <HikeCard type={this.props.type}
                     id={trail.id}
+                    key={trail.id}
                     name={trail.name}
                     difficulty={trail.difficulty}
                     location={trail.location}
-
                     summary={trail.summary} 
                     latitude ={trail.latitude}
                     longitude = {trail.longitude}

@@ -104,7 +104,8 @@ router.post('/favorite', function(req,res) {
     userID: req.body.auth.user.id
   })
   .then(res => {
-    console.log('res: ' + res)
+    console.log('res: ')
+    console.log(res)
     if(res == null) {
       Favorite.create({
         userID: req.body.auth.user.id,
