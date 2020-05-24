@@ -97,14 +97,14 @@ router.post('/login', function(req,res) {
 })
 
 router.post('/favorite', function(req,res) {
-  console.log('req.body.id: ' + req.body.id)
   //console.log('users.js hike id: ' + req.body.id)
   Favorite.findOne({
     id : req.body.id,
     userID: req.body.auth.user.id
   })
   .then(res => {
-    console.log('res: ' + res)
+    // console.log('res: ')
+    // console.log(res)
     if(res == null) {
       Favorite.create({
         userID: req.body.auth.user.id,
@@ -116,6 +116,8 @@ router.post('/favorite', function(req,res) {
         summary: req.body.summary,
         ascent: req.body.ascent,
         length: req.body.length,
+        latitude: req.body.latitude,
+        longitude: req.body.longitude,
         location: req.body.location
       }).then(dbFavorite => {
         res.json(dbFavorite)
@@ -131,7 +133,7 @@ router.post('/favorite', function(req,res) {
 })
 
 router.post('/completed', function(req,res) {
-  //console.log(body)
+  // console.log(req.body)
   Completed.create({
     userID: req.body[0].auth.user.id,
     hikeID: req.body[0].id,
@@ -140,6 +142,8 @@ router.post('/completed', function(req,res) {
     high: req.body[0].high,
     imgMedium: req.body[0].imgMedium,
     summary: req.body[0].summary,
+    latitude: req.body[0].latitude,
+    longitude: req.body[0].longitude,
     ascent: req.body[0].ascent,
     length: req.body[0].length,
     userComment: req.body[1].userComment
