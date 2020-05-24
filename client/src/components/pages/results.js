@@ -49,8 +49,7 @@ class Results extends Component  {
                 //api call to favorites database, finds all hikes correlated with user id
                 API.displayFavorites(id)
                     .then(res => {
-                        console.log(res.data)
-                        console.log(this.props)
+                        //console.log(res.data)
                         useResults(res.data, 'favorites')
                     })
                 break;

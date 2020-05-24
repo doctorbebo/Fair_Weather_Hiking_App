@@ -36,7 +36,7 @@ class HikeCard extends Component {
         switch (event.currentTarget.id) {
             case "Add-to-favs":
                 console.log(this.props)
-                //API.addFavorite(this.props);
+                API.addFavorite(this.props);
                 break;
             case "Mark-complete":
                     this.toggleModal()
