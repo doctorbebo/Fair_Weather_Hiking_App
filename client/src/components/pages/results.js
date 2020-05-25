@@ -15,7 +15,8 @@ class Results extends Component  {
             trails: [],
             noTrails: false,
             loading: true,
-            page: ''
+            page: '',
+            invalidZip: false
         }
     }
 
@@ -41,19 +42,25 @@ class Results extends Component  {
                     if(zipcodes.lookup(zipcode)) {
                         lat = zipcodes.lookup(zipcode).latitude
                         lon = zipcodes.lookup(zipcode).longitude
+                        API.searchHikes(lat, lon, length, dist, elev, sort)
+                            .then(res => {
+                                if(elev !== null){
+                                    const filteredHikes = res.data.trails.filter(trail => trail.ascent < elev)
+                                    useResults(filteredHikes, 'search-results')
+                                }
+                                else {useResults(res.data.trails, 'search-results')}
+                            })
                     }
                     else {
                         console.log('invalid zip')
+                        this.setState({
+                            invalidZip: true,
+                            page: 'invalid zip',
+                            loading: false
+                        })
                     }
                 }
-                API.searchHikes(lat, lon, length, dist, elev, sort)
-                    .then(res => {
-                        if(elev !== null){
-                            const filteredHikes = res.data.trails.filter(trail => trail.ascent < elev)
-                            useResults(filteredHikes, 'search-results')
-                        }
-                        else {useResults(res.data.trails, 'search-results')}
-                    })
+                
                 break;
             case 'favorite-hikes':
                 //api call to favorites database, finds all hikes correlated with user id
@@ -104,6 +111,7 @@ class Results extends Component  {
                 })}
                 {/* Alert user when no trails are found. Alert text changes depending on which results are being displayed */}
                 {this.state.noTrails &&  <Alert page={this.state.page}/>}
+                {this.state.invalidZip && <Alert page={this.state.page}/>}
             </div>
         )
     }
