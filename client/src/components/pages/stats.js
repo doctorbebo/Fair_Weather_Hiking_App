@@ -55,9 +55,10 @@ class Stats extends Component {
     render() {
         return <div>
             <Navbar page='stats' />
+            <div className = "container">
             <h4>You have completed {this.state.hikeCount} hikes so far!</h4>
             <h6>Here are your stats:</h6>
-            <div style={{width: '60%', height: '200px'}}>
+            <div style={{height: '200px'}}>
             <Bar
             data={{
                 labels: ['January', 'February', 'March',
@@ -119,6 +120,7 @@ class Stats extends Component {
             }}
             />
             <p>Total Miles: {this.state.totalMiles} miles</p>
+            </div>
             </div>
         </div>
     }
