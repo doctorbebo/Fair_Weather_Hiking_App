@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-
 import PropTypes from 'prop-types';
 import { connect } from "react-redux";
-
 
 import Button from '../button';
 import Label from '../label';
@@ -17,8 +15,6 @@ class Search extends Component {
         if(!this.props.auth.isAuthenticated) {
             this.props.history.push('/login')
         }
-
-        console.log('componentdidmount submitted: ' +  this.state.isSubmitted)
 
         //initialize Materialize
         M.AutoInit();
@@ -45,6 +41,7 @@ class Search extends Component {
             sort: "",
             latitude: 0,
             longitude: 0,
+            zipcode: '',
             hikes: [],
             isSubmitted: false
             };
@@ -52,7 +49,6 @@ class Search extends Component {
       }
 
     onChange = event => {
-        console.log(event.target.value);
         this.setState({
             [event.target.id]: event.target.value,
             isSubmitted: false
@@ -74,6 +70,21 @@ class Search extends Component {
                         <Navbar page='search'/>
                         {/* <h6 className='search-title'>Enter Hike Criteria:</h6> */}
                         <form noValidate onSubmit={this.onSubmit.bind(this)}>
+                            <div className='col s5'>
+                                Search by current location <br />
+                                <i className="material-icons">my_location</i>
+                            </div>
+                            <div className='col s3 or'>OR</div>
+                            <div className='input-field col s4'>
+                                <input
+                                    onChange={this.onChange}
+                                    value={this.state.zipcode}
+                                    id="zipcode"
+                                    placeholder="zipcode"
+                                />
+                                <label className='active' htmlFor="zipcode">Enter Your Zipcode:</label>
+                            </div>
+                            <div className='input-field col s12 divider'></div>
                             <div className='input-field col s12'>
                                 <input
                                     onChange={this.onChange}
@@ -141,20 +152,11 @@ class Search extends Component {
                                     <span>Quality</span>
                                 </label>
                             </div>
-                            {/* <h6 className='or'>OR</h6>
-                            <br />
-                            <div className='input-field col s12'>
-                                <input
-                                    onChange={this.onChange}
-                                    value={this.state.hikeName}
-                                    id="hikeName"
-                                />
-                                <Label name='Search for hike by name' />
-                            </div> */}
                             <br />
                             <Button name='Search Hikes' type='submit' id='search-button' />
                         </form>
                         {this.state.isSubmitted && <Results
+                            zipcode={this.state.zipcode}
                             sort={this.state.sort}
                             type='search-results'
                             dist={this.state.maxTravel}

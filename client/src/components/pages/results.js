@@ -5,6 +5,8 @@ import HikeCard from '../results/hike_card/index';
 import Alert from '../alert';
 import API from '../../utils/API';
 
+let zipcodes = require('zipcodes');
+
 class Results extends Component  {
 
     constructor() {
@@ -18,6 +20,7 @@ class Results extends Component  {
     }
 
     componentDidMount() {
+        console.log(this.props.zipcode)
         let id = this.props.auth.user.id
 
         //function that sets state of component with results of api call
@@ -33,7 +36,11 @@ class Results extends Component  {
 
         switch (this.props.type) {
             case 'search-results':
-                const { lat, lon, length, dist, elev, sort } = this.props
+                let {lat, lon, length, dist, elev, sort, zipcode } = this.props
+                if(zipcode !== '') {
+                    lat = zipcodes.lookup(zipcode).latitude
+                    lon = zipcodes.lookup(zipcode).longitude
+                }
                 API.searchHikes(lat, lon, length, dist, elev, sort)
                     .then(res => {
                         if(elev !== null){
@@ -42,7 +49,6 @@ class Results extends Component  {
                         }
                         else {useResults(res.data.trails, 'search-results')}
                     })
-                    console.log(this.props)
                 break;
             case 'favorite-hikes':
                 //api call to favorites database, finds all hikes correlated with user id
@@ -56,7 +62,6 @@ class Results extends Component  {
                 //api call to completed database, finds all hikes correlated with user id
                 API.displayCompleted(id)
                     .then(res => {useResults(res.data, 'completed'); console.log(res.data)})
-                    
                 break;       
             default:
                 break;

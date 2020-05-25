@@ -4,10 +4,8 @@ import { connect } from "react-redux";
 import './style.css';
 import API from '../../../utils/API';
 import Weather from '../../../utils/weather'
-import Moment from "moment"
 import Modal from '../../completed/modal'
 import Hike from '../../hike'
-import { ConnectionStates } from "mongoose";
 
 class HikeCard extends Component {
 
@@ -42,8 +40,8 @@ class HikeCard extends Component {
                     this.toggleModal()
                 break;
             case 'delete-favorite':
-                console.log(this.props)
-                API.deleteFavorite(this.props.id, this.props.auth.user.id);
+                API.deleteFavorite(this.props.id, this.props.auth.user.id)
+                window.location.reload()
                 break;
             case "More-Info":
                 let forecastData =[]
