@@ -43,6 +43,7 @@ class HikeCard extends Component {
                 break;
             case 'delete-favorite':
                 API.deleteFavorite(this.props.id, this.props.auth.user.id)
+                window.location.reload()
                 break;
             case "More-Info":
                 let forecastData =[]
