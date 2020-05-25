@@ -55,7 +55,8 @@ class Results extends Component  {
             case 'completed-hikes':
                 //api call to completed database, finds all hikes correlated with user id
                 API.displayCompleted(id)
-                    .then(res => {useResults(res.data, 'completed')})
+                    .then(res => {useResults(res.data, 'completed'); console.log(res.data)})
+                    
                 break;       
             default:
                 break;
@@ -73,11 +74,13 @@ class Results extends Component  {
                 {/* map the array of trails, create hikecard component for each trail */}
                 {this.state.trails.map(trail => {
                     return <HikeCard type={this.props.type}
+                    // id={trail.id}
                     id={trail.id}
                     key={trail.id}
                     name={trail.name}
                     difficulty={trail.difficulty}
                     location={trail.location}
+                    completedId={trail._id}
                     summary={trail.summary} 
                     latitude ={trail.latitude}
                     longitude = {trail.longitude}
@@ -86,6 +89,7 @@ class Results extends Component  {
                     ascent={trail.ascent}
                     imgMedium={trail.imgMedium}
                     length={trail.length}
+                    day={trail.day}
                     />
                 })}
                 {/* Alert user when no trails are found. Alert text changes depending on which results are being displayed */}

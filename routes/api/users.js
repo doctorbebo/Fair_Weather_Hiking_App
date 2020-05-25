@@ -136,7 +136,8 @@ router.post('/completed', function(req,res) {
   // console.log(req.body)
   Completed.create({
     userID: req.body[0].auth.user.id,
-    hikeID: req.body[0].id,
+    id: req.body[0].id,
+    completedId: req.body[0]._id,
     name: req.body[0].name,
     difficulty: req.body[0].difficulty,
     high: req.body[0].high,
@@ -176,6 +177,16 @@ router.delete('/delete/:id/:userID', function(req,res) {
   Favorite.findOneAndDelete({
     id: req.params.id,
     userID: req.params.userID
+  })
+    .then(hike => {
+      console.log("Successful deletion");
+      //console.log('deleted: ' + hike)
+    })
+})
+router.delete('/delete/:day', function(req,res) {
+  console.log(req.params)
+  Completed.findOneAndDelete({
+    day: req.params.day,
   })
     .then(hike => {
       console.log("Successful deletion");
