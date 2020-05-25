@@ -42,7 +42,7 @@ class HikeCard extends Component {
                     this.toggleModal()
                 break;
             case 'delete-favorite':
-                API.deleteFavorite(this.props.id, this.props.auth.user.id);
+                API.deleteFavorite(this.props.id, this.props.auth.user.id)
                 break;
             case "More-Info":
                 let forecastData =[]

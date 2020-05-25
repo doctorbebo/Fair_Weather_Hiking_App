@@ -20,8 +20,6 @@ class Results extends Component  {
     componentDidMount() {
         let id = this.props.auth.user.id
 
-        console.log(this.props.sort)
-
         //function that sets state of component with results of api call
         let useResults = (trailList, page) => {
             if(trailList == '' || trailList.length === 0) {

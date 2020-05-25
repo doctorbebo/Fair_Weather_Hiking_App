@@ -31,7 +31,7 @@ export default {
 
     deleteFavorite: function(id, userID) {
         console.log('userid: ' + userID)
-        axios.delete(`/api/users/delete/${id}/${userID}`)
+        return axios.delete(`/api/users/delete/${id}/${userID}`)
     },
 
     getWeather: async function(hike){
