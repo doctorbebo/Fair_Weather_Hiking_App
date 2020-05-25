@@ -23,7 +23,7 @@ form {
 }
 
 .divider {
-  border-bottom: 2px dotted teal;
+  border-bottom: 1px dashed teal;
 }
 
 .or {

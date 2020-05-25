@@ -9,16 +9,12 @@ import Navbar from '../navbar';
 
 import M from 'materialize-css';
 
-let zipcodes = require('zipcodes');
-
 class Search extends Component {
     componentDidMount() {
         //redirect user to login page if user is not logged in
         if(!this.props.auth.isAuthenticated) {
             this.props.history.push('/login')
         }
-
-        console.log('componentdidmount submitted: ' +  this.state.isSubmitted)
 
         //initialize Materialize
         M.AutoInit();
