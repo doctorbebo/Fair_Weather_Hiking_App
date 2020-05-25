@@ -179,11 +179,10 @@ router.delete('/delete/:id/:userID', function(req,res) {
       //console.log('deleted: ' + hike)
     })
 })
-router.delete('/delete/:completedId', function(req,res) {
+router.delete('/delete/:day', function(req,res) {
   console.log(req.params)
   Completed.findOneAndDelete({
-    completedId: req.params.completedId
-    // userID: req.params.userID
+    day: req.params.day,
   })
     .then(hike => {
       console.log("Successful deletion");

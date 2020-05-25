@@ -97,8 +97,9 @@ class HikeCard extends Component {
                 API.addComplete(completedHike)
                 break;
             case 'delete-completed':
-                console.log(this.props)
-                API.deleteCompleted(this.props.completedId, this.props.auth.user.id);
+                console.log(this.props.day)
+                API.deleteCompleted(this.props.day, this.props.userComment);
+                window.location.reload(false)
                     break;
             default:
                 console.log(event.currentTarget);

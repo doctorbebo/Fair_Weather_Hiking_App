@@ -55,7 +55,8 @@ class Results extends Component  {
             case 'completed-hikes':
                 //api call to completed database, finds all hikes correlated with user id
                 API.displayCompleted(id)
-                    .then(res => {useResults(res.data, 'completed')})
+                    .then(res => {useResults(res.data, 'completed'); console.log(res.data)})
+                    
                 break;       
             default:
                 break;
@@ -87,6 +88,7 @@ class Results extends Component  {
                     ascent={trail.ascent}
                     imgMedium={trail.imgMedium}
                     length={trail.length}
+                    day={trail.day}
                     />
                 })}
                 {/* Alert user when no trails are found. Alert text changes depending on which results are being displayed */}

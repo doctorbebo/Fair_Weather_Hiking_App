@@ -33,9 +33,9 @@ export default {
         console.log('userid: ' + userID)
         axios.delete(`/api/users/delete/${id}/${userID}`)
     },
-    deleteCompleted: function(completedId) {
-        console.log("completed id: " +completedId)
-        axios.delete(`/api/delete/${completedId}`)
+    deleteCompleted: function(day, userComment) {
+        console.log("completed id: " +day +" user comment "+userComment)
+        axios.delete(`/api/users/delete/${day}`)
     },
 
     getWeather: async function(hike){
