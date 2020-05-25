@@ -38,8 +38,13 @@ class Results extends Component  {
             case 'search-results':
                 let {lat, lon, length, dist, elev, sort, zipcode } = this.props
                 if(zipcode !== '') {
-                    lat = zipcodes.lookup(zipcode).latitude
-                    lon = zipcodes.lookup(zipcode).longitude
+                    if(zipcodes.lookup(zipcode)) {
+                        lat = zipcodes.lookup(zipcode).latitude
+                        lon = zipcodes.lookup(zipcode).longitude
+                    }
+                    else {
+                        console.log('invalid zip')
+                    }
                 }
                 API.searchHikes(lat, lon, length, dist, elev, sort)
                     .then(res => {
