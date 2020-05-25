@@ -18,7 +18,6 @@ class Results extends Component  {
     }
 
     componentDidMount() {
-
         let id = this.props.auth.user.id
 
         //function that sets state of component with results of api call
@@ -34,8 +33,8 @@ class Results extends Component  {
 
         switch (this.props.type) {
             case 'search-results':
-                const { lat, lon, length, dist, elev } = this.props
-                API.searchHikes(lat, lon, length, dist, elev)
+                const { lat, lon, length, dist, elev, sort } = this.props
+                API.searchHikes(lat, lon, length, dist, elev, sort)
                     .then(res => {
                         if(elev !== null){
                             const filteredHikes = res.data.trails.filter(trail => trail.ascent < elev)
