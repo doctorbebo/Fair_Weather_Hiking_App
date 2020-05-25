@@ -2,12 +2,12 @@ import axios from 'axios';
 
 export default {
 
-    searchHikes: function(lat, lon, length, dist, elev) {
+    searchHikes: function(lat, lon, length, dist, elev, sort) {
         let resultQty = "&maxResults=10";
         let apiKey = "&key=200749828-0bd185ee7af374a0fb370047ff15cc20";
         
         let hikerequest = "https://cors-anywhere.herokuapp.com/https://www.hikingproject.com/data/get-trails?";
-        let query = `${hikerequest}lat=${lat}&lon=${lon}&minLength=${length}&maxDistance=${dist}${resultQty}${apiKey}`;
+        let query = `${hikerequest}lat=${lat}&lon=${lon}&minLength=${length}&maxDistance=${dist}&sort=${sort}${resultQty}${apiKey}`;
 
         return axios.get(query)
                 
@@ -31,7 +31,7 @@ export default {
 
     deleteFavorite: function(id, userID) {
         console.log('userid: ' + userID)
-        axios.delete(`/api/users/delete/${id}/${userID}`)
+        return axios.delete(`/api/users/delete/${id}/${userID}`)
     },
     deleteCompleted: function(day, userComment) {
         console.log("completed id: " +day +" user comment "+userComment)

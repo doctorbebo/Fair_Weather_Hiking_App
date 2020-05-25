@@ -39,7 +39,12 @@ const CompletedSchema = new Schema({
     userComment: {
         type: String
     },
-
+    latitude: {
+        type: Number
+    },
+    longitude:{
+        type: Number
+    },
     day: {
         type: Date,
         default: Date

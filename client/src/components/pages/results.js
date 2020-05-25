@@ -18,7 +18,6 @@ class Results extends Component  {
     }
 
     componentDidMount() {
-
         let id = this.props.auth.user.id
 
         //function that sets state of component with results of api call
@@ -34,8 +33,8 @@ class Results extends Component  {
 
         switch (this.props.type) {
             case 'search-results':
-                const { lat, lon, length, dist, elev } = this.props
-                API.searchHikes(lat, lon, length, dist, elev)
+                const { lat, lon, length, dist, elev, sort } = this.props
+                API.searchHikes(lat, lon, length, dist, elev, sort)
                     .then(res => {
                         if(elev !== null){
                             const filteredHikes = res.data.trails.filter(trail => trail.ascent < elev)
@@ -43,12 +42,13 @@ class Results extends Component  {
                         }
                         else {useResults(res.data.trails, 'search-results')}
                     })
+                    console.log(this.props)
                 break;
             case 'favorite-hikes':
                 //api call to favorites database, finds all hikes correlated with user id
                 API.displayFavorites(id)
                     .then(res => {
-                        // console.log(res.data)
+                        //console.log(res.data)
                         useResults(res.data, 'favorites')
                     })
                 break;
@@ -76,6 +76,7 @@ class Results extends Component  {
                     return <HikeCard type={this.props.type}
                     // id={trail.id}
                     id={trail.id}
+                    key={trail.id}
                     name={trail.name}
                     difficulty={trail.difficulty}
                     location={trail.location}

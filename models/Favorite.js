@@ -31,6 +31,12 @@ const FavoriteSchema = new Schema({
     summary: {
         type: String
     },
+    latitude: {
+        type: Number
+    },
+    longitude:{
+        type: Number
+    },
     location: {
         type: String
     }
