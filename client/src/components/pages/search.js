@@ -13,8 +13,6 @@ let zipcodes = require('zipcodes');
 
 class Search extends Component {
     componentDidMount() {
-        var hills = zipcodes.lookup(90210);
-        console.log(hills)
         //redirect user to login page if user is not logged in
         if(!this.props.auth.isAuthenticated) {
             this.props.history.push('/login')
@@ -55,7 +53,6 @@ class Search extends Component {
       }
 
     onChange = event => {
-        console.log(event.target.value);
         this.setState({
             [event.target.id]: event.target.value,
             isSubmitted: false
@@ -77,14 +74,21 @@ class Search extends Component {
                         <Navbar page='search'/>
                         {/* <h6 className='search-title'>Enter Hike Criteria:</h6> */}
                         <form noValidate onSubmit={this.onSubmit.bind(this)}>
-                            <div className='input-field col s12'>
+                            <div className='col s5'>
+                                Search by current location <br />
+                                <i className="material-icons">my_location</i>
+                            </div>
+                            <div className='col s3 or'>OR</div>
+                            <div className='input-field col s4'>
                                 <input
                                     onChange={this.onChange}
                                     value={this.state.zipcode}
                                     id="zipcode"
+                                    placeholder="zipcode"
                                 />
-                                <Label name='Zipcode' />
+                                <label className='active' htmlFor="zipcode">Enter Your Zipcode:</label>
                             </div>
+                            <div className='input-field col s12 divider'></div>
                             <div className='input-field col s12'>
                                 <input
                                     onChange={this.onChange}
@@ -152,16 +156,6 @@ class Search extends Component {
                                     <span>Quality</span>
                                 </label>
                             </div>
-                            {/* <h6 className='or'>OR</h6>
-                            <br />
-                            <div className='input-field col s12'>
-                                <input
-                                    onChange={this.onChange}
-                                    value={this.state.hikeName}
-                                    id="hikeName"
-                                />
-                                <Label name='Search for hike by name' />
-                            </div> */}
                             <br />
                             <Button name='Search Hikes' type='submit' id='search-button' />
                         </form>

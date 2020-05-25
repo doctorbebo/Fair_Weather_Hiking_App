@@ -18,14 +18,21 @@
   padding-left: 10px;
 } */
 
-/* .or {
+form {
+  margin-top: 30px
+}
+
+.divider {
+  border-bottom: 2px dotted teal;
+}
+
+.or {
   display: grid;
   grid-template-columns: minmax(20px, 1fr) auto minmax(20px, 1fr);
   align-items: center;
   text-align: center;
-  grid-gap: 20px;
+  grid-gap: 10px;
   width: 100%;
-  padding-top: 40px;
   color: rgb(12, 12, 82);
 }
 
@@ -33,7 +40,7 @@
 .or:after {
   content: '';
   border-top: 2px solid;
-} */
+}
 
 .alert {
   margin-top: 10px;

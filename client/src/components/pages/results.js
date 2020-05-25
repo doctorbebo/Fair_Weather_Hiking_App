@@ -49,7 +49,6 @@ class Results extends Component  {
                         }
                         else {useResults(res.data.trails, 'search-results')}
                     })
-                    console.log(this.props)
                 break;
             case 'favorite-hikes':
                 //api call to favorites database, finds all hikes correlated with user id
@@ -63,7 +62,6 @@ class Results extends Component  {
                 //api call to completed database, finds all hikes correlated with user id
                 API.displayCompleted(id)
                     .then(res => {useResults(res.data, 'completed'); console.log(res.data)})
-                    
                 break;       
             default:
                 break;
