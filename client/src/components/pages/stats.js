@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from "react-redux";
+
 import { Bar } from 'react-chartjs-2'
 
 import Navbar from '../navbar';
 import API from '../../utils/API';
+
+import { Bar } from 'react-chartjs-2'
 
 class Stats extends Component {
 
@@ -55,9 +58,13 @@ class Stats extends Component {
     render() {
         return <div>
             <Navbar page='stats' />
+
             <div className = "container">
+
+            <div style={{width: '60%', height: '200px'}}>
+
             <h4>You have completed {this.state.hikeCount} hikes so far!</h4>
-            <h6>Here are your stats:</h6>
+            <h5>Here are your stats:</h5>
             <div style={{height: '200px'}}>
             <Bar
             data={{
@@ -90,7 +97,7 @@ class Stats extends Component {
             }}
             />
             <p>Total Elevation: {this.state.totalElevation} ft</p>
-            {/* <Bar
+            <Bar
             data={{
                 labels: ['January', 'February', 'March',
                     'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
@@ -100,7 +107,7 @@ class Stats extends Component {
                         data: this.state.miles
                     }
                 ]
-            }} */}
+            }}
             options={{
                 maintainAspectRatio: false,
                 title: {
@@ -121,7 +128,7 @@ class Stats extends Component {
             />
             <p>Total Miles: {this.state.totalMiles} miles</p>
             </div>
-            </div>
+        </div>
         </div>
     }
 }
