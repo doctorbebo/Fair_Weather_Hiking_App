@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from "react-redux";
 
+import { Bar } from 'react-chartjs-2'
+
 import Navbar from '../navbar';
 import API from '../../utils/API';
 
@@ -56,7 +58,11 @@ class Stats extends Component {
     render() {
         return <div>
             <Navbar page='stats' />
+
+            <div className = "container">
+
             <div style={{width: '60%', height: '200px'}}>
+
             <h4>You have completed {this.state.hikeCount} hikes so far!</h4>
             <h5>Here are your stats:</h5>
             <div style={{height: '200px'}}>

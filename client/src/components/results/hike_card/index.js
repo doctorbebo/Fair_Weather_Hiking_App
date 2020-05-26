@@ -99,6 +99,9 @@ class HikeCard extends Component {
                 API.deleteCompleted(this.props.day, this.props.userComment);
                 window.location.reload(false)
                     break;
+            case 'cancel-submit':
+                this.toggleModal();
+                break;
             default:
                 console.log(event.currentTarget);
                 break;
@@ -111,6 +114,7 @@ render () {
              <Modal
           show={this.state.showModal}
           closeCallback={(e) => this.handleClick(e)}
+          cancelCallback={(e) => this.handleClick(e)}
           onChangeCallback={(e) => this.onChange(e)}
           customClass="custom_modal_class"
           commentText={this.state.userComment}
@@ -133,7 +137,7 @@ render () {
                                 </div>
                                 <div className="three-cols">Difficulty: {this.props.difficulty}</div>
 
-                                {this.props.type =='completed-hikes' && <div>Your Notes: {this.props.userComment}</div>}
+                                {this.props.type =='completed-hikes' && <div>Trip Report: {this.props.userComment}</div>}
 
                                 <div className="three-cols">
                                     <i className="material-icons">location_on</i> {this.props.location}
