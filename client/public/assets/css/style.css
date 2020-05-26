@@ -1,9 +1,32 @@
 .background
 {
-    background-image: url("../images/backgrounds/textureBackground.png");
+    background-image: url("../images/backgrounds/background.png");
+    object-fit: scale-down;
+    min-width: 100vw;
+    min-height: 100vh;
+}
+.border
+{
+    border: solid rgb(37, 37, 37) 1px;
 }
 .form-background
 {
     background-color: whitesmoke;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.27);
+    padding: 25px 10px;
+}
+.row
+{
+    margin-bottom: 0px;
+}
+.fixed
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+.index-card-bg
+{
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0),rgb(204, 204, 204) ,  rgb(204, 204, 204) , rgb(204, 204, 204) ,rgb(204, 204, 204) ,rgba(255, 255, 255, 0));
+    z-index: 999;
 }

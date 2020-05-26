@@ -116,7 +116,7 @@ render () {
           commentText={this.state.userComment}
         ></Modal>
             <div className="col s12 m12 l12">
-                <div className="card hoverable">
+                <div className="card hoverable border">
                     <a>
                         <div className="card-image" id="to-index-page" onClick={(e) => this.handleClick(e)}>
                             <img  src={this.props.imgMedium} alt = "hike"/>
