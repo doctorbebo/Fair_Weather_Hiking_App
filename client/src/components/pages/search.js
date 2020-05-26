@@ -64,10 +64,8 @@ class Search extends Component {
 
     render() {
         return(
-            <div className='container search'>
-                <div className='row'>
-                    <Navbar page='search'/>
-                </div>
+            <div>
+                <Navbar page='search'/>
                 <br></br>
                 <div className='row index-card-bg'>
                     <div className='col m8 push-m2'>
