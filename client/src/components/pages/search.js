@@ -64,14 +64,25 @@ class Search extends Component {
 // adding comments 
     render() {
         return(
-            <div className='container search'>
-                <div className='row'>
-                    <Navbar page='search'/>
-                </div>
+            <div>
+                <Navbar page='search'/>
                 <br></br>
                 <div className='row index-card-bg'>
                     <div className='col m8 push-m2'>
                         <form className="form-background" noValidate onSubmit={this.onSubmit.bind(this)}>
+                            <div className='col s4'>
+                                Search by current location <br />
+                                <i className="material-icons">my_location</i>
+                            </div>
+                            <div className='col s3 or'>OR</div>
+                            <div className='input-field col s5'>                                <input
+                                    onChange={this.onChange}
+                                    value={this.state.zipcode}
+                                    id="zipcode"
+                                />
+                                <label className='active' htmlFor="zipcode">Enter Your Zipcode:</label>
+                            </div>
+                            <div className='input-field col s12 divider'></div>
                             <div className='input-field col s12'>
                                 <input
                                     onChange={this.onChange}
@@ -119,6 +130,7 @@ class Search extends Component {
                             <Button name='Search Hikes' type='submit' />
                         </form>
                         {this.state.isSubmitted && <Results
+                            zipcode={this.state.zipcode}
                             type='search-results'
                             dist={this.state.maxTravel}
                             length={this.state.minLength}
