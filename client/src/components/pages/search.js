@@ -70,11 +70,11 @@ class Search extends Component {
                 <div className='row index-card-bg'>
                     <div className='col m8 push-m2'>
                         <form className="form-background" noValidate onSubmit={this.onSubmit.bind(this)}>
-                            <div className='col s4'>
+                            <div className='col s5'>
                                 Search by current location <br />
                                 <i className="material-icons">my_location</i>
                             </div>
-                            <div className='col s3 or'>OR</div>
+                            <div className='col s2 or'>OR</div>
                             <div className='input-field col s5'>                                <input
                                     onChange={this.onChange}
                                     value={this.state.zipcode}
