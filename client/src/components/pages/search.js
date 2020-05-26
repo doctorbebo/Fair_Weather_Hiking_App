@@ -74,9 +74,12 @@ class Search extends Component {
         return(
             <div className='container search'>
                 <div className='row'>
-                    <div className='col s8 push-s2'>
-                        <Navbar page='search'/>
-                        <form noValidate onSubmit={this.onSubmit.bind(this)}>
+                    <Navbar page='search'/>
+                </div>
+                <br></br>
+                <div className='row index-card-bg'>
+                    <div className='col m8 push-m2'>
+                        <form className="form-background" noValidate onSubmit={this.onSubmit.bind(this)}>
                             <div className='input-field col s12'>
                                 <input
                                     onChange={this.onChange}
@@ -91,7 +94,7 @@ class Search extends Component {
                                 onChange={this.onChange}
                                 value={this.state.maxTravel}
                                 id="maxTravel">
-                                    <option value="">Select Maximum Distance to Trailhead</option>
+                                    <option value="">Select Max Distance to Trailhead</option>
                                     <option value= "5" >5 miles</option>
                                     <option value="10">10 miles</option>
                                     <option value="15">15 miles</option>
