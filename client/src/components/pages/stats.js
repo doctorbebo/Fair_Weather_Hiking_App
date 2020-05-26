@@ -14,7 +14,8 @@ class Stats extends Component {
             elevation: [],
             miles: [],
             totalElevation: '',
-            totalMiles: ''
+            totalMiles: '',
+            hikeCount: ''
         }
     }
 
@@ -30,7 +31,7 @@ class Stats extends Component {
                 console.log(res.data)
                 for(let i=0; i<res.data.length; i++) {
                     
-                    //arrays of data for stats chart
+                    //arrays of data from api call for stats chart
                     let month = res.data[i].day.split('-')[1];
                     elevationByMonth[month-1] += res.data[i].ascent;
                     milesByMonth[month-1] += parseInt(res.data[i].length)
@@ -45,7 +46,8 @@ class Stats extends Component {
                     elevation: elevationByMonth,
                     miles: milesByMonth,
                     totalElevation: totalElevation,
-                    totalMiles: totalMiles
+                    totalMiles: totalMiles,
+                    hikeCount: res.data.length
                 })
             })
     }
@@ -53,8 +55,16 @@ class Stats extends Component {
     render() {
         return <div>
             <Navbar page='stats' />
+<<<<<<< HEAD
             <div style={{width: '60%', height: '200px'}}>
             {/* <Bar
+=======
+            <div className = "container">
+            <h4>You have completed {this.state.hikeCount} hikes so far!</h4>
+            <h6>Here are your stats:</h6>
+            <div style={{height: '200px'}}>
+            <Bar
+>>>>>>> ada18b923e9e76b95fad9ffe5823a0a9d0540329
             data={{
                 labels: ['January', 'February', 'March',
                     'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
@@ -115,6 +125,7 @@ class Stats extends Component {
             }}
             />
             <p>Total Miles: {this.state.totalMiles} miles</p>
+            </div>
             </div>
         </div>
     }

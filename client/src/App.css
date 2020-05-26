@@ -6,6 +6,41 @@
   margin-top: 200px; 
 }
 
+.sort-buttons {
+  padding-left: 20px;
+  display: inline;
+}
+/* 
+.search-title {
+  font-weight: bold;
+  text-align: left;
+  padding-left: 10px;
+} */
+
+form {
+  margin-top: 30px
+}
+
+.divider {
+  border-bottom: 1px dashed teal;
+}
+
+.or {
+  display: grid;
+  grid-template-columns: minmax(20px, 1fr) auto minmax(20px, 1fr);
+  align-items: center;
+  text-align: center;
+  grid-gap: 10px;
+  width: 100%;
+  color: rgb(12, 12, 82);
+}
+
+.or:before,
+.or:after {
+  content: '';
+  border-top: 2px solid;
+}
+
 .alert {
   margin-top: 10px;
   border-radius: 5px;

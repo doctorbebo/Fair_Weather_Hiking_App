@@ -3,16 +3,21 @@ import Results from '../pages/results';
 import Navbar from '../navbar';
 
 function CompletedContainer() {
-    return <div className='container'>
+    return <div>
         <div className='row'>
-            <Navbar />
-        </div>
-        <div className='row'>
-            <div className='col s8 offset-s2'>
-                <Results type='completed-hikes'/>
+            <Navbar page='completed' />
+        </div>    
+        <div className='container'>
+
+            <div className='row'>
+                <div className='col s8 offset-s2'>
+                    <Results type='completed-hikes'/>
+                </div>
             </div>
         </div>
     </div>
+    
+
 }
 
 export default CompletedContainer;

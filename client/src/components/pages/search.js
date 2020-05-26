@@ -1,26 +1,25 @@
 import React, { Component } from 'react';
-
 import PropTypes from 'prop-types';
 import { connect } from "react-redux";
-
 
 import Button from '../button';
 import Label from '../label';
 import Results from './results';
 import Navbar from '../navbar';
 
-import Hike from '../hike'
-
-
 import M from 'materialize-css';
 
 class Search extends Component {
-    //initialize Materialize
     componentDidMount() {
+        //redirect user to login page if user is not logged in
         if(!this.props.auth.isAuthenticated) {
             this.props.history.push('/login')
         }
+
+        //initialize Materialize
         M.AutoInit();
+
+        //locate users current location
         if ("geolocation" in navigator) {
             console.log("Current location is Available");
           } else {
@@ -39,27 +38,21 @@ class Search extends Component {
             minLength: "",
             maxElevation: "",
             maxTravel: "",
+            sort: "",
             latitude: 0,
             longitude: 0,
+            zipcode: '',
             hikes: [],
-
             isSubmitted: false
-
             };
             this.onSubmit=this.onSubmit.bind(this);     
       }
-    // getuserlocation = () => {
-    //     navigator.geolocation.getCurrentPosition(function(position) {
-    //         console.log("Latitude is :", position.coords.latitude);
-    //         console.log("Longitude is :", position.coords.longitude);
-    //         this.setState ({latitude: position.coords.latitude})
-    //         this.setState ({longitude: position.coords.longitude})
-    //       });
-    //   }
 
     onChange = event => {
-        console.log(event.target.value);
-        this.setState({ [event.target.id]: event.target.value })
+        this.setState({
+            [event.target.id]: event.target.value,
+            isSubmitted: false
+        })
     }
 
     onSubmit(event) {
@@ -67,11 +60,11 @@ class Search extends Component {
         this.setState({
             isSubmitted: true
         })
-        console.log('searched for a hike')
     }
 
     render() {
         return(
+<<<<<<< HEAD
             <div className='container search'>
                 <div className='row'>
                     <Navbar page='search'/>
@@ -134,6 +127,112 @@ class Search extends Component {
                             lon={this.state.longitude}
                             elev={this.state.maxElevation}
                             />}
+=======
+            <div>
+                <Navbar page='search'/>
+                <div className='container search'>
+                    <div className='row'>
+                        <div className='col s8 push-s2'>
+                            
+                            {/* <h6 className='search-title'>Enter Hike Criteria:</h6> */}
+                            <form noValidate onSubmit={this.onSubmit.bind(this)}>
+                                <div className='col s5'>
+                                    Search by current location <br />
+                                    <i className="material-icons">my_location</i>
+                                </div>
+                                <div className='col s3 or'>OR</div>
+                                <div className='input-field col s4'>
+                                    <input
+                                        onChange={this.onChange}
+                                        value={this.state.zipcode}
+                                        id="zipcode"
+                                        placeholder="zipcode"
+                                    />
+                                    <label className='active' htmlFor="zipcode">Enter Your Zipcode:</label>
+                                </div>
+                                <div className='input-field col s12 divider'></div>
+                                <div className='input-field col s12'>
+                                    <input
+                                        onChange={this.onChange}
+                                        value={this.state.minLength}
+                                        id="minLength"
+                                        type="number"
+                                        min="0"
+                                    />
+                                    <Label name='Minimum Hike Length' />
+                                </div>
+                                <div className="input-field col s12">
+                                    <select
+                                    onChange={this.onChange}
+                                    value={this.state.maxTravel}
+                                    id="maxTravel">
+                                        <option value="" className='option'>Select Maximum Distance to Trailhead</option>
+                                        <option value= "5" >5 miles</option>
+                                        <option value="10">10 miles</option>
+                                        <option value="15">15 miles</option>
+                                        <option value="25">25 miles</option>
+                                        <option value="50">50 miles</option>
+                                        <option value="100">100 miles</option>
+                                    </select>
+                                </div>
+                                <div className="input-field col s12">
+                                    <select
+                                    onChange={this.onChange}
+                                    value={this.state.maxElevation}
+                                    id="maxElevation">
+                                    >
+                                        <option value="">Select Max Elevation Gain</option>
+                                        <option value="100">100 ft</option>
+                                        <option value="1000">1000 ft</option>
+                                        <option value="2000">2000 ft</option>
+                                        <option value="3000">3000 ft</option>
+                                        <option value="4000">4000 ft</option>
+                                        <option value="5000">5000 ft</option>
+                                        <option value="6000">6000 ft</option>
+                                        <option value="7000">7000 ft</option>
+                                        <option value="8000">8000 ft</option>
+                                        <option value="9000">9000 ft</option>
+                                        <option value="10000">10000 ft</option>
+                                    </select>
+                                </div>
+                                <div className='sort-buttons'>
+                                    <div className='sort-buttons'>Sort by:          </div>  
+                                        <label>
+                                            <input 
+                                            onChange={this.onChange} 
+                                            value='distance'
+                                            id='sort' class="with-gap" 
+                                            name="group1" type="radio" 
+                                            checked={this.state.sort === 'distance'}  />
+                                            <span>Distance</span>
+                                        </label>
+                                </div>
+                                <div className='sort-buttons'>
+                                    <label>
+                                        <input 
+                                        onChange={this.onChange} 
+                                        value='quality'
+                                        id='sort' class="with-gap" 
+                                        name="group1" type="radio" 
+                                        checked={this.state.sort === 'quality'}  />
+                                        <span>Quality</span>
+                                    </label>
+                                </div>
+                                <br />
+                                <Button name='Search Hikes' type='submit' id='search-button' />
+                            </form>
+                            {this.state.isSubmitted && <Results
+                                zipcode={this.state.zipcode}
+                                sort={this.state.sort}
+                                type='search-results'
+                                dist={this.state.maxTravel}
+                                length={this.state.minLength}
+                                lat={this.state.latitude}
+                                lon={this.state.longitude}
+                                elev={this.state.maxElevation}
+                                />}
+                        </div>
+>>>>>>> ada18b923e9e76b95fad9ffe5823a0a9d0540329
                     </div>
                 </div>
             </div>
