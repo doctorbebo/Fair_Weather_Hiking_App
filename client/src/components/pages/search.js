@@ -137,7 +137,7 @@ class Search extends Component {
                                             <input 
                                             onChange={this.onChange} 
                                             value='distance'
-                                            id='sort' class="with-gap" 
+                                            id='sort' className="with-gap" 
                                             name="group1" type="radio" 
                                             checked={this.state.sort === 'distance'}  />
                                             <span>Distance</span>
@@ -148,7 +148,7 @@ class Search extends Component {
                                         <input 
                                         onChange={this.onChange} 
                                         value='quality'
-                                        id='sort' class="with-gap" 
+                                        id='sort' className="with-gap" 
                                         name="group1" type="radio" 
                                         checked={this.state.sort === 'quality'}  />
                                         <span>Quality</span>

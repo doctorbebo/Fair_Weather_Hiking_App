@@ -57,7 +57,7 @@ class Stats extends Component {
             <Navbar page='stats' />
             <div className = "container">
             <h4>You have completed {this.state.hikeCount} hikes so far!</h4>
-            <h6>Here are your stats:</h6>
+            <h5>Here are your stats:</h5>
             <div style={{height: '200px'}}>
             <Bar
             data={{
