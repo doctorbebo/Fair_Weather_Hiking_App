@@ -4,7 +4,8 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 import Button from '../button';
-import {Redirect} from 'react-router-dom'
+import {Redirect} from 'react-router-dom';
+import './style.css';
 
 class Dashboard extends Component {
 
@@ -25,12 +26,15 @@ class Dashboard extends Component {
           <div className='row'>
           </div>
           <div className="col s12 center-align">
-            <h4>
-              <b>Hey,</b> {user.name.split(" ")[0]}
-              <p className="flow-text grey-text text-darken-1">
-                Welcome to Fair Weather Hiking
-              </p>
-            </h4>
+            <div id='heading'>
+              <h4>
+                {/* <b className='white-text'>Hey, {user.name.split(" ")[0]}</b> */}
+                <p className="flow-text white-text text-darken-1">
+                  Fair Weather Hiking
+                </p>
+              </h4>
+            </div>
+            
             {/* <button
               style={{
                 width: "150px",
@@ -49,7 +53,7 @@ class Dashboard extends Component {
               <Link to="/completed"><Button name='View Completed Hikes' width='300px'/></Link><br />
               <Link to='/favorites'><Button name='View Favorite Hikes' width='300px'/></Link><br />
               <Link to='/stats'><Button name='View Stats' width='300px'/></Link><br /><br />
-              <Link to='/login' onClick={this.onLogoutClick}>Log out</Link>
+              <div id='logout'><Link to='/login' onClick={this.onLogoutClick}>Log out</Link></div>
             </div>
 
           </div>
