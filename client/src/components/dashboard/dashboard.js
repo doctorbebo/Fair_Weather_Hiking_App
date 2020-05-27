@@ -40,7 +40,6 @@ class Dashboard extends Component {
               <Link to='/stats'><Button name='View Stats' width='300px'/></Link><br /><br />
               <div id='logout'><Link to='/login' onClick={this.onLogoutClick}>Log out</Link></div>
             </div>
-
           </div>
         </div>
       </div>
