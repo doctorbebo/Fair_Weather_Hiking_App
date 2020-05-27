@@ -31,3 +31,15 @@
     background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgb(59, 59, 59), rgb(59, 59, 59)  ,rgba(0, 0, 0, 0));
     z-index: 999;
 }
+.formasdfasdf
+{
+    background-color: rgba(59, 59, 59, 0.548);
+    /* padding: 2px 20px 2px 20px; */
+    margin-top: 40px;
+    padding: 20px;
+    border-radius: 5px;
+}
+.color-black
+{
+    color: black;
+}
