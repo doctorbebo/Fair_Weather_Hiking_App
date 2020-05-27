@@ -17,6 +17,7 @@ nav.nav-center ul {
 nav.nav-center ul li {
   display: inline;
   float: none;
+  padding: 0px;
 }
 nav.nav-center ul li a {
   display: inline-block;
@@ -66,8 +67,13 @@ form {
   margin: 0 auto
 }
 
+a, i {
+  margin: 0px;
+  padding: 0px;
+}
+
 i.icon-yellow {
-  color: gold
+  color: gold;
 }
 
 i.icon-green {

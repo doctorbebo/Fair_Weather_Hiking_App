@@ -12,6 +12,9 @@ class Background extends React.Component
             height: window.innerHeight,
             width: window.innerWidth
         }
+    }
+
+    componentDidMount() {
         window.addEventListener("resize", ()=>
         {
             this.setState(

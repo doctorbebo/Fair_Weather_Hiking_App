@@ -9,7 +9,7 @@ class Navbar extends Component {
       <div className="navbar-fixed">
         <nav className="z-depth-0 nav-center">
           <div className="nav-wrapper white row">
-            <div className="col s3 brand-logo center black-text">
+            <div className="col s12  brand-logo center black-text">
               <ul>
               <li><a href='/' title='home'><i className="material-icons icon-black">home</i></a></li>              
               
