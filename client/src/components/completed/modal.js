@@ -7,15 +7,14 @@ import './modal.css';
 const Modal = ({customClass, show, closeCallback, onChangeCallback, commentText, cancelCallback }) => (
   <div className={`modal ${customClass}`} style={{ display: show ? 'block' : 'none'}}>
     <div className="overlay" onClick={closeCallback}></div>
-    <div className="title">Hikers Journal</div>
     <div className="modal_content">
         <form className="journalEntry">
-            <label>
-                Trip Report:
-                <input rows="5" type="text" name="commentBox" id="commentBox" onChange={onChangeCallback} value={commentText} />
+            <label class ="inputBox">
+                Trip Report
+                <input class="inputText" type="text" name="commentBox" id="commentBox" onChange={onChangeCallback} value={commentText} />
             </label>
             <Link class="waves-effect waves-light btn hoverable blue accent-3" id="submit-complete" value="Submit" onClick={closeCallback}>Submit</Link>
-            <Link class="waves-effect waves-light btn hoverable blue accent-3" id="cancel-submit" value="cancel" onClick={cancelCallback}>Cancel</Link>
+            <Link class="waves-effect waves-light btn hoverable red accent-3" id="cancel-submit" value="cancel" onClick={cancelCallback}>Cancel</Link>
 
         </form>
     </div>
