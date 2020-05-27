@@ -32,6 +32,7 @@ class HikeCard extends Component {
     }
 
      handleClick = event => {
+        event.preventDefault();
         switch (event.currentTarget.id) {
             case "Add-to-favs":
                 console.log(this.props)
