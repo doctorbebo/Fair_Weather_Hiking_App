@@ -10,6 +10,17 @@
   padding-left: 20px;
   display: inline;
 }
+
+nav.nav-center ul {
+  text-align: center;
+}
+nav.nav-center ul li {
+  display: inline;
+  float: none;
+}
+nav.nav-center ul li a {
+  display: inline-block;
+}
 /* 
 .search-title {
   font-weight: bold;
@@ -18,7 +29,8 @@
 } */
 
 form {
-  margin-top: 30px
+  margin-top: 30px;
+  margin-bottom: 30px
 }
 
 .divider {

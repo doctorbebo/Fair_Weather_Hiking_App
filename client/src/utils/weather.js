@@ -43,8 +43,6 @@ export default {
             }
         }
 
-        let bestDays
-
         if(firstBestTemp.length !== 0){
             return firstBestTemp;
         }
