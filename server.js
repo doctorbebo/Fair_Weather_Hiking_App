@@ -52,6 +52,9 @@ app.use('/api/favorite', users)
 app.use('/api/completed', users)
 // app.use("/api/hikes", hikes);
 
+app.get('*', (request, response) => {
+  response.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+});
 
 const port = process.env.PORT || 5000; // process.env.port is Heroku's port if you choose to deploy the app there
 
