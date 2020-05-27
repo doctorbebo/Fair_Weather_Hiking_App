@@ -9,13 +9,13 @@ const Modal = ({customClass, show, closeCallback, onChangeCallback, commentText,
     <div className="overlay" onClick={closeCallback}></div>
     <div className="modal_content">
         <form className="journalEntry">
-            <label class ="inputBox">
+            <label className="inputBox">
                 Trip Report
-                <input class="inputText" type="text" name="commentBox" id="commentBox" onChange={onChangeCallback} value={commentText} />
+                <input className="inputText" type="text" name="commentBox" id="commentBox" onChange={onChangeCallback} value={commentText} />
             </label>
 
-            <Link className="waves-effect waves-light btn hoverable blue accent-3" id="submit-complete" value="Submit" onClick={closeCallback}>Submit</Link>
-            <Link className="waves-effect waves-light btn hoverable red accent-3" id="cancel-submit" value="cancel" onClick={cancelCallback}>Cancel</Link>
+            <button className="waves-effect waves-light btn hoverable blue accent-3" id="submit-complete" value="Submit" onClick={closeCallback}>Submit</button>
+            <button className="waves-effect waves-light btn hoverable red accent-3" id="cancel-submit" value="cancel" onClick={cancelCallback}>Cancel</button>
 
 
         </form>
