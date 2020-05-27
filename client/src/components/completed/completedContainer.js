@@ -7,12 +7,9 @@ function CompletedContainer() {
         <div className='row'>
             <Navbar page='completed' />
         </div>    
-        <div className='container'>
-
-            <div className='row'>
-                <div className='col s8 offset-s2'>
-                    <Results type='completed-hikes'/>
-                </div>
+        <div className='row index-card-bg'>
+            <div className='col s8 offset-s2'>
+                <Results type='completed-hikes'/>
             </div>
         </div>
     </div>

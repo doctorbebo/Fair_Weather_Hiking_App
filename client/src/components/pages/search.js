@@ -66,9 +66,8 @@ class Search extends Component {
         return(
             <div>
                 <Navbar page='search'/>
-                <br></br>
                 <div className='row index-card-bg'>
-                    <div className='col m8 push-m2'>
+                    <div className='col m8 push-m2 col-pad'>
                         <form className="form-background" noValidate onSubmit={this.onSubmit.bind(this)}>
                             <div className='col s5'>
                                 Search by current location <br />
