@@ -1,0 +1,19 @@
+.stats{
+    background-color: rgba(59, 59, 59, 0.548);
+    padding: 10px 10px 100px 10px;
+    margin: 20px 20px 50px 20px;
+   
+}
+
+.totals{
+    color: white;
+}
+
+.banner{
+    color: white;
+}
+.chart {
+    margin: 0 auto;
+    height: 250px;
+    width: 90%;
+}
