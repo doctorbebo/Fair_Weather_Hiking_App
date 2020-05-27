@@ -14,8 +14,8 @@ const Modal = ({customClass, show, closeCallback, onChangeCallback, commentText,
                 Trip Report:
                 <input rows="5" type="text" name="commentBox" id="commentBox" onChange={onChangeCallback} value={commentText} />
             </label>
-            <Link class="waves-effect waves-light btn hoverable blue accent-3" id="submit-complete" value="Submit" onClick={closeCallback}>Submit</Link>
-            <Link class="waves-effect waves-light btn hoverable blue accent-3" id="cancel-submit" value="cancel" onClick={cancelCallback}>Cancel</Link>
+            <Link className="waves-effect waves-light btn hoverable blue accent-3" id="submit-complete" value="Submit" onClick={closeCallback}>Submit</Link>
+            <Link className="waves-effect waves-light btn hoverable blue accent-3" id="cancel-submit" value="cancel" onClick={cancelCallback}>Cancel</Link>
 
         </form>
     </div>

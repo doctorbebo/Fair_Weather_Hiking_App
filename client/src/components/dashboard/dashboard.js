@@ -4,7 +4,8 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 import Button from '../button';
-import {Redirect} from 'react-router-dom'
+import {Redirect} from 'react-router-dom';
+import './style.css';
 
 class Dashboard extends Component {
 
@@ -17,39 +18,27 @@ class Dashboard extends Component {
     if(!this.props.auth.isAuthenticated) {
       return <Redirect to='/login' />
     }
-    const { user } = this.props.auth;
+    // const { user } = this.props.auth;
 
     return (
       <div style={{ height: "75vh" }} className="container valign-wrapper">
         <div className="row">
           <div className='row'>
           </div>
-          <div className="col s12 center-align">
-            <h4>
-              <b>Hey,</b> {user.name.split(" ")[0]}
-              <p className="flow-text grey-text text-darken-1">
-                Welcome to Fair Weather Hiking
-              </p>
-            </h4>
-            {/* <button
-              style={{
-                width: "150px",
-                borderRadius: "3px",
-                letterSpacing: "1.5px",
-                marginTop: "1rem"
-              }}
-              onClick={this.onLogoutClick}
-              className="btn btn-large waves-effect waves-light hoverable blue accent-3"
-            >
-              Logout
-            </button> */}
+          <div className="col s12 center-align" id='heading'>
+                {/* <b className='white-text'>Hey, {user.name.split(" ")[0]}</b> */}
+                {/* <h2 className="flow-text white-text text-darken-1"> */}
+                <h4>
+                  Fair Weather Hiking
+                </h4>
+            
             <div className='row'>
               {/* Heroku needs a "Link" tag instead of an "a" tag. Also be sure to change "href" to "to" like below. */}
               <Link to="/search"><Button name='Find A Hike' width='300px'/></Link><br />
               <Link to="/completed"><Button name='View Completed Hikes' width='300px'/></Link><br />
               <Link to='/favorites'><Button name='View Favorite Hikes' width='300px'/></Link><br />
               <Link to='/stats'><Button name='View Stats' width='300px'/></Link><br /><br />
-              <Link to='/login' onClick={this.onLogoutClick}>Log out</Link>
+              <div id='logout'><Link to='/login' onClick={this.onLogoutClick}>Log out</Link></div>
             </div>
 
           </div>

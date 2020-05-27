@@ -42,14 +42,7 @@ class Results extends Component  {
                     if(zipcodes.lookup(zipcode)) {
                         lat = zipcodes.lookup(zipcode).latitude
                         lon = zipcodes.lookup(zipcode).longitude
-                        API.searchHikes(lat, lon, length, dist, elev, sort)
-                            .then(res => {
-                                if(elev !== null){
-                                    const filteredHikes = res.data.trails.filter(trail => trail.ascent < elev)
-                                    useResults(filteredHikes, 'search-results')
-                                }
-                                else {useResults(res.data.trails, 'search-results')}
-                            })
+                    
                     }
                     else {
                         console.log('invalid zip')
@@ -60,6 +53,15 @@ class Results extends Component  {
                         })
                     }
                 }
+                API.searchHikes(lat, lon, length, dist, elev, sort)
+                    .then(res => {
+                        if(elev !== null){
+                            const filteredHikes = res.data.trails.filter(trail => trail.ascent < elev)
+                            useResults(filteredHikes, 'search-results')
+                        }
+                        else {useResults(res.data.trails, 'search-results')}
+                    })
+                
                 
                 break;
             case 'favorite-hikes':

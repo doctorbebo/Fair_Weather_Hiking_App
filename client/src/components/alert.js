@@ -13,8 +13,10 @@ export default function Alert(props) {
             break;
         case 'completed':
             text = 'No completed hikes yet!'
+            break;
         case 'invalid zip':
             text = 'Please enter a valid zip!'
+            break;
         default:
             break;
     }

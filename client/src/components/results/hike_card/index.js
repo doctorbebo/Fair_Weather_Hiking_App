@@ -162,10 +162,8 @@ render () {
                             {this.props.type == 'favorite-hikes' && <button className="btn-large btn-by3" id="delete-favorite" onClick={(e) => this.handleClick(e)}>Delete from Favorites <i className="small material-icons icon-red">delete_forever</i></button>}
                             {this.props.type == 'completed-hikes' && <button className="btn-large btn-by3" id="delete-completed" onClick={(e) => this.handleClick(e)}>Delete from Completed <i className="small material-icons icon-red">delete_forever</i></button>}
 
-                            {!this.state.show_more && <button className="btn-large btn-by3" id="More-Info" onClick={(e) => this.handleClick(e)}>Show More<i className="small material-icons icon-white">expand_more</i></button>}
-                            {this.state.show_more && <button className="btn-large btn-by3" id="Less-Info" onClick={(e) => this.handleClick(e)}>Show Less<i className="small material-icons icon-white">expand_less</i></button>}
-
-                    
+                            {!this.state.show_more && <button  id="More-Info" onClick={(e) => this.handleClick(e)}>Show More<i className="small material-icons icon-black">expand_more</i></button>}
+                            {this.state.show_more && <button  id="Less-Info" onClick={(e) => this.handleClick(e)}>Show Less<i className="small material-icons icon-white">expand_less</i></button>}
                     </div>
                 </div>
             </div>
