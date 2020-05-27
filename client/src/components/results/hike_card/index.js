@@ -164,8 +164,6 @@ render () {
 
                             {!this.state.show_more && <button  id="More-Info" onClick={(e) => this.handleClick(e)}>Show More<i className="small material-icons icon-black">expand_more</i></button>}
                             {this.state.show_more && <button  id="Less-Info" onClick={(e) => this.handleClick(e)}>Show Less<i className="small material-icons icon-white">expand_less</i></button>}
-
-                    
                     </div>
                 </div>
             </div>

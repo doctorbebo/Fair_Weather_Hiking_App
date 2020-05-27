@@ -1,7 +1,11 @@
-#heading,
-#logout {
+#heading {
     background-color: rgba(59, 59, 59, 0.548);
-    padding: 5px 20px 5px 20px;
+    /* padding: 2px 20px 2px 20px; */
+    margin-top: 40px;
+    padding: 20px;
     border-radius: 5px;
-    width: 100%;
+}
+
+h4 {
+    color: white;
 }

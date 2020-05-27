@@ -18,35 +18,20 @@ class Dashboard extends Component {
     if(!this.props.auth.isAuthenticated) {
       return <Redirect to='/login' />
     }
-    const { user } = this.props.auth;
+    // const { user } = this.props.auth;
 
     return (
       <div style={{ height: "75vh" }} className="container valign-wrapper">
         <div className="row">
           <div className='row'>
           </div>
-          <div className="col s12 center-align">
-            <div id='heading'>
-              <h4>
+          <div className="col s12 center-align" id='heading'>
                 {/* <b className='white-text'>Hey, {user.name.split(" ")[0]}</b> */}
-                <p className="flow-text white-text text-darken-1">
+                {/* <h2 className="flow-text white-text text-darken-1"> */}
+                <h4>
                   Fair Weather Hiking
-                </p>
-              </h4>
-            </div>
+                </h4>
             
-            {/* <button
-              style={{
-                width: "150px",
-                borderRadius: "3px",
-                letterSpacing: "1.5px",
-                marginTop: "1rem"
-              }}
-              onClick={this.onLogoutClick}
-              className="btn btn-large waves-effect waves-light hoverable blue accent-3"
-            >
-              Logout
-            </button> */}
             <div className='row'>
               {/* Heroku needs a "Link" tag instead of an "a" tag. Also be sure to change "href" to "to" like below. */}
               <Link to="/search"><Button name='Find A Hike' width='300px'/></Link><br />
