@@ -3,9 +3,10 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import './style.css';
 import API from '../../../utils/API';
-import Weather from '../../../utils/weather'
-import Modal from '../../completed/modal'
-import Hike from '../../hike'
+import Weather from '../../../utils/weather';
+import Modal from '../../completed/modal';
+import Hike from '../../hike';
+import Moment from "moment";
 
 class HikeCard extends Component {
 
@@ -135,10 +136,12 @@ render () {
                                     <br />
                                     Elevation gain: {this.props.ascent} ft
                                 </div>
-                                {this.props.type =='completed-hikes' && <div className="three-cols">Trip Report: {this.props.userComment}</div>}
-
-                                <div className="three-cols">Difficulty: {this.props.difficulty}</div>
-
+                                {this.props.type =='completed-hikes' && <div className="three-cols">Report: {this.props.userComment}</div>}
+                                <div className="three-cols">Difficulty: {this.props.difficulty}
+                                <br />
+                                {this.props.type =='completed-hikes' && <div>Date: {Moment(this.props.day).format("MMM Do YYYY")}</div>}
+                                </div>
+                                
 
                                 {this.props.type !=='completed-hikes' && <div className="three-cols">
                                     <i className="material-icons">location_on</i> {this.props.location}

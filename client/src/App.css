@@ -2,10 +2,6 @@
   text-align: center;
 }
 
-.search {
-  margin-top: 200px; 
-}
-
 .sort-buttons {
   padding-left: 20px;
   display: inline;
@@ -65,11 +61,6 @@ form {
 
 .container {
   margin: 0 auto
-}
-
-a, i {
-  margin: 0px;
-  padding: 0px;
 }
 
 i.icon-yellow {
