@@ -139,7 +139,7 @@ render () {
                                 {this.props.type =='completed-hikes' && <div className="three-cols">Report: {this.props.userComment}</div>}
                                 <div className="three-cols">Difficulty: {this.props.difficulty}
                                 <br />
-                                {this.props.type =='completed-hikes' && <a>Date: {Moment(this.props.day).format("MMM Do YYYY")}</a>}
+                                {this.props.type =='completed-hikes' && <div>Date: {Moment(this.props.day).format("MMM Do YYYY")}</div>}
                                 </div>
                                 
 
