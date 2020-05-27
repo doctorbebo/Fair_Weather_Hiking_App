@@ -11,7 +11,7 @@ class Navbar extends Component {
           <div className="nav-wrapper white row">
             <div className="col s12 l4 brand-logo center black-text">
               <ul>
-              <li><a href='/' title='home'><i className="material-icons icon-black">home</i></a></li>              
+              <li><Link to='/' title='home'><i className="material-icons icon-black">home</i></Link></li>              
               
               <li>{this.props.page !== 'favorites' &&
               <Link to='/favorites' title='favorites'><i className="material-icons icon-yellow">star</i></Link>}</li>
