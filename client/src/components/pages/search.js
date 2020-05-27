@@ -126,10 +126,34 @@ class Search extends Component {
                                     <option value="10000">10000 ft</option>
                                 </select>
                             </div>
+                            <div className='sort-buttons'>
+                                <div className='sort-buttons'>Sort by:          </div>  
+                                    <label>
+                                        <input 
+                                        onChange={this.onChange} 
+                                        value='distance'
+                                        id='sort' class="with-gap" 
+                                        name="group1" type="radio" 
+                                        checked={this.state.sort === 'distance'}  />
+                                        <span>Distance</span>
+                                    </label>
+                            </div>
+                            <div className='sort-buttons'>
+                                <label>
+                                    <input 
+                                    onChange={this.onChange} 
+                                    value='quality'
+                                    id='sort' class="with-gap" 
+                                    name="group1" type="radio" 
+                                    checked={this.state.sort === 'quality'}  />
+                                    <span>Quality</span>
+                                </label>
+                            </div>
                             <br />
                             <Button name='Search Hikes' type='submit' />
                         </form>
                         {this.state.isSubmitted && <Results
+                            sort={this.state.sort}
                             zipcode={this.state.zipcode}
                             type='search-results'
                             dist={this.state.maxTravel}
