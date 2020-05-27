@@ -47,11 +47,12 @@ const CompletedSchema = new Schema({
     },
     day: {
         type: Date,
-        default: Date
+        default: new Date
     },
-    TEST: {
+    location: {
         type: String
     }
+   
 })
 
 const Completed = mongoose.model('completed', CompletedSchema);

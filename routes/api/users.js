@@ -147,6 +147,7 @@ router.post('/completed', function(req,res) {
     longitude: req.body[0].longitude,
     ascent: req.body[0].ascent,
     length: req.body[0].length,
+    location: req.body[0].location,
     userComment: req.body[1].userComment
   }).then(dbCompleted => {
     console.log(dbCompleted)
