@@ -4,7 +4,7 @@ export default {
 
     searchHikes: function(lat, lon, length, dist, elev, sort) {
         let resultQty = "&maxResults=10";
-        let apiKey = "&key=200749828-0bd185ee7af374a0fb370047ff15cc20";
+        let apiKey = process.env.REACT_APP_HIKING_PROJECT_API_KEY;
         
         let hikerequest = "https://cors-anywhere.herokuapp.com/https://www.hikingproject.com/data/get-trails?";
         let query = `${hikerequest}lat=${lat}&lon=${lon}&minLength=${length}&maxDistance=${dist}&sort=${sort}${resultQty}${apiKey}`;
@@ -43,7 +43,7 @@ export default {
         let lat = "lat="+hike.latitude
         let lon = "&lon="+hike.longitude
         let units = "&units=imperial";
-        let apiKey = "&appid=af4b6cb437caa6db643b24a43b52989b";
+        let apiKey = process.env.REACT_APP_OPEN_WEATHER_API_KEY;
         return axios.get(weatherRequest+lat+lon+units+apiKey)
     },
 

@@ -66,9 +66,8 @@ class Search extends Component {
         return(
             <div>
                 <Navbar page='search'/>
-                <br></br>
                 <div className='row index-card-bg'>
-                    <div className='col m8 push-m2'>
+                    <div className='col m8 push-m2 col-pad'>
                         <form className="form-background" noValidate onSubmit={this.onSubmit.bind(this)}>
                             <div className='col s5'>
                                 Search by current location <br />
@@ -132,7 +131,7 @@ class Search extends Component {
                                         <input 
                                         onChange={this.onChange} 
                                         value='distance'
-                                        id='sort' class="with-gap" 
+                                        id='sort' className="with-gap" 
                                         name="group1" type="radio" 
                                         checked={this.state.sort === 'distance'}  />
                                         <span>Distance</span>
@@ -143,12 +142,13 @@ class Search extends Component {
                                     <input 
                                     onChange={this.onChange} 
                                     value='quality'
-                                    id='sort' class="with-gap" 
+                                    id='sort' className="with-gap" 
                                     name="group1" type="radio" 
                                     checked={this.state.sort === 'quality'}  />
                                     <span>Quality</span>
                                 </label>
                             </div>
+                            <br />
                             <br />
                             <Button name='Search Hikes' type='submit' />
                         </form>

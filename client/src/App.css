@@ -2,10 +2,6 @@
   text-align: center;
 }
 
-.search {
-  margin-top: 200px; 
-}
-
 .sort-buttons {
   padding-left: 20px;
   display: inline;
@@ -17,6 +13,7 @@ nav.nav-center ul {
 nav.nav-center ul li {
   display: inline;
   float: none;
+  padding: 0px;
 }
 nav.nav-center ul li a {
   display: inline-block;
@@ -67,7 +64,7 @@ form {
 }
 
 i.icon-yellow {
-  color: gold
+  color: gold;
 }
 
 i.icon-green {
