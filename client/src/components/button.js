@@ -7,7 +7,8 @@ function Button(props) {
                 width: props.width,
                 borderRadius: "3px",
                 letterSpacing: "1.5px",
-                marginTop: "1rem"
+                marginBottom: "1rem"
+
             }}
             onClick={props.onClick}
             type={props.type}
