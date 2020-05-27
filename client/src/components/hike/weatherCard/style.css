@@ -6,3 +6,9 @@
 .col {
     margin: 0px;
 }
+
+.summary {
+    background-color: rgba(128, 128, 128, 0.1);
+    margin: 20px;
+    padding: 7px 7px 15px 7px;
+}
