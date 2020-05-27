@@ -22,35 +22,34 @@ class Dashboard extends Component {
     return (
       <div style={{ height: "75vh" }} className="container valign-wrapper">
         <div className="row">
-          <div className='row'>
-          </div>
           <div className="col s12 center-align">
-            <h4>
-              <b>Hey,</b> {user.name.split(" ")[0]}
-              <p className="flow-text grey-text text-darken-1">
-                Welcome to Fair Weather Hiking
-              </p>
-            </h4>
-            {/* <button
-              style={{
-                width: "150px",
-                borderRadius: "3px",
-                letterSpacing: "1.5px",
-                marginTop: "1rem"
-              }}
-              onClick={this.onLogoutClick}
-              className="btn btn-large waves-effect waves-light hoverable blue accent-3"
-            >
-              Logout
-            </button> */}
-            <div className='row'>
-              {/* Heroku needs a "Link" tag instead of an "a" tag. Also be sure to change "href" to "to" like below. */}
-              <Link to="/search"><Button name='Find A Hike' width='300px'/></Link><br />
-              <Link to="/completed"><Button name='View Completed Hikes' width='300px'/></Link><br />
-              <Link to='/favorites'><Button name='View Favorite Hikes' width='300px'/></Link><br /><br />
-              <Link to='/login' onClick={this.onLogoutClick}>Log out</Link>
+            <div className= "form-background">
+              <h4>
+                <b>Hey,</b> {user.name.split(" ")[0]}
+                <p className="flow-text grey-text text-darken-1">
+                  Welcome to Fair Weather Hiking
+                </p>
+              </h4>
+              {/* <button
+                style={{
+                  width: "150px",
+                  borderRadius: "3px",
+                  letterSpacing: "1.5px",
+                  marginTop: "1rem"
+                }}
+                onClick={this.onLogoutClick}
+                className="btn btn-large waves-effect waves-light hoverable blue accent-3"
+              >
+                Logout
+              </button> */}
+              <div className='row'>
+                {/* Heroku needs a "Link" tag instead of an "a" tag. Also be sure to change "href" to "to" like below. */}
+                <Link to="/search"><Button name='Find A Hike' width='300px'/></Link><br />
+                <Link to="/completed"><Button name='View Completed Hikes' width='300px'/></Link><br />
+                <Link to='/favorites'><Button name='View Favorite Hikes' width='300px'/></Link><br /><br />
+                <Link to='/login' onClick={this.onLogoutClick}>Log out</Link>
+              </div>
             </div>
-
           </div>
         </div>
       </div>

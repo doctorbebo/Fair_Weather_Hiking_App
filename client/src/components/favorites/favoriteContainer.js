@@ -7,7 +7,7 @@ function FavoriteContainer() {
         <div className='row'>
             <Navbar page='favorites'/>
         </div>
-        <div className='row'>
+        <div className='row index-card-bg'>
             <div className='col s8 offset-s2'>
                 <Results type='favorite-hikes'/>
             </div>
