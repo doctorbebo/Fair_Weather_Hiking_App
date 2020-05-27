@@ -56,21 +56,20 @@ render() {
   return (
       <div className="container">
         <div style={{ marginTop: "4rem" }} className="row">
-          <div className="col s8 offset-s2">
+          <div className="col s8 offset-s2 form-background">
             {/* <Link to="/" className="btn-flat waves-effect">
               <i className="material-icons left">keyboard_backspace</i> Back to
               home
             </Link> */}
             <div className="col s12" style={{ paddingLeft: "11.250px" }}>
-              <h4>
+              <h4 className="color-black">
                 <b>Login</b> below
               </h4>
               <p className="grey-text text-darken-1">
                 Don't have an account? <Link to="/register">Register</Link>
               </p>
             </div>
-            <form noValidate onSubmit={this.onSubmit}>
-              <div className="form-background">               
+              <form noValidate onSubmit={this.onSubmit}>
                 <div className="input-field col s12">
                   <input
                     onChange={this.onChange}
@@ -108,7 +107,6 @@ render() {
                 <div className="col s12" style={{ paddingLeft: "11.250px" }}>
                   <Button name='Login' type='submit' />
                 </div>
-              </div>
             </form>
           </div>
         </div>
