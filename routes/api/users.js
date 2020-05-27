@@ -98,8 +98,13 @@ router.post('/login', function(req,res) {
 
 router.post('/favorite', function(req,res) {
   //console.log('users.js hike id: ' + req.body.id)
-  Favorite.findOne({id : req.body.id})
+  Favorite.findOne({
+    id : req.body.id,
+    userID: req.body.auth.user.id
+  })
   .then(res => {
+    // console.log('res: ')
+    // console.log(res)
     if(res == null) {
       Favorite.create({
         userID: req.body.auth.user.id,
@@ -111,6 +116,8 @@ router.post('/favorite', function(req,res) {
         summary: req.body.summary,
         ascent: req.body.ascent,
         length: req.body.length,
+        latitude: req.body.latitude,
+        longitude: req.body.longitude,
         location: req.body.location
       }).then(dbFavorite => {
         res.json(dbFavorite)
@@ -126,17 +133,22 @@ router.post('/favorite', function(req,res) {
 })
 
 router.post('/completed', function(req,res) {
-  //console.log(body)
+  // console.log(req.body)
   Completed.create({
-    userID: req.body.auth.user.id,
-    id: req.body.id,
-    name: req.body.name,
-    difficulty: req.body.difficulty,
-    high: req.body.high,
-    imgMedium: req.body.imgMedium,
-    ascent: req.body.ascent,
-    summary: req.body.summary,
-    length: req.body.length
+    userID: req.body[0].auth.user.id,
+    id: req.body[0].id,
+    completedId: req.body[0]._id,
+    name: req.body[0].name,
+    difficulty: req.body[0].difficulty,
+    high: req.body[0].high,
+    imgMedium: req.body[0].imgMedium,
+    summary: req.body[0].summary,
+    latitude: req.body[0].latitude,
+    longitude: req.body[0].longitude,
+    ascent: req.body[0].ascent,
+    length: req.body[0].length,
+    location: req.body[0].location,
+    userComment: req.body[1].userComment
   }).then(dbCompleted => {
     console.log(dbCompleted)
     res.json(dbCompleted)
@@ -155,19 +167,32 @@ router.get('/completed/:id', function(req, res) {
 })
 
 router.get('/favorite/:id', function(req, res) {
-  //console.log('id: ' + req.params.id)
   Favorite.find({userID: req.params.id})
     .then(favorite => {
       res.json(favorite)
     })
 })
 
-router.delete('/delete/:id', function(req,res) {
-  Favorite.findOneAndDelete({id: req.params.id})
+router.delete('/delete/:id/:userID', function(req,res) {
+  console.log(req.params)
+  Favorite.findOneAndDelete({
+    id: req.params.id,
+    userID: req.params.userID
+  })
     .then(hike => {
-      console.log('deleted: ' + hike)
+      console.log("Successful deletion");
+      //console.log('deleted: ' + hike)
     })
-    console.log("Successful deletion");
+})
+router.delete('/delete/:day', function(req,res) {
+  console.log(req.params)
+  Completed.findOneAndDelete({
+    day: req.params.day,
+  })
+    .then(hike => {
+      console.log("Successful deletion");
+      //console.log('deleted: ' + hike)
+    })
 })
 
 module.exports = router;

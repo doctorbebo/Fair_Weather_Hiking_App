@@ -1,26 +1,25 @@
 import React, { Component } from 'react';
-
 import PropTypes from 'prop-types';
 import { connect } from "react-redux";
-
 
 import Button from '../button';
 import Label from '../label';
 import Results from './results';
 import Navbar from '../navbar';
 
-import Hike from '../hike'
-
-
 import M from 'materialize-css';
 
 class Search extends Component {
-    //initialize Materialize
     componentDidMount() {
+        //redirect user to login page if user is not logged in
         if(!this.props.auth.isAuthenticated) {
             this.props.history.push('/login')
         }
+
+        //initialize Materialize
         M.AutoInit();
+
+        //locate users current location
         if ("geolocation" in navigator) {
             console.log("Current location is Available");
           } else {
@@ -39,27 +38,21 @@ class Search extends Component {
             minLength: "",
             maxElevation: "",
             maxTravel: "",
+            sort: "",
             latitude: 0,
             longitude: 0,
+            zipcode: '',
             hikes: [],
-
             isSubmitted: false
-
             };
             this.onSubmit=this.onSubmit.bind(this);     
       }
-    // getuserlocation = () => {
-    //     navigator.geolocation.getCurrentPosition(function(position) {
-    //         console.log("Latitude is :", position.coords.latitude);
-    //         console.log("Longitude is :", position.coords.longitude);
-    //         this.setState ({latitude: position.coords.latitude})
-    //         this.setState ({longitude: position.coords.longitude})
-    //       });
-    //   }
 
     onChange = event => {
-        console.log(event.target.value);
-        this.setState({ [event.target.id]: event.target.value })
+        this.setState({
+            [event.target.id]: event.target.value,
+            isSubmitted: false
+        })
     }
 
     onSubmit(event) {
@@ -67,19 +60,29 @@ class Search extends Component {
         this.setState({
             isSubmitted: true
         })
-        console.log('searched for a hike')
     }
-
+// adding comments 
     render() {
         return(
-            <div className='container search'>
-                <div className='row'>
-                    <Navbar page='search'/>
-                </div>
+            <div>
+                <Navbar page='search'/>
                 <br></br>
                 <div className='row index-card-bg'>
                     <div className='col m8 push-m2'>
                         <form className="form-background" noValidate onSubmit={this.onSubmit.bind(this)}>
+                            <div className='col s5'>
+                                Search by current location <br />
+                                <i className="material-icons">my_location</i>
+                            </div>
+                            <div className='col s2 or'>OR</div>
+                            <div className='input-field col s5'>                                <input
+                                    onChange={this.onChange}
+                                    value={this.state.zipcode}
+                                    id="zipcode"
+                                />
+                                <label className='active' htmlFor="zipcode">Enter Your Zipcode:</label>
+                            </div>
+                            <div className='input-field col s12 divider'></div>
                             <div className='input-field col s12'>
                                 <input
                                     onChange={this.onChange}
@@ -123,10 +126,35 @@ class Search extends Component {
                                     <option value="10000">10000 ft</option>
                                 </select>
                             </div>
+                            <div className='sort-buttons'>
+                                <div className='sort-buttons'>Sort by:          </div>  
+                                    <label>
+                                        <input 
+                                        onChange={this.onChange} 
+                                        value='distance'
+                                        id='sort' class="with-gap" 
+                                        name="group1" type="radio" 
+                                        checked={this.state.sort === 'distance'}  />
+                                        <span>Distance</span>
+                                    </label>
+                            </div>
+                            <div className='sort-buttons'>
+                                <label>
+                                    <input 
+                                    onChange={this.onChange} 
+                                    value='quality'
+                                    id='sort' class="with-gap" 
+                                    name="group1" type="radio" 
+                                    checked={this.state.sort === 'quality'}  />
+                                    <span>Quality</span>
+                                </label>
+                            </div>
                             <br />
                             <Button name='Search Hikes' type='submit' />
                         </form>
                         {this.state.isSubmitted && <Results
+                            sort={this.state.sort}
+                            zipcode={this.state.zipcode}
                             type='search-results'
                             dist={this.state.maxTravel}
                             length={this.state.minLength}

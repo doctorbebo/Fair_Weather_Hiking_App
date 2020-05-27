@@ -25,7 +25,7 @@ class Background extends React.Component
     render()
     {
         return (
-            <div className="fill-screen" On>
+            <div className="fill-screen" on='true'>
                 <img alt = "" src={image} width = {this.state.width}  height = {this.state.height} ></img>
             </div>
         )

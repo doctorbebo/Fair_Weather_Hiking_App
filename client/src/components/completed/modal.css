@@ -1,10 +1,12 @@
+
 .modal {
     position: fixed;
     left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
+    top: 10%;
+    width: 50%;
+    height: 90%;
     z-index: 990;
+    background: transparent;
   }
   
   .modal .overlay {
@@ -14,7 +16,13 @@
     width: 100%;
     height: 100%;
     z-index: 995;
-    background: rgba(0,0,0,0.85);
+    
+  }
+  .overlay {
+      background-size: 100%;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-color: lightgrey;
   }
   
   .modal .modal_content {
@@ -24,38 +32,55 @@
     left: 50%;
     transform: translate(-50%, -50%);
     max-height: 90%;
-    overflow: auto;
-    background: #fff;
+    overflow: visible;
+    background-color: whitesmoke;
     box-sizing: border-box;
     padding: 20px;
     box-shadow: 0 1px 5px rgba(0,0,0,0.7);
     border-radius: 4px;
-    width: 520px; /* This just a default width */
+    width: 70%; /* This just a default width */
+    height: 40%;
+    
+  }
+  .title {
+    z-index: 999;
+    position: absolute;
+    font-size: 2em;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    top: 50%;
+    left: 31%;
+    transform: translate(-50%, -50%);
+    max-height: 90%;
+    overflow: auto;
+    background: transparent;
+    padding: 20px;
+    /* box-shadow: 0 1px 5px rgba(0,0,0,0.7); */
+    width: 40%; /* This just a default width */
+    height: 50%;
+    
   }
   
   .modal .modal_content > h2 {
-    font-size: 28px;
     font-weight: 200;
     margin: 20px 0 40px;
     text-align: center;
   }
   
   .modal .modal_content .buttons_wrapper {
-    padding: 20px;
+    padding: 10px;
+  }
+
+  .inputBox {
+    font-size: 2em;
+    line-height: 1em;
   }
   
-  .modal .close_modal {
-    position: absolute;
-    right: 10px;
-    top: 10px;
-    cursor: pointer;
-    font-size: 18px;
-    opacity: 0.5;
-    background: none;
-    border: none;
-    transition: opacity 0.2s ease;
-  }
+#submit-complete {
+  margin-top: 4%;
+  margin-right: 2%;
+}
+#cancel-submit {
+  margin-top: 4%;
+  margin-left: 2%;
+}
   
-  .modal .close_modal:hover {
-    opacity: 0.9;
-  }

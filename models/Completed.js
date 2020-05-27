@@ -8,8 +8,14 @@ const CompletedSchema = new Schema({
     id: {
         type: Number
     },
+    completedId: {
+        type: String
+    },
     name: {
         type: String
+    },
+    ascent: {
+        type: Number
     },
     difficulty: {
         type: String
@@ -29,10 +35,24 @@ const CompletedSchema = new Schema({
     summary: {
         type: String
     },
+
+    userComment: {
+        type: String
+    },
+    latitude: {
+        type: Number
+    },
+    longitude:{
+        type: Number
+    },
     day: {
         type: Date,
-        default: Date
+        default: new Date
+    },
+    location: {
+        type: String
     }
+   
 })
 
 const Completed = mongoose.model('completed', CompletedSchema);
