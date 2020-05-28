@@ -25,3 +25,14 @@
 {
     padding: 0;
 }
+
+.favorites {
+    width: 40%;
+    margin: 0 auto;
+}
+
+@media only screen and (max-width: 768px) {
+    .favorites {
+        width: 90%
+    }
+}

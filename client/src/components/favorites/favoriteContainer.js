@@ -2,12 +2,14 @@ import React from 'react';
 import Results from '../pages/results';
 import Navbar from '../navbar';
 
+import './style.css'
+
 function FavoriteContainer() {
     return <div>
         <div className='row'>
             <Navbar page='favorites'/>
         </div>
-        <div className='row index-card-bg'>
+        <div className='favorites index-card-bg'>
             <div className='col s8 offset-s2'>
                 <Results type='favorite-hikes'/>
             </div>

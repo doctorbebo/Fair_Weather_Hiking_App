@@ -162,10 +162,10 @@ render () {
                     <div className="card-action no-padding">
                             {this.props.type !== 'favorite-hikes' && <button className="btn-large btn-by2" id="Add-to-favs" onClick={(e) => this.handleClick(e)}>Add to Favorites <i className="small material-icons icon-yellow">star</i></button>}
 
-                            {this.props.type !=='completed-hikes' &&<button className="btn-large btn-by2" id="Mark-complete" onClick={(e) => this.handleClick(e)}>Mark Complete <i className="small material-icons icon-green">check</i></button>}
+                            {this.props.type !=='completed-hikes' &&<button className="btn-large btn-by2" id="Mark-complete" onClick={(e) => this.handleClick(e)}>Complete <i className="small material-icons icon-green">check</i></button>}
 
-                            {this.props.type == 'favorite-hikes' && <button className="btn-large btn-by2" id="delete-favorite" onClick={(e) => this.handleClick(e)}>Delete from Favorites <i className="small material-icons icon-red">delete_forever</i></button>}
-                            {this.props.type == 'completed-hikes' && <button className="btn-large btn-by2" id="delete-completed" onClick={(e) => this.handleClick(e)}>Delete from Completed <i className="small material-icons icon-red">delete_forever</i></button>}
+                            {this.props.type == 'favorite-hikes' && <button className="btn-large btn-by2" id="delete-favorite" onClick={(e) => this.handleClick(e)}>Remove <i className="small material-icons icon-red">delete_forever</i></button>}
+                            {this.props.type == 'completed-hikes' && <button className="btn-large btn-by2" id="delete-completed" onClick={(e) => this.handleClick(e)}>Remove <i className="small material-icons icon-red">delete_forever</i></button>}
 
                             {!this.state.show_more && <button id="More-Info" onClick={(e) => this.handleClick(e)}>Show More<i className="small material-icons icon-black">expand_more</i></button>}
                             {this.state.show_more && <button  id="Less-Info" onClick={(e) => this.handleClick(e)}>Show Less<i className="small material-icons icon-white">expand_less</i></button>}
