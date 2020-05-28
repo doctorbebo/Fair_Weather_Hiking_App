@@ -66,15 +66,15 @@ class Search extends Component {
         return(
             <div>
                 <Navbar page='search'/>
-                <div className='row index-card-bg'>
-                    <div className='col m8 push-m2 col-pad'>
+                <div className='search row index-card-bg'>
+                    <div className=' push-m2 col-pad'>
                         <form className="form-background" noValidate onSubmit={this.onSubmit.bind(this)}>
-                            <div className='col s5'>
+                            <div className='col s5 m5'>
                                 Search by current location <br />
                                 <i className="material-icons">my_location</i>
                             </div>
-                            <div className='col s2 or'>OR</div>
-                            <div className='input-field col s5'>                                <input
+                            <div className='col s2 m2 or'>OR</div>
+                            <div className='input-field col s5 m5'>                                <input
                                     onChange={this.onChange}
                                     value={this.state.zipcode}
                                     id="zipcode"
