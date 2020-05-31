@@ -2,10 +2,10 @@
   text-align: center;
 }
 
-.sort-buttons {
+/* .sort-buttons {
   padding-left: 20px;
   display: inline;
-}
+} */
 
 nav.nav-center ul {
   text-align: center;
@@ -54,7 +54,7 @@ form {
   margin-top: 10px;
   border-radius: 5px;
   padding: 5px;
-  background-color: rgba(255, 0, 0, 0.473);
+  background-color: rgba(199, 0, 0, 0.795);
   color: rgb(53, 0, 0);
   border: 1px rgb(53, 0, 0);
 }
@@ -72,7 +72,7 @@ i.icon-green {
 }
 
 i.icon-black {
-  color: black
+  color: black;
 }
 
 i.icon-blue {

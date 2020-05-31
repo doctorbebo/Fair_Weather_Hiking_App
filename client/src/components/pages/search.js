@@ -9,6 +9,8 @@ import Navbar from '../navbar';
 
 import M from 'materialize-css';
 
+import './styles.css';
+
 class Search extends Component {
     componentDidMount() {
         //redirect user to login page if user is not logged in
@@ -67,14 +69,14 @@ class Search extends Component {
             <div>
                 <Navbar page='search'/>
                 <div className='search row index-card-bg'>
-                    <div className=' push-m2 col-pad'>
+                    <div className='push-m2 col-pad'>
                         <form className="form-background" noValidate onSubmit={this.onSubmit.bind(this)}>
-                            <div className='col s5 m5'>
+                            <div className='col s4 m5'>
                                 Search by current location <br />
                                 <i className="material-icons">my_location</i>
                             </div>
-                            <div className='col s2 m2 or'>OR</div>
-                            <div className='input-field col s5 m5'>                                <input
+                            <div className='col s4 m2 or'>OR</div>
+                            <div className='input-field col s4 m5'>                                <input
                                     onChange={this.onChange}
                                     value={this.state.zipcode}
                                     id="zipcode"
@@ -125,19 +127,21 @@ class Search extends Component {
                                     <option value="10000">10000 ft</option>
                                 </select>
                             </div>
-                            <div className='sort-buttons'>
-                                <div className='sort-buttons'>Sort by:          </div>  
-                                    <label>
-                                        <input 
-                                        onChange={this.onChange} 
-                                        value='distance'
-                                        id='sort' className="with-gap" 
-                                        name="group1" type="radio" 
-                                        checked={this.state.sort === 'distance'}  />
-                                        <span>Distance</span>
-                                    </label>
-                            </div>
-                            <div className='sort-buttons'>
+                            {/* <div className='sort-buttons'> */}
+                                <div className='col s3 m4 l4'>Sort by:          </div>  
+                                    <div className='col s5 m4 l4 sort-buttons'>
+                                        <label>
+                                            <input 
+                                            onChange={this.onChange} 
+                                            value='distance'
+                                            id='sort' className="with-gap" 
+                                            name="group1" type="radio" 
+                                            checked={this.state.sort === 'distance'}  />
+                                            <span>Distance</span>
+                                        </label>
+                                    </div>
+                            {/* </div> */}
+                            <div className='col s4 l4 m4 sort-buttons'>
                                 <label>
                                     <input 
                                     onChange={this.onChange} 
@@ -148,8 +152,9 @@ class Search extends Component {
                                     <span>Quality</span>
                                 </label>
                             </div>
-                            <br />
-                            <br />
+                            {/* <br />
+                            <br /> */}
+                            <div className='col s12'><br /></div>
                             <Button name='Search Hikes' type='submit' />
                         </form>
                         {this.state.isSubmitted && <Results

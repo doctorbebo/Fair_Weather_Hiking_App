@@ -6,3 +6,7 @@
 {
     margin: 0 auto;
 }
+
+li {
+    border-bottom: 1px teal;
+}
