@@ -1,3 +1,11 @@
+# Fair Weather Hiking
+
+This app is the one stop place for planning your hiking trip. Log in and search for hikes check out the weather conditions in the coming week. You can also save your favorite hikes as well as mark hikes completed. This app, with your permission, will use geo-location to find your current location in order help you find hikes close to you. 
+
+## [Check it Out](https://fair-weather-hiking.herokuapp.com/)
+
+![Hiking App image](./assets/hikingImage.png)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
